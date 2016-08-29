@@ -1,0 +1,31 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+  }
+
+  nav{
+  	text-align: center;
+  	background-color: black;
+  	padding: 15px 0 15px 0;
+  }
+  nav li{
+  	text-decoration: none;
+  	display: inline;
+  	font-size: 1.7em;
+  	padding: 15px;
+  }
+
+  nav a{
+  	color: white;
+  }
+
+  nav a:hover{
+  	text-decoration: none !important;
+  	color: lightblue;
+  }

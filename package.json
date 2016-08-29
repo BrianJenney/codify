@@ -1,0 +1,14 @@
+{
+  "name": "codifycms",
+  "version": "1.0.0",
+  "description": "Sometimes I just want a simple Angular Starter Template instead of a million dependencies and npm packages.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^3.3.0"
+  }
+}
