@@ -7,7 +7,30 @@ angular.module('myApp.home', ['ngRoute'])
   });
 }])
 
-.controller('HomeCtrl', ['$scope','$window',function($scope,$window) {
+.controller('HomeCtrl', ['$scope','$window','$timeout',function($scope,$window,$timeout) {
+
+
+//get current user to determine if admin
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    console.log(user.email)
+  } else {
+    console.log("nope")
+  }
+
+  //needs timeout to allow page to render first
+  $timeout(function(){
+  	//if user email is mine then you're the admin
+  if(user.email === 'brianjenney83@gmail.com'){
+  	$scope.isAdmin = true;
+  }else{
+  	$scope.isAdmin = false;
+  }
+
+  //console.log($scope.isAdmin);
+  })
+
+});
  
  $scope.logOut = function(){
  	firebase.auth().signOut().then(function() {

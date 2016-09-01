@@ -1,4 +1,7 @@
 <section ng-control="CreateUserCtrl">
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4">
 <form>
 <h2>Create Account</h2>
   <div class="form-group">
@@ -12,6 +15,9 @@
   <div class="text-center">
   <br><br>
   <button ng-disabled="!userPassword || !userEmail"ng-click="createUser()" class="btn btn-primary">Create Account</button>
+  <a href="/#/login">Sign In</a>
   </div>
 </form>
+</div>
+</div>
 </section>
