@@ -20,28 +20,41 @@
 				<table>
 					<tr ng-repeat="work in homework">
 						<td>{{work}}</td>
-						<td><button ng-click="remove($index)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span></button></td>
+						<td><button ng-click="removeHw($index)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span></button></td>
 					</tr>
 				</table>
 			</div>
 
 		<div>
 			<h4>Assignments</h4>
-			<input placeholder="Title" ng-model="assignment" class="input input-md" type="text" /><button ng-disabled="!assignment.length" class="btn btn-success btn-xs" ng-click="addAssign(assignment)"><span class="glyphicon glyphicon-plus"></span></button><br>
+			<input placeholder="Title" ng-model="assignment" class="input input-md" type="text" /><button ng-disabled="!assignment.length" class="btn btn-success btn-xs" ng-click="addAssign(assignment, instructions)"><span class="glyphicon glyphicon-plus"></span></button><br>
 			<textarea cols="40" placeholder="Instructions"ng-model="instructions" type="text"/></textarea>	
+				<table ng-repeat="a in assignments">
+					<th>{{a.title}}</th>
+					<tr>
+						<td>{{a.desc}}</td>
+						<td><button ng-click="removeAssignment($index)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span></button></td>
+					</tr>
+				</table>
 		</div>	
 		<div>
 			<h4>Video/Misc. Links</h4>
 			<!-- These links will be added to a box then pushed to the db at submit -->
-			<input ng-model="videoLink" class="input input-md" type="text" /><button ng-disabled="!videoLinks.length" class="btn btn-success btn-xs" ng-click="addVideo(videoLink)"><span class="glyphicon glyphicon-plus"></span></button>
+			<input ng-model="videoLink" class="input input-md" type="text" /><button ng-disabled="!videoLink.length" class="btn btn-success btn-xs" ng-click="addVideoLink(videoLink)"><span class="glyphicon glyphicon-plus"></span></button>
 		</div>
+		<table>
+			<tr ng-repeat="link in links">
+				<td>{{link.url}}</td>
+				<td><button ng-click="removeLink($index)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span></button></td>
+			</tr>
+		</table>
 	</div>
 	</div>
 	
 	<br>
 	<br>
 	<div class="text-center">
-		<button class="btn btn-primary btn-lg">Submit</button>	
+		<button ng-click="submit()"class="btn btn-primary btn-lg">Submit</button>	
 	</div>
 	
 </section>

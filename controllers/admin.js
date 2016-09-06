@@ -26,11 +26,40 @@ $scope.addHomework = function(work){
 }
 
 //remove homework from array
-$scope.remove = function(index){
+$scope.removeHw = function(index){
 	$scope.homework.splice(index,1);
 }
 
+//functions for assignments
+$scope.assignments = [];
+$scope.addAssign = function(title, work){
+	$scope.assignments.push({"title": title, "desc": work})
+}
 
+$scope.removeAssignment = function(index){
+	$scope.assignments.splice(index,1);
+}
+
+//functions for videolinks
+$scope.links = [];
+$scope.addVideoLink = function(url){
+	$scope.links.push({"url": url})
+}
+
+$scope.removeLink = function(index){
+	$scope.links.splice(index,1);
+}
+
+//submit info for the week to firebase
+//not yet finished
+//need to change security rules
+$scope.submit = function(){
+	console.log($scope.selectedWeek);
+	var fb = new Firebase("https://codify-afedf.firebaseio.com/week" + $scope.selectedWeek + "/")
+	fb.push({
+		"homework": $scope.homework
+	})
+}
  
  }]);
 
