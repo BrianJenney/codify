@@ -1,1 +1,12 @@
-<h1>Welcome</h1>
+<section ng-controller="WeekOneCtrl">
+	<div class="">
+		<span title="Upload Your Selected File"style="color: deepskyblue;; width: 8%; font-size: 2em" class="glyphicon glyphicon-upload text-center" ng-click="saveFile()">
+		</span>
+		
+		<input class="input input-xl" ng-model="userFiles" type="file" id="files" ng-model="fileToUpload" name="files[]" multiple />
+			
+		<div>
+			<span ng-show="noFile" class="label label-danger">Please Select A File</span>
+		</div>
+	</div>
+</section>

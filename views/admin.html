@@ -1,23 +1,33 @@
+<style type="">
+	input{
+		width: 50% !important;
+	}
+</style>
+
 <section ng-controller="AdminCtrl">
-	<h1>Admin Page</h1>
-	<form>
-		<label>Select Week</label>
-		<select ng-model="selectedWeek">
-		<option ng-repeat="week in weeks" value="{{week.value}}">{{week.week}}</option>
-		</select>
-		
-	</form>
+	<div class="text-left">
+		<h1>Admin Page</h1>
+	</div>
+	
 	<div class="row">
+
 		<div class="col-md-6">
+		
 			<h4>Description of Week</h4>
-			<textarea rows="10" cols="70" ng-model="weekIntro"></textarea>
+			<textarea rows="5" cols="70" ng-model="weekIntro"></textarea>
 		</div>
 		<div class="col-md-6">
+			<div>
+				<h4>Select Week</h4>
+				<select class="input input-md"ng-model="selectedWeek">
+				<option ng-repeat="week in weeks" value="{{week.value}}">{{week.week}}</option>
+				</select>
+			</div>
 			<div>
 				<h4>Home Work Links</h4>
 				<!-- These links will be added to a box then pushed to the db at submit -->
 				<input ng-model="classWork" class="input input-md" type="text" /><button ng-disabled="!classWork.length" class="btn btn-success btn-xs" ng-click="addHomework(classWork)"><span class="glyphicon glyphicon-plus"></span></button>
-				<table>
+				<table style="table table-striped table-bordered">
 					<tr ng-repeat="work in homework">
 						<td>{{work}}</td>
 						<td><button ng-click="removeHw($index)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus"></span></button></td>

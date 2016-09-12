@@ -44,6 +44,7 @@ $scope.removeAssignment = function(index){
 $scope.links = [];
 $scope.addVideoLink = function(url){
 	$scope.links.push({"url": url})
+	delete $scope.links.$$hashkey;
 }
 
 $scope.removeLink = function(index){
@@ -51,15 +52,17 @@ $scope.removeLink = function(index){
 }
 
 //submit info for the week to firebase
-//not yet finished
-//need to change security rules
+
 $scope.submit = function(){
+	console.log($scope.homework, $scope.links, $scope.assignments)
 	console.log($scope.selectedWeek);
-	var fb = new Firebase("https://codify-afedf.firebaseio.com/week" + $scope.selectedWeek + "/")
-	fb.push({
-		"homework": $scope.homework
+	firebase.database().ref("week" + $scope.selectedWeek).push({
+		"homeworklinks": angular.fromJson(angular.toJson($scope.homework)),
+		"videos":angular.fromJson(angular.toJson($scope.links)),
+		"assignments": angular.fromJson(angular.toJson($scope.assignments))
 	})
-}
+	
+	}
  
  }]);
 

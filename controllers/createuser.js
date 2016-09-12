@@ -7,7 +7,7 @@ angular.module('myApp.createuser', ['ngRoute'])
   });
 }])
 
-.controller('CreateUserCtrl',['$scope','$window','$timeout',function($scope,$window,$timeout) {
+.controller('CreateUserCtrl',['$scope','$window','$timeout','$http',function($scope,$window,$timeout,$http) {
  
  //function to create user
 $scope.createUser = function(){
@@ -21,6 +21,10 @@ $scope.createUser = function(){
 	  var errorMessage = error.message;
 	  // ...
 	}).then(function(){
+
+		//call email service
+		$http.get("http://localhost:3000/sendmail?to=" + $scope.userEmail)
+
 		$window.location.href="/#/login"
 	});
 }
