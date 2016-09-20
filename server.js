@@ -2,12 +2,27 @@ var express = require('express');
 var app = express();
 var nodemailer = require('nodemailer');
 
+
+var accountSid = 'AC7ba88a6599ee96042b778acc047436fd'; 
+var authToken = 'ecfd835d7a3e90d66a0cec19adb971ad'; 
+
+
 app.use(express.static(__dirname + '/'));
 app.listen(process.env.PORT || 3000);
 
 //web service to send email to students on sign up
 app.get('/sendmail', function(req, res){
-console.log(req.query)
+
+var client = require('twilio')(accountSid, authToken); 
+ 
+client.messages.create({ 
+	to: "5102068990", 
+	from: "+16504667925", 
+	body: "Hey new student",   
+}, function(err, message) { 
+	console.log(err); 
+}); 
+
 	var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth:{
@@ -28,7 +43,7 @@ var mailOptions = {
 // send mail with defined transport object
 transporter.sendMail(mailOptions, function(error, info){
     if(error){
-        return console.log('butts' + error);
+        return console.log('Error:' + error);
     }
     console.log('Message sent: ' + info.response);
 });

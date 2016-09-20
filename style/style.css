@@ -29,3 +29,30 @@ html {
   	text-decoration: none !important;
   	color: lightblue;
   }
+
+  .jumbotron{
+    color: turquoise;
+    /*background-color: #CC5500;*/
+  }
+
+  .task-box{
+    border:1px solid lightgray;
+  }
+
+  .task-row{
+    margin-top: 2%;
+  }
+
+  .expand-task{
+    display: none;
+  }
+
+  .show-content{
+    display: block !important;
+  }
+
+  
+
+
+
+

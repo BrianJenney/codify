@@ -10,7 +10,8 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 
 .controller('WeekOneCtrl',['$scope','$http','$timeout',function($scope,$http, $timeout) {
 
-
+//DEPRECATED//
+//////////////////////////////////
 	//retrieve firebase data
 	$http.get("https://codify-afedf.firebaseio.com/week1.json")
 	.then(function(response){
@@ -27,10 +28,23 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 			
 		})
 	})
+	
+	$(document).on('click','.help', function(){
+		console.log("help")
+		$(this).parent().parent().next().css({'display':'block'})
 
-$scope.file = document.getElementById("files").files[0];
+	})
 
-//function to save file
+	$(document).on('click','.closeme', function(){
+		console.log("help")
+		$(this).parent().css({'display':'none'})
+
+	})
+
+
+
+	//NEEDS TO BE REMOVED... BETTER WAY TO UPLOAD FILES
+	//function to save file
 	$scope.saveFile = function(){
 
 	  var storage = firebase.storage();
@@ -55,25 +69,21 @@ $scope.file = document.getElementById("files").files[0];
 		    	//synchronously
 			    if(fileUpload == true){
 				  	thisRef.getDownloadURL().then(function(url) {
-			  		console.log(url);
+			  		//console.log(url);
+			  		$scope.noFile = false;
+			  		console.log($scope.noFile)
 					})
 			  	}
-			  	//NEEDS TO BE DONE///
-			  	//add url to firebase for the student with 
-			  	//assignment name included
-			  	/////////////////////
 			})
-		  
-			
 
 	    }else{
 	    	console.log("not working");
 	    	$scope.noFile = true;
 	    }
 	  
-	  
+	}
 
-  }
+	
  
  }])
 

@@ -1,12 +1,87 @@
 <section ng-controller="WeekOneCtrl">
-	<div class="">
-		<span title="Upload Your Selected File"style="color: deepskyblue;; width: 8%; font-size: 2em" class="glyphicon glyphicon-upload text-center" ng-click="saveFile()">
-		</span>
-		
-		<input class="input input-xl" ng-model="userFiles" type="file" id="files" ng-model="fileToUpload" name="files[]" multiple />
-			
-		<div>
-			<span ng-show="noFile" class="label label-danger">Please Select A File</span>
-		</div>
+<div class="container">
+
+	<div class="jumbotron">
+		<h1 class="text-center">< Week 1 /></h1>
 	</div>
+	<!-- TODO: remove firebase and have students upload a link  to their
+	projects from google drive????? -->
+
+	<section>
+  	<tabset>
+  		
+	    <tab heading="Projects">
+	    <div class="container">
+	    	<div class="row task-row">
+	    		<div data-role="page" class="input-group">
+				  <span class="input-group-addon fa fa-3x fa-tasks"></span>
+				  <div class="task-box text-center">
+				  	<p><li>Replicate Google Home Page!</li></p>
+				  </div>
+				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
+
+				  <span class="input-group-addon"><input ng-model="week1.htmlWork" type="checkbox"/></span>
+				</div>
+				<div class="expand-task">
+					<div class="input-group tasks">
+						<div class="text-center">
+							<p>Copy and paste this URL into your browser to see our example:  codifyacademy.com/google</p>
+						</div>
+						<span class="input-group-addon"><input type="checkbox"/></span>
+					</div>
+					<div class="input-group tasks">
+						<div class="text-center">
+							<p>Send compressed folder of your replica to your mentor for review</p>
+						</div>
+						<span class="input-group-addon"><input type="checkbox"/></span>
+					</div>
+
+
+					<button class="btn btn-danger btn-xs closeme">Close</button>
+				</div>
+	    	</div>
+
+	    	<div class="row task-row">
+	    		<div data-role="page" class="input-group">
+				  <span class="input-group-addon fa fa-3x fa-tasks"></span>
+				  <div class="task-box text-center">
+				  	<p><li>Replicate Simple Web Site!</li></p>
+				  </div>
+				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
+
+				  <span class="input-group-addon"><input ng-model="week1.htmlWork" type="checkbox"/></span>
+				</div>
+				<div class="expand-task">
+					<div class="input-group tasks">
+						<div class="text-center">
+							<p>Copy and paste this URL into your browser to see our example: codifyacademy.com/week1/beginner</p>
+						</div>
+						<span class="input-group-addon"><input type="checkbox"/></span>
+					</div>
+					<div class="input-group tasks">
+						<div class="text-center">
+							<p>Send compressed folder of your replica to your mentor for review</p>
+						</div>
+						<span class="input-group-addon"><input type="checkbox"/></span>
+					</div>
+				
+
+					<button class="btn btn-danger btn-xs closeme">Close</button>
+				</div>
+	    	</div>
+
+	    	
+
+    	</div>
+	    </tab>
+	    
+
+	    <tab heading="Read">Stuff</tab>
+	    <tab heading="Watch">Static content</tab>
+	    <tab heading="Quiz Me!"></tab>
+	    <tab heading="WorkDrop">Stuff</tab>
+  	</tabset>
+</section>
+
+
 </section>
