@@ -30,15 +30,12 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 	})
 	
 	$(document).on('click','.help', function(){
-		console.log("help")
 		$(this).parent().parent().next().css({'display':'block'})
 
 	})
 
 	$(document).on('click','.closeme', function(){
-		console.log("help")
 		$(this).parent().css({'display':'none'})
-
 	})
 
 
