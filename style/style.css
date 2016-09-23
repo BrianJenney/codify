@@ -51,7 +51,20 @@ html {
     display: block !important;
   }
 
-  
+  .assignment{
+    text-align: center;
+    border: 1px solid lightgray;
+    border-top: 1px solid white !important;
+  }
+
+  .closeme{
+    float: right;
+  }
+
+  .videoFrame{
+    margin-top: 5%;
+  }
+
 
 
 

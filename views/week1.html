@@ -24,13 +24,15 @@
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
-						<div class="text-center">
+					<span class="input-group-addon fa fa-3x fa-tasks"></span>
+						<div class="text-center assignment">
 							<p>Copy and paste this URL into your browser to see our example:  codifyacademy.com/google</p>
 						</div>
 						<span class="input-group-addon"><input type="checkbox"/></span>
 					</div>
 					<div class="input-group tasks">
-						<div class="text-center">
+						<span class="input-group-addon fa fa-3x fa-tasks"></span>
+						<div class="text-center assignment">
 							<p>Send compressed folder of your replica to your mentor for review</p>
 						</div>
 						<span class="input-group-addon"><input type="checkbox"/></span>
@@ -53,13 +55,15 @@
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
-						<div class="text-center">
+						<span class="input-group-addon fa fa-3x fa-tasks"></span>
+						<div class="text-center assignment">
 							<p>Copy and paste this URL into your browser to see our example: codifyacademy.com/week1/beginner</p>
 						</div>
 						<span class="input-group-addon"><input type="checkbox"/></span>
 					</div>
 					<div class="input-group tasks">
-						<div class="text-center">
+						<span class="input-group-addon fa fa-3x fa-tasks"></span>
+						<div class="text-center assignment">
 							<p>Send compressed folder of your replica to your mentor for review</p>
 						</div>
 						<span class="input-group-addon"><input type="checkbox"/></span>
@@ -82,20 +86,23 @@
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
-						<div class="text-center">
+						<span class="input-group-addon fa fa-3x fa-tasks"></span>
+						<div class="text-center assignment">
 							<p>Copy and paste this URL into your browser to download the debugging exercise: Source Code: codifyacademy.com/week1/picodebugsource.zip</p>
 						</div>
 						<span class="input-group-addon"><input type="checkbox"/></span>
 					</div>
 					<div class="input-group tasks">
-						<div class="text-center">
+						<span class="input-group-addon fa fa-3x fa-tasks"></span>
+						<div class="text-center assignment">
 							<p>Look through the code in your text editor to find and correct 14 errors, there are 7 on each file, index.html and main.css</p>
 							<p>If you get stuck: check out your replication: codifyacademy.com/week1/intermediate/</p>
 						</div>
 						<span class="input-group-addon"><input type="checkbox"/></span>
 					</div>
 					<div class="input-group tasks">
-						<div class="text-center">
+						<span class="input-group-addon fa fa-3x fa-tasks"></span>
+						<div class="text-center assignment">
 							<p>When Finished: Email a compressed version of your corrected pico website to your mentor.</p>
 						</div>
 						<span class="input-group-addon"><input type="checkbox"/></span>
@@ -113,8 +120,45 @@
 	    
 
 	    <tab heading="Read">Stuff</tab>
-	    <tab heading="Watch">Static content</tab>
-	    <tab heading="Quiz Me!"></tab>
+
+	    <!-- VIDEOS -->
+
+	    <tab heading="Watch">
+		    <div class="videoFrame text-center">
+		    	<iframe width="420" height="315"
+				src="https://www.youtube.com/embed/XGSy3_Czz8k?autoplay=0">
+				</iframe>
+		    </div>
+	    </tab>
+
+	    <!-- QUIZZES -->
+
+	    <tab heading="Quiz Me!">
+	    	<div class="container">
+	    	<div class="row task-row">
+	    		<div data-role="page" class="input-group">
+				  <span class="input-group-addon fa fa-3x fa-tasks"></span>
+				  <div class="task-box text-center">
+				  	<p><li> Quiz: Student Guide to the Galaxy Quiz (30 mins)</li></p>
+				  </div>
+				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
+
+				  <span class="input-group-addon"><input ng-model="week1.htmlWork" type="checkbox"/></span>
+				</div>
+				<div class="expand-task">
+					<div class="input-group tasks">
+					<span class="input-group-addon fa fa-3x fa-tasks"></span>
+						<div class="text-center assignment">
+							<p>Fill out your student guide quiz for this week</p>
+						</div>
+						<span class="input-group-addon"><input type="checkbox"/></span>
+					</div>
+		
+					<button class="btn btn-danger btn-xs closeme">Close</button>
+				</div>
+	    	</div>
+	    	</div>
+	    </tab>
 	    <tab heading="WorkDrop">Stuff</tab>
   	</tabset>
 </section>
