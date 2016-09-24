@@ -10,6 +10,7 @@ angular.module('myApp.login', ['ngRoute'])
 .controller('LoginCtrl',['$scope','$window','$timeout',function($scope,$window,$timeout) {
  
 
+
 //function to authenticate user and redirect to home page
 $scope.loginUser = function(){
 	var email =  $scope.userEmail;

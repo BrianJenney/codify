@@ -8,9 +8,9 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
   });
 }])
 
-.controller('WeekOneCtrl',['$scope','$http','$timeout',function($scope,$http, $timeout) {
+.controller('WeekOneCtrl',['$scope','$http','$timeout','$window', function($scope,$http, $timeout, $window) {
 
-	
+
 	$(document).on('click','.help', function(){
 		$(this).parent().parent().next().css({'display':'block'})
 
@@ -19,6 +19,13 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 	$(document).on('click','.closeme', function(){
 		$(this).parent().css({'display':'none'})
 	})
+
+	$scope.exit = function(){
+		console.log("working")
+		$window.location.href = "/#/home"
+	}
+
+
 
 	
  

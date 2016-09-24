@@ -57,7 +57,7 @@ html {
     border-top: 1px solid white !important;
   }
 
-  .closeme{
+  .closeme, .exitBtn{
     float: right;
   }
 
@@ -65,6 +65,9 @@ html {
     margin-top: 5%;
   }
 
+  ul{
+    list-style-position: inside;
+  }
 
 
 

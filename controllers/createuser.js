@@ -8,7 +8,13 @@ angular.module('myApp.createuser', ['ngRoute'])
 }])
 
 .controller('CreateUserCtrl',['$scope','$window','$timeout','$http',function($scope,$window,$timeout,$http) {
- 
+
+//initialize array for dropdown of instructors
+$scope.instructors = ['Isaac', 'Brian', 'Chris'];
+
+//initialize bool for catching user create error
+var isError = false;
+
  //function to create user
 $scope.createUser = function(){
 	
@@ -19,16 +25,28 @@ $scope.createUser = function(){
 	  // Handle Errors here.
 	  var errorCode = error.code;
 	  var errorMessage = error.message;
+	  isError = true;
 	  // ...
 	}).then(function(){
+		
 
-		//call email service
+		//only run if no error in user creation
+		if(!isError){
+		var user = firebase.auth().currentUser;
+
+		//call email service and create branch for instructor/student
 		$http.get("http://localhost:3000/sendmail?to=" + $scope.userEmail)
+		firebase.database().ref('student/' + user.uid).set({
+			name: $scope.userName,
+			mentor: $scope.selectedInstructor.trim()
+		})
 
+		//redirect to login
 		$window.location.href="/#/login"
+		}
+		
 	});
-}
-
+	}
 
 
 
