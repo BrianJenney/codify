@@ -4,10 +4,13 @@
 	<div class="jumbotron">
 		<h1 class="text-center">< Week 1 /></h1>
 	</div>
-
-	<button ng-click="exit()" class="btn btn-primary exitBtn">
+	<div class="btn-toolbar">
+		<button ng-click="exit()" class="btn btn-primary exitBtn">
 		Exit
-	</button>
+		</button>
+		<button ng-click="submitWeek()">Submit</button>
+	</div>
+	
 	
 
 	<section>
@@ -23,7 +26,7 @@
 				  </div>
 				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
 
-				  <span class="input-group-addon"><input ng-model="" type="checkbox"/></span>
+				  <span class="input-group-addon"><input type="checkbox"/></span>
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
@@ -85,7 +88,7 @@
 				  </div>
 				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
 
-				  <span class="input-group-addon"><input ng-model="" type="checkbox"/></span>
+				  <span class="input-group-addon"><input type="checkbox"/></span>
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
