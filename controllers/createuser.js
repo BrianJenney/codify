@@ -36,6 +36,7 @@ $scope.createUser = function(){
 
 		//call email service and create branch for instructor/student
 		$http.get("http://localhost:3000/sendmail?to=" + $scope.userEmail)
+
 		firebase.database().ref('student/' + user.uid).set({
 			name: $scope.userName,
 			mentor: $scope.selectedInstructor.trim()

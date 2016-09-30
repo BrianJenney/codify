@@ -4,14 +4,11 @@
 	<div class="jumbotron">
 		<h1 class="text-center">< Week 1 /></h1>
 	</div>
-	<div class="btn-toolbar">
-		<button ng-click="exit()" class="btn btn-primary exitBtn">
-		Exit
-		</button>
-		<button ng-click="submitWeek()">Submit</button>
-	</div>
 	
 	
+	<!-- <pre>
+		{{week1 | json}}
+	</pre> -->
 
 	<section>
   	<tabset>
@@ -26,7 +23,7 @@
 				  </div>
 				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
 
-				  <span class="input-group-addon"><input type="checkbox"/></span>
+				  
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
@@ -45,7 +42,7 @@
 					</div>
 
 
-					<button class="btn btn-danger btn-xs closeme">Close</button>
+					<!-- <button class="btn btn-danger btn-xs closeme">Close</button> -->
 				</div>
 	    	</div>
 
@@ -57,7 +54,7 @@
 				  </div>
 				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
 
-				  <span class="input-group-addon"><input ng-model="week1.htmlWork" type="checkbox"/></span>
+				  
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
@@ -72,11 +69,11 @@
 						<div class="text-center assignment">
 							<p>Send compressed folder of your replica to your mentor for review</p>
 						</div>
-						<span class="input-group-addon"><input ng-model="week1.sendSimpleReplica" type="checkbox"/></span>
+						<span class="input-group-addon"><input ng-model="week1.simpleReplica" type="checkbox"/></span>
 					</div>
 				
 
-					<button class="btn btn-danger btn-xs closeme">Close</button>
+					<!-- <button class="btn btn-danger btn-xs closeme">Close</button> -->
 				</div>
 	    	</div>
 
@@ -88,7 +85,7 @@
 				  </div>
 				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
 
-				  <span class="input-group-addon"><input type="checkbox"/></span>
+				  
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
@@ -111,11 +108,11 @@
 						<div class="text-center assignment">
 							<p>When Finished: Email a compressed version of your corrected pico website to your mentor.</p>
 						</div>
-						<span class="input-group-addon"><input ng-model="week1.sendDebugPico" type="checkbox" /></span>
+						<span class="input-group-addon"><input ng-model="week1.debugPico" type="checkbox" /></span>
 					</div>
 				
 
-					<button class="btn btn-danger btn-xs closeme">Close</button>
+					<!-- <button class="btn btn-danger btn-xs closeme">Close</button> -->
 				</div>
 	    	</div>
 
@@ -139,7 +136,7 @@
 	    			<li>Learn how to view your own work in a browser.</li>
 	    			<li>Learn how to incorporate and use these elements in any project.</li>
 	    		</ul>
-	    		<label>Check here when finished</label><input type="checkbox" />
+	    		<label>Check here when finished  </label><input type="checkbox" />
 
 	    		
 	    	</div>
@@ -167,7 +164,7 @@
 				  </div>
 				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
 
-				  <span class="input-group-addon"><input ng-model="week1.htmlWork" type="checkbox"/></span>
+				  
 				</div>
 				<div class="expand-task">
 					<div class="input-group tasks">
@@ -175,10 +172,10 @@
 						<div class="text-center assignment">
 							<p>Fill out your student guide quiz for this week</p>
 						</div>
-						<span class="input-group-addon"><input type="checkbox"/></span>
+						<span class="input-group-addon"><input type="checkbox" ng-model="week1.quiz"/></span>
 					</div>
 		
-					<button class="btn btn-danger btn-xs closeme">Close</button>
+					<!-- <button class="btn btn-danger btn-xs closeme">Close</button> -->
 				</div>
 	    	</div>
 	    	</div>
@@ -186,6 +183,11 @@
 	    <tab heading="WorkDrop">Stuff</tab>
   	</tabset>
 </section>
-
+<div class="btn-toolbar">
+		<button ng-click="exit()" class="btn btn-primary exitBtn">
+		Exit
+		</button>
+		<button class="btn btn-success" ng-click="submitWeek()">Submit</button>
+	</div>
 
 </section>
