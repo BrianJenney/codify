@@ -8,7 +8,25 @@
 	<div class="text-left">
 		<h1>Admin Page</h1>
 	</div>
-	
-	
+
+	<label>Filter By Mentor</label>
+	<select ng-model="selectedInstructor">
+	    <option ng-repeat="i in studentArray | removeDups">
+	      {{i.mentor}}
+	    </option>
+  	</select>
+
+	<table class="table table-striped table-sm">
+		<thead>
+			<th>Student Name</th>
+			<th>Mentor</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="s in studentArray">
+				<td><a href="">{{s.name | uppercase}}</a></td>
+				<td>{{s.mentor}}</td>
+			</tr>
+		</tbody>
+	</table>
 	
 </section>
