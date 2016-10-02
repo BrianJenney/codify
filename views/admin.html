@@ -10,9 +10,9 @@
 	</div>
 
 	<label>Filter By Mentor</label>
-	<select ng-model="selectedInstructor">
-	    <option ng-repeat="i in studentArray | removeDups">
-	      {{i.mentor}}
+	<select ng-model="search.mentor" ng-change="filterList()">
+	    <option ng-repeat="m in mentors">
+	      {{m}}
 	    </option>
   	</select>
 
@@ -20,13 +20,48 @@
 		<thead>
 			<th>Student Name</th>
 			<th>Mentor</th>
+			<th>Week 1</th>
+			<th>Week 2</th>
+			<th>Week 3</th>
+			<th>Week 4</th>
+			<th>Week 5</th>
+			<th>Week 7</th>
+			<th>Week 8</th>
+			<th>Week 9</th>
+			<th>Week 10</th>
+			<th>Week 11</th>
+			<th>Week 12</th>
+			<th>Week 13</th>
+			<th>Week 14</th>
+			<th>Week 15</th>
+			<th>Week 16</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="s in studentArray">
+			<tr ng-repeat="s in studentArray | filter: search">
 				<td><a href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
+				<td>{{s.week1.length}}</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 		</tbody>
 	</table>
+
+	<div class="btn-toolbar">
+		<button ng-click="exit()" class="btn btn-danger">Exit</button>
+	</div>
 	
 </section>

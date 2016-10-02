@@ -87,7 +87,10 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 		firebase.database().ref('student/' + user.uid + '/week1/').set({
 			sendGoogleCode: getValue($scope.week1.sendGoogleCode),
 			debugPico: getValue($scope.week1.debugPico),
-			simpleReplica: getValue($scope.week1.simpleReplica)
+			simpleReplica: getValue($scope.week1.simpleReplica),
+			reading: getValue($scope.week1.reading),
+			quiz: getValue($scope.week1.quiz)
+
 		})
 	}
 

@@ -7,31 +7,32 @@ angular.module('myApp.admin', ['ngRoute'])
   });
 }])
 
-.controller('AdminCtrl', ['$scope','$filter',function($scope, $filter) {
-
+.controller('AdminCtrl', ['$scope','$filter', '$window','filterFilter',function($scope, $filter, $window, filterFilter) {
+	//initialize array for dropdown of mentors
+	$scope.mentors = ['Isaac','Brian','Chris']
 	//initialize array to store student object
 	$scope.studentArray = [];
-
 	//retrieve firebase data for students
 	firebase.database().ref('student/').once('value').then(function(snapshot){
-
-		//console.log(snapshot.val())
-
-		$scope.students = snapshot.val();
-
-		//get object from id key of student
-		angular.forEach($scope.students, function(value, key){
-		//console.log(value)
-		$scope.student = value;
-		$scope.$apply(function(){
+			//console.log(snapshot.val())
+			$scope.students = snapshot.val();
+			//get object from id key of student
+			angular.forEach($scope.students, function(value, key){
+			//console.log(value)
+			$scope.student = value;
+			$scope.$apply(function(){
 			$scope.studentArray.push(value)
+			})
 		})
-		
-
-		})
-		console.log($scope.studentArray)
 	})
- 
+
+
+	//return to home page
+	$scope.exit = function(){
+		$window.location.href=("/#/home")
+	}
+
+
  }])
 
 .filter("removeDups", function(){
@@ -53,6 +54,39 @@ angular.module('myApp.admin', ['ngRoute'])
     return data;
   }
 })
+
+
+var sameObject = function(object, name){
+	name = {};
+	holder = [];
+	for(var key in object){
+		name[key] = object[key];
+	}
+	console.log(name)
+}
+
+var test = {buyer: 'Brian', name: 'Jim', job: 'Doer'}
+
+sameObject(test, 'yo')
+
+// var students = ['harry','johnny','joe']
+
+// var name = 'joe'
+
+// var isStudentHere = function(students, name){
+// 	console.log(students)
+// 	console.log(name)
+// 	for(x=0; x<students.length; x++){
+// 		if (students[x] = name.toString()){
+// 			return name
+// 			break;
+// 		}else{
+// 			return false
+// 		}
+// 	}
+// }
+
+// console.log(isStudentHere(students, name));
 
 
 
