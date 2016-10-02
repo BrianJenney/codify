@@ -8,6 +8,8 @@ angular.module('myApp.admin', ['ngRoute'])
 }])
 
 .controller('AdminCtrl', ['$scope','$filter', '$window','filterFilter',function($scope, $filter, $window, filterFilter) {
+
+	$scope.search = {};
 	//initialize array for dropdown of mentors
 	$scope.mentors = ['Isaac','Brian','Chris']
 	//initialize array to store student object
@@ -25,7 +27,6 @@ angular.module('myApp.admin', ['ngRoute'])
 			})
 		})
 	})
-
 
 	//return to home page
 	$scope.exit = function(){
@@ -56,18 +57,18 @@ angular.module('myApp.admin', ['ngRoute'])
 })
 
 
-var sameObject = function(object, name){
-	name = {};
-	holder = [];
-	for(var key in object){
-		name[key] = object[key];
-	}
-	console.log(name)
-}
+// var sameObject = function(object, name){
+// 	name = {};
+// 	holder = [];
+// 	for(var key in object){
+// 		name[key] = object[key];
+// 	}
+// 	console.log(name)
+// }
 
-var test = {buyer: 'Brian', name: 'Jim', job: 'Doer'}
+// var test = {buyer: 'Brian', name: 'Jim', job: 'Doer'}
 
-sameObject(test, 'yo')
+// sameObject(test, 'yo')
 
 // var students = ['harry','johnny','joe']
 

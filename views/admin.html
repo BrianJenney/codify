@@ -10,7 +10,7 @@
 	</div>
 
 	<label>Filter By Mentor</label>
-	<select ng-model="search.mentor" ng-change="filterList()">
+	<select ng-model="search.mentor" ng-change="logMentor()">
 	    <option ng-repeat="m in mentors">
 	      {{m}}
 	    </option>
@@ -37,7 +37,7 @@
 			<th>Week 16</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="s in studentArray | filter: search">
+			<tr ng-repeat="s in studentArray | filter: search.mentor.trim()">
 				<td><a href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
 				<td>{{s.week1.length}}</td>
