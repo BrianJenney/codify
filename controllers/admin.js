@@ -23,7 +23,23 @@ angular.module('myApp.admin', ['ngRoute'])
 			//console.log(value)
 			$scope.student = value;
 			$scope.$apply(function(){
-			$scope.studentArray.push(value)
+			$scope.studentArray.push(value);
+
+			
+			for(x=0; x<$scope.studentArray.length; x++){
+				//initialize count
+				var count = 0;
+				//get number of booleans set to true in week object
+				for(var key in $scope.studentArray[x].week1){
+					if($scope.studentArray[x].week1[key] == true){
+						count++
+					}
+
+				//get percentage of week length divided by
+				//number of completed assignments
+				$scope.studentArray[x].weekLength = count/Object.keys($scope.studentArray[x].week1).length
+					}
+				}
 			})
 		})
 	})
@@ -55,6 +71,12 @@ angular.module('myApp.admin', ['ngRoute'])
     return data;
   }
 })
+
+.filter('percentage', ['$filter', function ($filter) {
+  return function (input, decimals) {
+    return $filter('number')(input * 100, decimals) + '%';
+  };
+}]);
 
 
 // var sameObject = function(object, name){
