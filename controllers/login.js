@@ -17,11 +17,16 @@ $scope.loginUser = function(){
   	var password = $scope.userPassword;
 
 	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-	  	$scope.errorMessage = true;
-	    console.log("Login Failed!", error);
+	  	$scope.$apply(function(){
+	  		$scope.errorMessage = error.message;
+	    	console.log($scope.errorMessage);
+	  	})
+	  	
 
 }).then(function(){
-	$window.location.href = "/#/home"
+	if(!error){
+		$window.location.href = "/#/home";
+	}
 });
 
 }

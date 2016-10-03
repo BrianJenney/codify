@@ -16,7 +16,6 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 	getData();
 	//get user data	
 	function getData(){
-
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
 				console.log('hey')
@@ -30,7 +29,6 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 
 	function getUser(user){
 	return firebase.database().ref('student/' + user.uid + '/week1/').once('value').then(function(snapshot){
-
 			$scope.$apply(function(){
 				$scope.week1 = snapshot.val();
 				console.log($scope.week1);
@@ -40,9 +38,7 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 					$scope.week1 = {};
 				}
 			})
-				
-
-			})
+		})
 	}
 	
 	//initialize onclick var for opening and closing hidden content
@@ -56,23 +52,16 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 			$(this).parent().parent().next().css({'display':'none'})
 			clicks--;
 		}
-
-		
 	})
-
 	$(document).on('click','.closeme', function(){
 		$(this).parent().css({'display':'none'})
 	})
-
-
 	//return to homepage
 	$scope.exit = function(){
 		$window.location.href = "/#/home"
 	}
-
 	//submit data to firebase
 	$scope.submitWeek = function(){
-
 		console.log($scope.week1)
 		var user = firebase.auth().currentUser;
 		//if user hasn't marked the box, return false
@@ -90,7 +79,6 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 			simpleReplica: getValue($scope.week1.simpleReplica),
 			reading: getValue($scope.week1.reading),
 			quiz: getValue($scope.week1.quiz)
-
 		})
 	}
 

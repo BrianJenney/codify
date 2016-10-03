@@ -16,12 +16,16 @@
     <input ng-model="userPassword" type="password" class="form-control" id="pwd">
   </div>
   <div class="text-center">
-  <span style="padding:5px !important" ng-show="errorMessage" class="alert alert-danger">Please sign up for an account</span><br><br>
+  
   <button ng-disabled="!userPassword || !userEmail"ng-click="loginUser()" class="btn btn-primary">Sign In</button>
   <a href="/#/createuser">Create an account</a>
   </div>
 
 </form>
+<br>
+<div>
+  <p class="text-danger text-center">{{errorMessage}}</p>
+</div>
 </div>
 	
 </div>

@@ -14,6 +14,7 @@ $scope.instructors = ['Isaac', 'Brian', 'Chris'];
 
 //initialize bool for catching user create error
 var isError = false;
+$scope.isError = false;
 
  //function to create user
 $scope.createUser = function(){
@@ -24,16 +25,21 @@ $scope.createUser = function(){
 	  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  // Handle Errors here.
 	  var errorCode = error.code;
-	  var errorMessage = error.message;
 	  isError = true;
+	  
+	  $scope.$apply(function(){
+	  	$scope.errorMessage = error.message;
+	  	$scope.isError = true;
+	  })
+
+	  console.log($scope.isError + ' ' + $scope.errorMessage)
 	  // ...
 	}).then(function(){
-		
-
 		//only run if no error in user creation
 		if(!isError){
-		var user = firebase.auth().currentUser;
 
+		$scope.isError = false;
+		var user = firebase.auth().currentUser;
 		//call email service and create branch for instructor/student
 		$http.get("http://localhost:3000/sendmail?to=" + $scope.userEmail)
 

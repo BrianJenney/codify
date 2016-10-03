@@ -38,7 +38,7 @@
 			<tr ng-repeat="s in studentArray | filter: search.mentor.trim()">
 				<td><a href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
-				<td>{{s.weekLength | percentage:2}}</td>
+				<td>{{s.week1CompleteRate | percentage:2}}</td>
 				<td></td>
 				<td></td>
 				<td></td>

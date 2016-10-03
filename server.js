@@ -16,8 +16,8 @@ app.get('/sendmail', function(req, res){
 var client = require('twilio')(accountSid, authToken); 
  
 // client.messages.create({ 
-// 	to: "5102068990", 
-// 	from: "+16504667925", 
+// 	to: "5107987651", 
+// 	from: "+5102068990", 
 // 	body: "Hey new student",   
 // }, function(err, message) { 
 // 	console.log(err); 

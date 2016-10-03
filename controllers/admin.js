@@ -37,7 +37,7 @@ angular.module('myApp.admin', ['ngRoute'])
 
 				//get percentage of week length divided by
 				//number of completed assignments
-				$scope.studentArray[x].weekLength = count/Object.keys($scope.studentArray[x].week1).length
+				$scope.studentArray[x].week1CompleteRate = count/Object.keys($scope.studentArray[x].week1).length
 					}
 				}
 			})
@@ -81,7 +81,6 @@ angular.module('myApp.admin', ['ngRoute'])
 
 // var sameObject = function(object, name){
 // 	name = {};
-// 	holder = [];
 // 	for(var key in object){
 // 		name[key] = object[key];
 // 	}
