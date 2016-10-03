@@ -10,7 +10,7 @@ angular.module('myApp.login', ['ngRoute'])
 .controller('LoginCtrl',['$scope','$window','$timeout',function($scope,$window,$timeout) {
  
 
-
+$scope.isError = false;
 //function to authenticate user and redirect to home page
 $scope.loginUser = function(){
 	var email =  $scope.userEmail;
@@ -18,13 +18,14 @@ $scope.loginUser = function(){
 
 	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
 	  	$scope.$apply(function(){
+	  		$scope.isError = true;
 	  		$scope.errorMessage = error.message;
 	    	console.log($scope.errorMessage);
 	  	})
 	  	
 
 }).then(function(){
-	if(!error){
+	if(!$scope.isError){
 		$window.location.href = "/#/home";
 	}
 });
