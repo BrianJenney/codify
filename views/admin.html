@@ -9,6 +9,10 @@
 		<h1>Admin Page</h1>
 	</div>
 
+	<pre>
+		{{studentArray | json}}
+	</pre>
+
 	<label>Filter By Mentor</label>
 	<select ng-model="search.mentor" ng-options="mentor for mentor in mentors">
 		<option value="">All</option>
@@ -36,7 +40,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="s in studentArray | filter: search.mentor.trim()">
-				<td><a href="">{{s.name | uppercase}}</a></td>
+				<td><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
 				<td>{{s.week1CompleteRate | percentage:2}}</td>
 				<td></td>

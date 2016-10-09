@@ -41,12 +41,11 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 		})
 	}
 	
-	//initialize onclick var for opening and closing hidden content
 	var clicks = 0;
 	//show and hide functions for hidden content
 	$(document).on('click','.help', function(){
 		if(clicks == 0){
-			$(this).parent().parent().next().css({'display':'block','transition':'2s'});
+			$(this).parent().parent().next().css({'display':'block','transition':'2s'});			
 			clicks++;
 		}else{
 			$(this).parent().parent().next().css({'display':'none'})

@@ -40,9 +40,15 @@ angular.module('myApp.admin', ['ngRoute'])
 				$scope.studentArray[x].week1CompleteRate = count/Object.keys($scope.studentArray[x].week1).length
 					}
 				}
+
 			})
 		})
 	})
+
+	//retrieve student info
+	$scope.getStudentInfo = function(student){
+		console.log(student.week1)
+	}
 
 	//return to home page
 	$scope.exit = function(){
