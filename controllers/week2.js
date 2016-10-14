@@ -57,11 +57,11 @@ angular.module('myApp.week2', ['ngRoute'])
 	})
 	//return to homepage
 	$scope.exit = function(){
+		$scope.submitWeek();
 		$window.location.href = "/#/home"
 	}
 	//submit data to firebase
 	$scope.submitWeek = function(){
-		console.log($scope.week2)
 		var user = firebase.auth().currentUser;
 		//if user hasn't marked the box, return false
 		function getValue(week){

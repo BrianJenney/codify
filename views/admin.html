@@ -8,10 +8,10 @@
 	<div class="text-left">
 		<h1>Admin Page</h1>
 	</div>
-
-	<pre>
+	
+	<!-- <pre>
 		{{studentArray | json}}
-	</pre>
+	</pre> -->
 
 	<label>Filter By Mentor</label>
 	<select ng-model="search.mentor" ng-options="mentor for mentor in mentors">
@@ -43,7 +43,7 @@
 				<td><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
 				<td>{{s.week1CompleteRate | percentage:2}}</td>
-				<td></td>
+				<td>{{s.week2CompleteRate | percentage:2}}</td>
 				<td></td>
 				<td></td>
 				<td></td>

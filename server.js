@@ -15,13 +15,13 @@ app.get('/sendmail', function(req, res){
 
 var client = require('twilio')(accountSid, authToken); 
  
-// client.messages.create({ 
-// 	to: "5107987651", 
-// 	from: "+5102068990", 
-// 	body: "Hey new student",   
-// }, function(err, message) { 
-// 	console.log(err); 
-// }); 
+client.messages.create({ 
+	to: "5102068990", 
+	from: "6504667925 ", 
+	body: "Hey, this is Codify Twilio",   
+}, function(err, message) { 
+	console.log(err); 
+}); 
 
 	var transporter = nodemailer.createTransport({
     service: 'Gmail',

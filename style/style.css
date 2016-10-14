@@ -69,6 +69,10 @@ html {
     list-style-position: inside;
   }
 
+  li{
+    list-style-type: none;
+  }
+
   .input-group-addon:last-child {
     border-left: 0;
     width: 5%;

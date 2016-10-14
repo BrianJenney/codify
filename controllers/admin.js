@@ -25,7 +25,7 @@ angular.module('myApp.admin', ['ngRoute'])
 			$scope.$apply(function(){
 			$scope.studentArray.push(value);
 
-			
+			//WEEK 1
 			for(x=0; x<$scope.studentArray.length; x++){
 				//initialize count
 				var count = 0;
@@ -38,6 +38,22 @@ angular.module('myApp.admin', ['ngRoute'])
 				//get percentage of week length divided by
 				//number of completed assignments
 				$scope.studentArray[x].week1CompleteRate = count/Object.keys($scope.studentArray[x].week1).length
+					}
+				}
+
+			//WEEK 2
+			for(x=0; x<$scope.studentArray.length; x++){
+				//initialize count
+				var count = 0;
+				//get number of booleans set to true in week object
+				for(var key in $scope.studentArray[x].week2){
+					if($scope.studentArray[x].week2[key] == true){
+						count++
+					}
+
+				//get percentage of week length divided by
+				//number of completed assignments
+				$scope.studentArray[x].week2CompleteRate = count/Object.keys($scope.studentArray[x].week2).length
 					}
 				}
 
@@ -85,36 +101,6 @@ angular.module('myApp.admin', ['ngRoute'])
 }]);
 
 
-// var sameObject = function(object, name){
-// 	name = {};
-// 	for(var key in object){
-// 		name[key] = object[key];
-// 	}
-// 	console.log(name)
-// }
-
-// var test = {buyer: 'Brian', name: 'Jim', job: 'Doer'}
-
-// sameObject(test, 'yo')
-
-// var students = ['harry','johnny','joe']
-
-// var name = 'joe'
-
-// var isStudentHere = function(students, name){
-// 	console.log(students)
-// 	console.log(name)
-// 	for(x=0; x<students.length; x++){
-// 		if (students[x] = name.toString()){
-// 			return name
-// 			break;
-// 		}else{
-// 			return false
-// 		}
-// 	}
-// }
-
-// console.log(isStudentHere(students, name));
 
 
 
