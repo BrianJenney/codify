@@ -57,16 +57,42 @@ angular.module('myApp.admin', ['ngRoute'])
 					}
 				}
 
+			//WEEK 3
+			for(x=0; x<$scope.studentArray.length; x++){
+				//initialize count
+				var count = 0;
+				//get number of booleans set to true in week object
+				for(var key in $scope.studentArray[x].week3){
+					if($scope.studentArray[x].week3[key] == true){
+						count++
+					}
+
+				//get percentage of week length divided by
+				//number of completed assignments
+				$scope.studentArray[x].week3CompleteRate = count/Object.keys($scope.studentArray[x].week2).length
+				console.log($scope.studentArray[x].week3CompleteRate)
+				if($scope.studentArray[x].week3CompleteRate == null){
+					$scope.studentArray[x].week3CompleteRate = 0;
+					}
+				}
+				}
+
 			})
 		})
 	})
 
 	//retrieve student info
 	$scope.getStudentInfo = function(student){
-		$scope.phoneNbr = parseInt(student.phone);
-		$scope.studentName = student.name;
+		//check if student entered a phone number
+		if($scope.phoneNbr == null || $scope.phoneNbr == 'undefined'){
+			$scope.disableButton = true;
+		}else{
+			$scope.phoneNbr = parseInt(student.phone);
+		}
+		$scope.studentName = student.name;	
 	}
 
+	//send text message to student
 	$scope.sendText = function(message){
 		$http.get('http://localhost:3000/sendtext?to=' + $scope.phoneNbr + '&message=' + message)
 		$scope.disableButton = true;

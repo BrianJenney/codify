@@ -11,7 +11,7 @@ angular.module('myApp.week3', ['ngRoute'])
 .controller('Week3Ctrl', ['$scope','$http','$timeout','$window', function($scope,$http, $timeout, $window) {
 
 	//initialize week 1 obj
-	$scope.week2 = {};
+	$scope.week3 = {};
 
 	getData();
 	//get user data	
@@ -31,7 +31,7 @@ angular.module('myApp.week3', ['ngRoute'])
 	return firebase.database().ref('student/' + user.uid + '/week3/').once('value').then(function(snapshot){
 			$scope.$apply(function(){
 				$scope.week3 = snapshot.val();
-				console.log($scope.week1);
+				console.log($scope.week3);
 				//reinitialize object if null
 				//will be null when first called
 				if($scope.week3 == null){
@@ -62,6 +62,7 @@ angular.module('myApp.week3', ['ngRoute'])
 	}
 	//submit data to firebase
 	$scope.submitWeek = function(){
+		console.log('working')
 		var user = firebase.auth().currentUser;
 		//if user hasn't marked the box, return false
 		function getValue(week){
@@ -72,7 +73,7 @@ angular.module('myApp.week3', ['ngRoute'])
 			}
 		}
 		//set firebase data with user's progress from checkboxes
-		firebase.database().ref('student/' + user.uid + '/week/').set({
+		firebase.database().ref('student/' + user.uid + '/week3/').set({
 			sendGoogleCode: getValue($scope.week3.sendGoogleCode),
 			debugPico: getValue($scope.week3.debugPico),
 			simpleReplica: getValue($scope.week3.simpleReplica),
