@@ -11,6 +11,11 @@
   </div>
 
   <div class="form-group">
+    <label for="userName">Phone #:</label>
+    <input ng-model="phone" placeholder="Example: 5105559999" type="tel" class="form-control" id="name" maxlength="10" pattern="\d{10}" required="required">
+  </div>
+
+  <div class="form-group">
     <label for="email">Email address:</label>
     <input ng-model="userEmail" type="email" class="form-control" id="email">
   </div>
@@ -29,7 +34,7 @@
 
   <div class="text-center">
     <br><br>
-    <button ng-disabled="!userPassword || !userEmail || !selectedInstructor || !userName"ng-click="createUser()" class="btn btn-primary">Create Account</button>
+    <button ng-disabled="!userPassword || !userEmail || !selectedInstructor || !userName || !phone"ng-click="createUser()" class="btn btn-primary">Create Account</button>
     <a href="/#/login">Sign In</a>
   </div>
   <br>

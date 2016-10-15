@@ -40,7 +40,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="s in studentArray | filter: search.mentor.trim()">
-				<td><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
+				<td  data-target="#myModal" data-toggle="modal"><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
 				<td>{{s.week1CompleteRate | percentage:2}}</td>
 				<td>{{s.week2CompleteRate | percentage:2}}</td>
@@ -66,4 +66,33 @@
 		<button ng-click="exit()" class="btn btn-danger">Exit</button>
 	</div>
 	
+<!-- MODAL -->
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Contact Student</h4>
+      </div>
+      <div class="modal-body">
+        <p>Text Body</p>
+      </div>
+      <textarea ng-model="message" class="form-control">
+      	
+      </textarea>
+      <div class="modal-footer">
+      	<div class="btn-toolbar">
+      		<button ng-disabled="disableButton"class="btn btn-success" ng-click="sendText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
+      		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+      	</div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </section>

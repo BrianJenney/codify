@@ -82,6 +82,22 @@ html {
     text-align: center;
   }
 
+  textarea.form-control {
+    height: auto;
+    width: 80%;
+    margin: auto;
+}
+
+  @media screen and (min-width: 768px){
+
+  .modal-dialog {
+      right: auto;
+      left: 0% !important;
+      width: 600px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+  }
+}
 
 
 

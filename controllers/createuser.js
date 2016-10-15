@@ -16,6 +16,7 @@ $scope.instructors = ['Isaac', 'Brian', 'Chris'];
 var isError = false;
 $scope.isError = false;
 
+
  //function to create user
 $scope.createUser = function(){
 	
@@ -45,7 +46,8 @@ $scope.createUser = function(){
 
 		firebase.database().ref('student/' + user.uid).set({
 			name: $scope.userName,
-			mentor: $scope.selectedInstructor.trim()
+			mentor: $scope.selectedInstructor.trim(),
+			phone: $scope.phone
 		})
 
 		//redirect to login

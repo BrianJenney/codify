@@ -7,7 +7,7 @@ angular.module('myApp.admin', ['ngRoute'])
   });
 }])
 
-.controller('AdminCtrl', ['$scope','$filter', '$window','filterFilter',function($scope, $filter, $window, filterFilter) {
+.controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter',function($scope, $filter, $http, $window, filterFilter) {
 
 	$scope.search = {};
 	//initialize array for dropdown of mentors
@@ -63,7 +63,13 @@ angular.module('myApp.admin', ['ngRoute'])
 
 	//retrieve student info
 	$scope.getStudentInfo = function(student){
-		console.log(student.week1)
+		$scope.phoneNbr = parseInt(student.phone);
+		$scope.studentName = student.name;
+	}
+
+	$scope.sendText = function(message){
+		$http.get('http://localhost:3000/sendtext?to=' + $scope.phoneNbr + '&message=' + message)
+		$scope.disableButton = true;
 	}
 
 	//return to home page

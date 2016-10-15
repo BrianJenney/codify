@@ -10,18 +10,21 @@ var authToken = 'ecfd835d7a3e90d66a0cec19adb971ad';
 app.use(express.static(__dirname + '/'));
 app.listen(process.env.PORT || 3000);
 
+app.get('/sendtext', function(req, res){
+    var client = require('twilio')(accountSid, authToken); 
+     console.log(req.query.to)
+     console.log(req.query.message)
+    client.messages.create({ 
+        to: "'" + req.query.to + "'", 
+        from: "6504667925", 
+        body: req.query.message,   
+    }, function(err, message) { 
+        console.log(err); 
+    });
+})
+
 //web service to send email to students on sign up
 app.get('/sendmail', function(req, res){
-
-var client = require('twilio')(accountSid, authToken); 
- 
-client.messages.create({ 
-	to: "5102068990", 
-	from: "6504667925 ", 
-	body: "Hey, this is Codify Twilio",   
-}, function(err, message) { 
-	console.log(err); 
-}); 
 
 	var transporter = nodemailer.createTransport({
     service: 'Gmail',
