@@ -9,9 +9,10 @@ angular.module('myApp.admin', ['ngRoute'])
 
 .controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter',function($scope, $filter, $http, $window, filterFilter) {
 
+	//initialize search object
 	$scope.search = {};
 	//initialize array for dropdown of mentors
-	$scope.mentors = ['Isaac','Brian','Chris']
+	$scope.mentors = ['Isaac','Brian','Chris','Phillip']
 	//initialize array to store student object
 	$scope.studentArray = [];
 	//retrieve firebase data for students
@@ -25,77 +26,55 @@ angular.module('myApp.admin', ['ngRoute'])
 			$scope.$apply(function(){
 			$scope.studentArray.push(value);
 
-			//WEEK 1
+			//function to get week completion rate
+			function getCompleteRate(week){
+				if(week == null || week == 'undefined'){
+					return 0
+				}else{
+					var count = 0;
+					for(var key in week){
+						if(week[key]==true){
+							count++
+						}
+					}
+					return count/Object.keys(week).length
+				}
+			}
+
+			//get week assignment info
 			for(x=0; x<$scope.studentArray.length; x++){
-				//initialize count
-				var count = 0;
-				//get number of booleans set to true in week object
-				for(var key in $scope.studentArray[x].week1){
-					if($scope.studentArray[x].week1[key] == true){
-						count++
-					}
 
-				//get percentage of week length divided by
-				//number of completed assignments
-				$scope.studentArray[x].week1CompleteRate = count/Object.keys($scope.studentArray[x].week1).length
-					}
+				//get percentage of week for each student
+				$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].week1)
+					
+				$scope.studentArray[x].week2CompleteRate = getCompleteRate($scope.studentArray[x].week2)
+
+				$scope.studentArray[x].week3CompleteRate = getCompleteRate($scope.studentArray[x].week3)
+					
 				}
-
-			//WEEK 2
-			for(x=0; x<$scope.studentArray.length; x++){
-				//initialize count
-				var count = 0;
-				//get number of booleans set to true in week object
-				for(var key in $scope.studentArray[x].week2){
-					if($scope.studentArray[x].week2[key] == true){
-						count++
-					}
-
-				//get percentage of week length divided by
-				//number of completed assignments
-				$scope.studentArray[x].week2CompleteRate = count/Object.keys($scope.studentArray[x].week2).length
-					}
-				}
-
-			//WEEK 3
-			for(x=0; x<$scope.studentArray.length; x++){
-				//initialize count
-				var count = 0;
-				//get number of booleans set to true in week object
-				for(var key in $scope.studentArray[x].week3){
-					if($scope.studentArray[x].week3[key] == true){
-						count++
-					}
-
-				//get percentage of week length divided by
-				//number of completed assignments
-				$scope.studentArray[x].week3CompleteRate = count/Object.keys($scope.studentArray[x].week2).length
-				console.log($scope.studentArray[x].week3CompleteRate)
-				if($scope.studentArray[x].week3CompleteRate == null){
-					$scope.studentArray[x].week3CompleteRate = 0;
-					}
-				}
-				}
-
 			})
 		})
 	})
 
 	//retrieve student info
 	$scope.getStudentInfo = function(student){
-		//check if student entered a phone number
-		if($scope.phoneNbr == null || $scope.phoneNbr == 'undefined'){
-			$scope.disableButton = true;
-		}else{
-			$scope.phoneNbr = parseInt(student.phone);
-		}
+		console.log(student)
+		$scope.phoneNbr = parseInt(student.phone);
+		$scope.email = student.email;
 		$scope.studentName = student.name;	
 	}
 
 	//send text message to student
 	$scope.sendText = function(message){
 		$http.get('http://localhost:3000/sendtext?to=' + $scope.phoneNbr + '&message=' + message)
-		$scope.disableButton = true;
+		 $("[data-dismiss=modal]").trigger({ type: "click" });
+
+	}
+
+	//send email to student
+	$scope.sendMail = function(message){
+		$http.get('http://localhost:3000/sendmail?to=' + $scope.email + '&message=' + message)
+		$("[data-dismiss=modal]").trigger({ type: "click" });
 	}
 
 	//return to home page
@@ -128,6 +107,9 @@ angular.module('myApp.admin', ['ngRoute'])
 
 .filter('percentage', ['$filter', function ($filter) {
   return function (input, decimals) {
+  	if(input==null){
+  		input=0;
+  	}
     return $filter('number')(input * 100, decimals) + '%';
   };
 }]);

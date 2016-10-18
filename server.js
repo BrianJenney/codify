@@ -25,7 +25,6 @@ app.get('/sendtext', function(req, res){
 
 //web service to send email to students on sign up
 app.get('/sendmail', function(req, res){
-
 	var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth:{
@@ -33,25 +32,19 @@ app.get('/sendmail', function(req, res){
         pass: 'freestyl1'
     }
 });
-
-// setup e-mail data with unicode symbols
-var mailOptions = {
-    from: '"Codify" <brianjenney83@gmail.com>', // sender address
-    to: '<'+req.query.to+'>', // list of receivers
-    subject: 'Welcome to Codify', // Subject line
-    text: 'Follow this link...', // plaintext body
-    html: "<p>Hey new student, follow this <a href='https://www.codify.com'>link</a></p>"// html body
-};
-
-// send mail with defined transport object
-transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        return console.log('Error:' + error);
-    }
-    console.log('Message sent: ' + info.response);
-});
-
-
-
-
+    // setup e-mail data with unicode symbols
+    var mailOptions = {
+        from: '"Codify" <brianjenney83@gmail.com>', // sender address
+        to: '<'+req.query.to+'>', // list of receivers
+        subject: 'Message from Codify', // Subject line
+        text: '', // plaintext body
+        html: "<p>" + req.query.message + "</p>"// html body
+    };
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log('Error:' + error);
+        }
+        console.log('Message sent: ' + info.response);
+    });
 })

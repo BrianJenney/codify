@@ -45,6 +45,7 @@ $scope.createUser = function(){
 		$http.get("http://localhost:3000/sendmail?to=" + $scope.userEmail)
 
 		firebase.database().ref('student/' + user.uid).set({
+			email: $scope.userEmail,
 			name: $scope.userName,
 			mentor: $scope.selectedInstructor.trim(),
 			phone: $scope.phone

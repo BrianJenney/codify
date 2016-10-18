@@ -42,9 +42,9 @@
 			<tr ng-repeat="s in studentArray | filter: search.mentor.trim()">
 				<td  data-target="#myModal" data-toggle="modal"><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
-				<td>{{s.week1CompleteRate | percentage:2}}</td>
-				<td>{{s.week2CompleteRate | percentage:2}}</td>
-				<td>{{s.week3CompleteRate | percentage:2}}</td>
+				<td>{{s.week1CompleteRate | percentage:0}}</td>
+				<td>{{s.week2CompleteRate | percentage:0}}</td>
+				<td>{{s.week3CompleteRate | percentage:0}}</td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -84,11 +84,15 @@
       </textarea>
       <div class="modal-footer">
       	<div class="btn-toolbar">
+      		<!-- Text button -->
       		<button ng-disabled="disableButton"class="btn btn-success" ng-click="sendText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
-      		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      		<!-- Email button -->
+      		<button class="btn btn-success" ng-click="sendMail(message)"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
+      		<!-- Close -->
+      		<button class="btn btn-primary" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 
       	</div>
-        
+      	
       </div>
     </div>
 
