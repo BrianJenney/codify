@@ -82,11 +82,15 @@ html {
     text-align: center;
   }
 
+  td:hover{
+    cursor: pointer;
+  }
+
   textarea.form-control {
     height: auto;
     width: 80%;
     margin: auto;
-}
+  }
 
   @media screen and (min-width: 768px){
 

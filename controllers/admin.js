@@ -56,9 +56,14 @@ angular.module('myApp.admin', ['ngRoute'])
 		})
 	})
 
+	$scope.showWeek = function(week){
+		console.log(week);
+		$scope.weekDetails = week;
+	}
+
 	//retrieve student info
 	$scope.getStudentInfo = function(student){
-		console.log(student)
+		console.log(student);
 		$scope.phoneNbr = parseInt(student.phone);
 		$scope.email = student.email;
 		$scope.studentName = student.name;	
@@ -105,6 +110,18 @@ angular.module('myApp.admin', ['ngRoute'])
   }
 })
 
+.filter('convertbool', ['$filter', function ($filter) {
+  return function (bool) {
+  	if(bool==true){
+  		bool = "Done"
+  	}else{
+  		bool = "Not done"
+  	}
+    return bool;
+  };
+}])
+
+
 .filter('percentage', ['$filter', function ($filter) {
   return function (input, decimals) {
   	if(input==null){
@@ -113,6 +130,7 @@ angular.module('myApp.admin', ['ngRoute'])
     return $filter('number')(input * 100, decimals) + '%';
   };
 }]);
+
 
 
 

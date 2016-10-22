@@ -42,7 +42,7 @@
 			<tr ng-repeat="s in studentArray | filter: search.mentor.trim()">
 				<td  data-target="#myModal" data-toggle="modal"><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
-				<td>{{s.week1CompleteRate | percentage:0}}</td>
+				<td  data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week1)">{{s.week1CompleteRate | percentage:0}}</td>
 				<td>{{s.week2CompleteRate | percentage:0}}</td>
 				<td>{{s.week3CompleteRate | percentage:0}}</td>
 				<td></td>
@@ -77,11 +77,12 @@
         <h4 class="modal-title">Contact Student</h4>
       </div>
       <div class="modal-body">
-        <p>Text Body</p>
+        
+      
+	      <textarea ng-model="message" class="form-control">
+	      	
+	      </textarea>
       </div>
-      <textarea ng-model="message" class="form-control">
-      	
-      </textarea>
       <div class="modal-footer">
       	<div class="btn-toolbar">
       		<!-- Text button -->
@@ -98,5 +99,29 @@
 
   </div>
 </div>
+
+<!-- WEEK INFO MODAL -->
+
+<div id="weekModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Week Info</h4>
+      </div>
+      <div class="modal-body">
+        <div ng-repeat="(key, value) in weekDetails">
+        	<p>{{key | uppercase}} : {{value | convertbool}}</p>
+        </div>
+      
+	     
+      	
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 </section>
