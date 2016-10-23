@@ -35,8 +35,13 @@ html {
     /*background-color: #CC5500;*/
   }
 
+  .btn-toolbar {
+    margin-top: 3%;
+  }
+
   .task-box{
     border:1px solid lightgray;
+    background-color: ;
   }
 
   .task-row{
