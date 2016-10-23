@@ -18,6 +18,10 @@
 		<option value="">All</option>
   	</select>
 
+  	<button class="btn btn-primary">Send Email to <span ng-show="!search.mentor">All classes</span> <span ng-show="search.mentor">{{search.mentor}}'s Class</span><span class="glyphicon glyphicon-envelope"></span></button>
+
+  	<button class="btn btn-primary">Send SMS to <span ng-show="!search.mentor">All classes</span> <span ng-show="search.mentor">{{search.mentor}}'s Class</span><span class="glyphicon glyphicon-comment"></span></button>
+
 	<table class="table table-striped table-sm">
 		<thead>
 			<th>Student Name</th>

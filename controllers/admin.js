@@ -82,11 +82,26 @@ angular.module('myApp.admin', ['ngRoute'])
 		$("[data-dismiss=modal]").trigger({ type: "click" });
 	}
 
+	/////////////////////////
+	//TODO: functions to 
+	//iterate over student 
+	//emails and numbers
+	/////////////////////////
+
+	//send all students in class an email
+	$scope.sendClassEmail = function(message){
+
+	}
+
+	//send all students in class a twilio text message
+	$scope.sendClassSMS = function(message){
+
+	}
+
 	//return to home page
 	$scope.exit = function(){
 		$window.location.href=("/#/home")
 	}
-
 
  }])
 

@@ -92,6 +92,14 @@ html {
     margin: auto;
   }
 
+  span.glyphicon.glyphicon-envelope {
+    margin-left: 2%;
+  }
+
+  span.glyphicon.glyphicon-comment {
+    margin-left: 2%;
+  }
+
   @media screen and (min-width: 768px){
 
   .modal-dialog {
