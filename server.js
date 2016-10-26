@@ -1,8 +1,60 @@
 var express = require('express');
 var app = express();
 var nodemailer = require('nodemailer');
+var firebase = require('Firebase');
 
 
+// Initialize Firebase
+var config = {
+apiKey: "AIzaSyCgcDx3o3v_xk7hIHlScBR2FJE5mW0a3Cs",
+authDomain: "codify-afedf.firebaseapp.com",
+databaseURL: "https://codify-afedf.firebaseio.com",
+storageBucket: "codify-afedf.appspot.com",
+};
+firebase.initializeApp(config);
+
+var rootRef = firebase.database().ref();
+
+//get student values from firebase
+rootRef.on('value',function(snapshot){
+    snapshot.forEach(function(childSnapshot){
+        var child = childSnapshot.val();
+        for(var x in child){
+            var student = child[x];
+
+            //format date correctly
+            student.date = new Date( student.date.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
+
+            //get current date
+            var q = new Date();
+            var m = q.getMonth();
+            var d = q.getDate();
+            var y = q.getFullYear();
+
+            var curDate = new Date(y,m,d);
+
+            var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+
+            //get difference of days to determine which week they
+            //should be on
+            var diffDays = Math.round(Math.abs((curDate.getTime() - student.date.getTime())/(oneDay)));
+
+            //access object property dynamically to get current week;
+            var curWeek = "week" + (diffDays % 7).toString();
+
+            var thisWeek = student[curWeek];
+
+            if(typeof thisWeek !== 'undefined'){
+                console.log(student.email)
+            }
+
+
+        }
+    })
+})
+
+
+//twilio account stuff
 var accountSid = 'AC7ba88a6599ee96042b778acc047436fd'; 
 var authToken = 'ecfd835d7a3e90d66a0cec19adb971ad'; 
 
@@ -10,6 +62,8 @@ var authToken = 'ecfd835d7a3e90d66a0cec19adb971ad';
 app.use(express.static(__dirname + '/'));
 app.listen(process.env.PORT || 3000);
 
+
+//web service to send text
 app.get('/sendtext', function(req, res){
     var client = require('twilio')(accountSid, authToken); 
      console.log(req.query.to)
