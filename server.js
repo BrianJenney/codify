@@ -3,6 +3,13 @@ var app = express();
 var nodemailer = require('nodemailer');
 var firebase = require('Firebase');
 
+//twilio account stuff
+var accountSid = 'AC7ba88a6599ee96042b778acc047436fd'; 
+var authToken = 'ecfd835d7a3e90d66a0cec19adb971ad'; 
+
+//serve the files on local server
+app.use(express.static(__dirname + '/'));
+app.listen(process.env.PORT || 3000);
 
 // Initialize Firebase
 var config = {
@@ -22,7 +29,8 @@ rootRef.on('value',function(snapshot){
         for(var x in child){
             var student = child[x];
 
-            //format date correctly
+            //format date correctly for when student joined
+            //this will be used to determine the current week
             student.date = new Date( student.date.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
 
             //get current date
@@ -41,33 +49,67 @@ rootRef.on('value',function(snapshot){
 
             //access object property dynamically to get current week;
             var curWeek = "week" + (diffDays % 7).toString();
+            //console.log(curWeek)
 
+            //TESTING ONLY!!!!!!!!
+            //////////////////////
+            //UNCOMMENT FOR PROD
             var thisWeek = student[curWeek];
 
+            /////////////////////////////////////
+            //HARD CODED WEEK FOR TESTING ONLY!!!
+            /////////////////////////////////////
+            //var thisWeek = student.week3;
+
             if(typeof thisWeek !== 'undefined'){
-                console.log(student.email)
-            }
+                var count = 0;
+                    for(var key in thisWeek){
+                        if(thisWeek[key]==true){
+                            count++
+                        }
+                    }
 
+                    //get the completed amount of work from student
+                    //if less than or equal to 50% they get an email
+                    var amtComplete = count/Object.keys(thisWeek).length;
+                    if(amtComplete <= .5){
 
+                        //create message for student
+                        var message = "Hey, " + student.name + ", it looks like you may a little behind on your work. Make sure to contact your mentor "+ student.mentor + " if you are having any difficulty completing the work. Happy coding!"
+
+                        var transporter = nodemailer.createTransport({
+                            service: 'Gmail',
+                            auth:{
+                                user: 'brianjenney83@gmail.com',
+                                pass: 'freestyl1'
+                            }
+                        });
+
+                        // setup e-mail data with unicode symbols
+                        var mailOptions = {
+                            from: '"Codify" <brianjenney83@gmail.com>', // sender address
+                            to: '<'+student.email+'>', // list of receivers
+                            subject: 'Message from Codify', // Subject line
+                            text: '', // plaintext body
+                            html: "<p>" + message + "</p>"// html body
+                        };
+                        // send mail with defined transport object
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if(error){
+                                return console.log('Error:' + error);
+                            }
+                            console.log('Message sent: ' + info.response);
+                        });
+                    }
+                }
         }
     })
 })
 
 
-//twilio account stuff
-var accountSid = 'AC7ba88a6599ee96042b778acc047436fd'; 
-var authToken = 'ecfd835d7a3e90d66a0cec19adb971ad'; 
-
-
-app.use(express.static(__dirname + '/'));
-app.listen(process.env.PORT || 3000);
-
-
 //web service to send text
 app.get('/sendtext', function(req, res){
     var client = require('twilio')(accountSid, authToken); 
-     console.log(req.query.to)
-     console.log(req.query.message)
     client.messages.create({ 
         to: "'" + req.query.to + "'", 
         from: "6504667925", 

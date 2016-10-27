@@ -21,7 +21,6 @@ angular.module('myApp.admin', ['ngRoute'])
 			$scope.students = snapshot.val();
 			//get object from id key of student
 			angular.forEach($scope.students, function(value, key){
-			//console.log(value)
 			$scope.student = value;
 			$scope.$apply(function(){
 			$scope.studentArray.push(value);
