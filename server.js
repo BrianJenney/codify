@@ -32,7 +32,7 @@ rootRef.on('value',function(snapshot){
             //format date correctly for when student joined
             //this will be used to determine the current week
             student.date = new Date( student.date.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
-
+            console.log(student.date)
             //get current date
             var q = new Date();
             var m = q.getMonth();
@@ -46,10 +46,9 @@ rootRef.on('value',function(snapshot){
             //get difference of days to determine which week they
             //should be on
             var diffDays = Math.round(Math.abs((curDate.getTime() - student.date.getTime())/(oneDay)));
-
             //access object property dynamically to get current week;
-            var curWeek = "week" + (diffDays % 7).toString();
-            //console.log(curWeek)
+            var curWeek = "week" + Math.floor(diffDays / 7).toString();
+            console.log(curWeek)
 
             //TESTING ONLY!!!!!!!!
             //////////////////////
@@ -61,7 +60,8 @@ rootRef.on('value',function(snapshot){
             /////////////////////////////////////
             //var thisWeek = student.week3;
 
-            if(typeof thisWeek !== 'undefined'){
+            //if week defined and on the end of the week (after 7 days)
+            if(typeof thisWeek !== 'undefined' && (diffDays%7==0)){
                 var count = 0;
                     for(var key in thisWeek){
                         if(thisWeek[key]==true){

@@ -9,19 +9,40 @@ angular.module('myApp.createuser', ['ngRoute'])
 
 .controller('CreateUserCtrl',['$scope','$window','$timeout','$http',function($scope,$window,$timeout,$http) {
 
+$( function() {
+    $( "#datePicker").datepicker(
+    	{ beforeShowDay: function(day) {
+            var day = day.getDay();
+            if (day == 1 || day == 2 || day == 3 || day == 4 || day == 5) {
+                return [false, "somecssclass"]
+            } else {
+                return [true, "someothercssclass"]
+            }
+        },
+        onSelect: function(dateText, inst) { 
+		      var dateAsString = dateText;
+		    
+		      $scope.date = dateAsString;
+		   }
+    	})
+  });
+
 //initialize array for dropdown of instructors
 $scope.instructors = ['Isaac', 'Brian', 'Chris'];
 
-//initialize bool for catching user create error
-var isError = false;
-$scope.isError = false;
 
 
  //function to create user
 $scope.createUser = function(){
-	
+	//initialize bool for catching user create error
+	var isError = false;
+	$scope.isError = false;
+		
+	$scope.creatingUser = true;
+
 	  var email =  $scope.userEmail;
 	  var password = $scope.userPassword;
+	  
 
 	  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  // Handle Errors here.
@@ -31,6 +52,7 @@ $scope.createUser = function(){
 	  $scope.$apply(function(){
 	  	$scope.errorMessage = error.message;
 	  	$scope.isError = true;
+	  	$scope.creatingUser = false;
 	  })
 
 	  console.log($scope.isError + ' ' + $scope.errorMessage)
@@ -48,7 +70,8 @@ $scope.createUser = function(){
 			email: $scope.userEmail,
 			name: $scope.userName,
 			mentor: $scope.selectedInstructor.trim(),
-			phone: $scope.phone
+			phone: $scope.phone,
+			date: $scope.date
 		})
 
 		//redirect to login

@@ -1,4 +1,4 @@
-angular.module('myApp.admin', ['ngRoute'])
+angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/admin', {
@@ -121,7 +121,8 @@ angular.module('myApp.admin', ['ngRoute'])
       }
     }
     return data;
-  }
+  }  
+
 })
 
 .filter('convertbool', ['$filter', function ($filter) {
