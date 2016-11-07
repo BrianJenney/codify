@@ -9,6 +9,12 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 .controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter',function($scope, $filter, $http, $window, filterFilter) {
 
+	// //test to get filtered students to use
+	// //to mass email and sms
+	// $scope.getFilteredStudents = function(){
+	// 	console.log($scope.filteredStudents);
+	// }
+
 	//initialize search object
 	$scope.search = {};
 	//initialize array for dropdown of mentors
@@ -72,6 +78,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	$scope.sendText = function(message){
 		$http.get('http://localhost:3000/sendtext?to=' + $scope.phoneNbr + '&message=' + message)
 		 $("[data-dismiss=modal]").trigger({ type: "click" });
+		 $scope.message = "";
 
 	}
 
@@ -79,6 +86,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	$scope.sendMail = function(message){
 		$http.get('http://localhost:3000/sendmail?to=' + $scope.email + '&message=' + message)
 		$("[data-dismiss=modal]").trigger({ type: "click" });
+		$scope.message = "";
 	}
 
 	/////////////////////////
@@ -89,7 +97,15 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 	//send all students in class an email
 	$scope.sendClassEmail = function(message){
-
+		console.log($scope.filteredStudents);
+		for(x=0; x<$scope.filteredStudents.length; x++){
+			//check if email exists
+			if(typeof $scope.filteredStudents[x].email !== 'undefined'){
+			$http.get('http://localhost:3000/sendmail?to=' + $scope.filteredStudents[x].email + '&message=' + message)
+			$("[data-dismiss=modal]").trigger({ type: "click" });
+			}
+		}
+		$scope.message = "";
 	}
 
 	//send all students in class a twilio text message
@@ -128,9 +144,11 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 .filter('convertbool', ['$filter', function ($filter) {
   return function (bool) {
   	if(bool==true){
-  		bool = "Done"
+  		bool = "Done";
+  	}else if(typeof bool == 'undefined' || bool == null || bool == ""){
+  		bool = "Not done";
   	}else{
-  		bool = "Not done"
+  		bool = bool;
   	}
     return bool;
   };

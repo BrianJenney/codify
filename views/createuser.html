@@ -39,8 +39,11 @@
 
   <div class="text-center">
     <br><br>
-    <button ng-disabled="!userPassword || !userEmail || !selectedInstructor || !userName || !phone || creatingUser" ng-click="createUser()" class="btn btn-primary"><span ng-show="creatingUser">Processing</span><span ng-show="!creatingUser">Create Account</span></button>
-    <a href="/#/login">Sign In</a>
+    <button ng-disabled="!userPassword || !userEmail || !selectedInstructor || !userName || !phone || creatingUser" ng-click="createUser()" class="button is-blue-jeans"><span ng-show="creatingUser">Processing</span><span ng-show="!creatingUser">Create Account</span></button>
+    <button class="button is-grapefruit">
+      <a style="color: white" href="/#/login"> Return to Sign In</a>
+    </button>
+    
   </div>
   <br>
   <p class="text-center text-muted">{{errorMessage}}</p>

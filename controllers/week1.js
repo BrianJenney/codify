@@ -14,7 +14,7 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 	$scope.week1 = {};
 
 	getData();
-	//get user data	
+	//get user name
 	function getData(){
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
@@ -27,6 +27,7 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 		})
 	}
 
+	//get user firebase data
 	function getUser(user){
 	return firebase.database().ref('student/' + user.uid + '/week1/').once('value').then(function(snapshot){
 			$scope.$apply(function(){
@@ -41,25 +42,6 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 		})
 	}
 	
-	var clicks = 0;
-	//show and hide functions for hidden content
-	$(document).on('click','.help', function(){
-		if(clicks == 0){
-			$(this).parent().parent().next().css({'display':'block','transition':'2s'});			
-			clicks++;
-		}else{
-			$(this).parent().parent().next().css({'display':'none'})
-			clicks--;
-		}
-	})
-	$(document).on('click','.closeme', function(){
-		$(this).parent().css({'display':'none'})
-	})
-	//return to homepage
-	$scope.exit = function(){
-		$scope.submitWeek();
-		$window.location.href = "/#/home"
-	}
 	//submit data to firebase
 	$scope.submitWeek = function(){
 		var user = firebase.auth().currentUser;
@@ -71,14 +53,28 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 				return week;
 			}
 		}
+		//
+		//OBJECT KEYS AND VALUES MUST BE NAMED THE SAME
+		//TO BIND EASILY TO OBJECT IN FRONT END
+		//
+
 		//set firebase data with user's progress from checkboxes
 		firebase.database().ref('student/' + user.uid + '/week1/').set({
 			sendGoogleCode: getValue($scope.week1.sendGoogleCode),
 			debugPico: getValue($scope.week1.debugPico),
 			simpleReplica: getValue($scope.week1.simpleReplica),
 			reading: getValue($scope.week1.reading),
-			quiz: getValue($scope.week1.quiz)
+			strictTheme : getValue($scope.week1.replicateStrictTheme),
+			quiz: getValue($scope.week1.quiz),
+			video: getValue($scope.week1.video),
+			bonusHtml: getValue($scope.week1.bonusHtmlCss)
 		})
+	}
+
+	//return to homepage
+	$scope.exit = function(){
+		$scope.submitWeek();
+		$window.location.href = "/#/home"
 	}
 
  

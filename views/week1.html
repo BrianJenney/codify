@@ -1,190 +1,245 @@
 <section ng-controller="WeekOneCtrl">
-<div class="container">
+<header>
+		<nav>
+			<h1>Welcome to Week 1 <span><img class="icon icons8-Icons8-Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACTklEQVRoQ+1ZvUvDQBR/pw06OAiCTgoi6GoRrpufIDoIgnRSUP+CtmMnHRTd1MlRnRUtOFgni6DQK9KuCuI/oKCCUmjxycUqacjHxbu2iJfxLu+939eFkBD44xf54/hBE7A7mM/n28vlcgwRRwFgsLJfIIRkQqHQTjgcflbpulIHGGNLALAFAO0uIDn4BKV0XxUJZQQq4PcEgS2rIqGEAI9NqVR68FDezuvZMIxeHqdsNrtICIlb44aI25FI5EBEjEAEGGMxAOAx4dnmcSggIo9DLyFkRWSg5Z5tALCeE3t5wTCMMb8zI0SgovCFRaWAWH99e4FSGvaqFiLAGMs3APw3bs/z4ksgl8vFEZE/WRp1ebrgS6DB6puiUUpdcbpu4NkMNkpyp7lk+tQRqyZQL5e0A/VS2m2OdkA7IKmAjpBdwJu7Ipxcv8F7EWF+vA2G+lurbpHdt89T7kBi9xGeXj/MOT1dzbC21FE1U3a/rgS6O5thfdmdwG/2a06AR+T46itCCxPOEZLZrzkByYdK4HLlZyAwAskCTUBSQOly7YC0hJINtAOSAkqX/z8HnCQbHugzv1Rc3t5XfQxwW/eSXVUv3+9CVhCqhvKeqnoFIpCMTpkObBymq+rc1r0cUNVLE+AqawcsWQsqxv+JUHJuchaamk4Q8GXz8PznJ57buucBVthLyIFkdCoDACMmKISDjaM0/83Es++47vP0UdaLzxEmgICDBEmqpVyMr6Yy5r9eTsBp3Y+Aql7CBKRfZGrYQMiBGs6Xbq0JSEso2eATx4PSQJvDc+MAAAAASUVORK5CYII=" width="48" height="48"></span></h1>
 
-	<div class="jumbotron">
-		<h1 class="text-center">< Week 1 /></h1>
-	</div>
-	
-	
-	<!-- <pre>
-		{{week1 | json}}
-	</pre> -->
+		</nav>
 
-	<section>
-  	<tabset>
-  		
-	    <tab heading="Projects">
-	    <div class="container">
-	    	<div class="row task-row">
-	    		<div data-role="page" class="input-group">
-				  <span class="input-group-addon fa fa-3x fa-tasks"></span>
-				  <div class="task-box text-center">
-				  	<p><li>Replicate Google Home Page!</li></p>
-				  </div>
-				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
+</header>
 
-				</div>
-				<div class="expand-task">
-					<div class="input-group tasks">
-					<span class="input-group-addon fa fa-3x fa-tasks"></span>
-						<div class="text-center assignment">
-							<p>Copy and paste this URL into your browser to see our example:  codifyacademy.com/google</p>
-						</div>
-						<span class="input-group-addon"><!-- <input ng-model="week1.visitGoogle" type="checkbox"/> --></span>
-					</div>
-					<div class="input-group tasks">
-						<span class="input-group-addon fa fa-3x fa-tasks"></span>
-						<div class="text-center assignment">
-							<p>Send compressed folder of your replica to your mentor for review</p>
-						</div>
-						<span class="input-group-addon"><input ng-model="week1.sendGoogleCode" type="checkbox"/></span>
-					</div>
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapse1"><span>Day 1</span>
+        <span class="pull-right glyphicon glyphicon-plus"></span>
+        </a> 
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body">
+      <p>Copy and paste this URL into your browser to see our example:  codifyacademy.com/google</p>
+
+		<p>Remember, have fun!  Replication is a fast way to learn by doing.</p>
+
+		<p>If you get stuck, check out our quick video guide on how to do this.</p>
+
+		<p>When Finished: Email a compressed version of your google replica to your mentor.</p>
+
+		<div class="row text-center">
+			<div class="checkbox">
+	            <label style="font-size: 2.5em">
+	                <input type="checkbox" ng-model="week1.sendGoogleCode" value="" checked>
+	                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	            </label>
+        	</div>
+		</div>	
+      </div>
+    </div>
+  </div>
 
 
-					<!-- <button class="btn btn-danger btn-xs closeme">Close</button> -->
-				</div>
-	    	</div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapse2">Day 2
+        <span class="pull-right glyphicon glyphicon-plus"></span>
+        </a> 
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body">
+      	<p>Copy and paste this URL into your browser to see our example: codifyacademy.com/week1/beginner</p>
 
-	    	<div class="row task-row">
-	    		<div data-role="page" class="input-group">
-				  <span class="input-group-addon fa fa-3x fa-tasks"></span>
-				  <div class="task-box text-center">
-				  	<p><li>Replicate Simple Web Site!</li></p>
-				  </div>
-				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
+		<p>Remember, have fun!  Replication is a fast way to learn by doing.</p>
 
-				  
-				</div>
-				<div class="expand-task">
-					<div class="input-group tasks">
-						<span class="input-group-addon fa fa-3x fa-tasks"></span>
-						<div class="text-center assignment">
-							<p>Copy and paste this URL into your browser to see our example: codifyacademy.com/week1/beginner</p>
-						</div>
-						<span class="input-group-addon"><!-- <input ng-model="week1.visitSimpleReplica" type="checkbox"/> --></span>
-					</div>
-					<div class="input-group tasks">
-						<span class="input-group-addon fa fa-3x fa-tasks"></span>
-						<div class="text-center assignment">
-							<p>Send compressed folder of your replica to your mentor for review</p>
-						</div>
-						<span class="input-group-addon"><input ng-model="week1.simpleReplica" type="checkbox"/></span>
-					</div>
-				
+		<p>When Finished: Email a compressed version of your simple website replica to your mentor.</p>
 
-					<!-- <button class="btn btn-danger btn-xs closeme">Close</button> -->
-				</div>
-	    	</div>
+		<div class="row text-center">
+			<div class="checkbox">
+	            <label style="font-size: 2.5em">
+	                <input type="checkbox" ng-model="week1.simpleReplica"value="" checked>
+	                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	            </label>
+        	</div>
+		</div>
 
-	    	<div class="row task-row">
-	    		<div data-role="page" class="input-group">
-				  <span class="input-group-addon fa fa-3x fa-tasks"></span>
-				  <div class="task-box text-center">
-				  	<p><li>Debugging Pico Website</li></p>
-				  </div>
-				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
+      </div>
+    </div>
+  </div>
 
-				  
-				</div>
-				<div class="expand-task">
-					<div class="input-group tasks">
-						<span class="input-group-addon fa fa-3x fa-tasks"></span>
-						<div class="text-center assignment">
-							<p>Copy and paste this URL into your browser to download the debugging exercise: Source Code: codifyacademy.com/week1/picodebugsource.zip</p>
-						</div>
-						<span class="input-group-addon"><!-- <input type="checkbox" ng-model="week1.visitPicoSite"/> --></span>
-					</div>
-					<div class="input-group tasks">
-						<span class="input-group-addon fa fa-3x fa-tasks"></span>
-						<div class="text-center assignment">
-							<p>Look through the code in your text editor to find and correct 14 errors, there are 7 on each file, index.html and main.css</p>
-							<p>If you get stuck: check out your replication: codifyacademy.com/week1/intermediate/</p>
-						</div>
-						<span class="input-group-addon"><!-- <input ng-model="week1.visitDebugPico" type="checkbox" /> --></span>
-					</div>
-					<div class="input-group tasks">
-						<span class="input-group-addon fa fa-3x fa-tasks"></span>
-						<div class="text-center assignment">
-							<p>When Finished: Email a compressed version of your corrected pico website to your mentor.</p>
-						</div>
-						<span class="input-group-addon"><input ng-model="week1.debugPico" type="checkbox" /></span>
-					</div>
-				
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapse3">Day 3
+        <span class="pull-right glyphicon glyphicon-plus"></span>
+        </a> 
+      </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body">
+      	<p>Copy and paste this URL into your browser to download the debugging exercise: </p>
 
-					<!-- <button class="btn btn-danger btn-xs closeme">Close</button> -->
-				</div>
-	    	</div>
+		<p>Source Code: codifyacademy.com/week1/picodebugsource.zip</p>
 
-	    	
+		<p>Look through the code in your text editor to find and correct 14 errors, there are 7 on each file, index.html and main.css</p>
 
-    	</div>
-	    </tab>
-	    
-	    <!-- READING -->
-	    <tab heading="Read">
+		<p>If you get stuck: check out your replication: codifyacademy.com/week1/intermediate/</p>
 
-	    	<div class="container text-center">
-	    		<h3 style="text-decoration: underline">Read Berekeley's Tutorial:</h3>
-	    		<p>'Tutorial: HTML 101' <a href="http://multimedia.journalism.berkeley.edu/tutorials/html/">Read Here</a></p>
-	    		<p>As You Read keep these in mind:</p>
-	    		<ul>
-	    			<li>Don’t worry about all their Advanced Text Editors, we have our own.</li>
-	    			<li>Learn how to construct a basic webpage.</li>
-	    			<li>Learn the basic elements that are used 80% of the time.</li>
-	    			<li>Learn about important HTML attributes.</li>
-	    			<li>Learn how to view your own work in a browser.</li>
-	    			<li>Learn how to incorporate and use these elements in any project.</li>
-	    		</ul>
-	    		<label>Check here when finished  </label><input type="checkbox" ng-model="week1.reading"/>
+		<p>When Finished: Email a compressed version of your corrected pico website to your mentor.</p>
 
-	    		
-	    	</div>
-	    </tab>
+		<div class="row text-center">
+			<div class="checkbox">
+	            <label style="font-size: 2.5em">
+	                <input type="checkbox" ng-model="week1.debugPico"value="" checked>
+	                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	            </label>
+        	</div>
+		</div>
 
-	    <!-- VIDEOS -->
+      </div>
+    </div>
+  </div>
 
-	    <tab heading="Watch">
-		    <div class="videoFrame text-center">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/Nk-FndrwOxQ?list=PLvyX_84L7-lvtfaQnfZrlb7TAU9TZKsMP?autoplay=0" frameborder="0" allowfullscreen></iframe>
-		    </div>
-	    </tab>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapse4">Day 4
+        <span class="pull-right glyphicon glyphicon-plus"></span>
+        </a> 
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse">
+      <div class="panel-body">
+      	<p>Copy and paste this URL into your browser to see our example: codifyacademy.com/week1/advanced</p>
 
-	    <!-- QUIZZES -->
+		<p>This is a Theme, that developers can use to start a project</p>
 
-	    <tab heading="Quiz Me!">
-	    	<div class="container">
-	    	<div class="row task-row">
-	    		<div data-role="page" class="input-group">
-				  <span class="input-group-addon fa fa-3x fa-tasks"></span>
-				  <div class="task-box text-center">
-				  	<p><li> Quiz: Student Guide to the Galaxy Quiz (30 mins)</li></p>
-				  </div>
-				  <span class="input-group-addon"><button type="button"class="btn btn-success btn-xs help"><span class="glyphicon glyphicon-plus"></span></button></span>
+		<p>Remember, have fun!  Replication is a fast way to learn by doing.</p>
 
-				  
-				</div>
-				<div class="expand-task">
-					<div class="input-group tasks">
-					<span class="input-group-addon fa fa-3x fa-tasks"></span>
-						<div class="text-center assignment">
-							<p>Fill out your student guide quiz for this week</p>
-						</div>
-						<span class="input-group-addon"><input type="checkbox" ng-model="week1.quiz"/></span>
-					</div>
-		
-					<!-- <button class="btn btn-danger btn-xs closeme">Close</button> -->
-				</div>
-	    	</div>
-	    	</div>
-	    </tab>
-	    <tab heading="WorkDrop">Stuff</tab>
-  	</tabset>
+		<p>When Finished: Email a compressed version of your Strict theme replica to your mentor.</p>
+
+		<div class="row text-center">
+			<div class="checkbox">
+	            <label style="font-size: 2.5em">
+	                <input type="checkbox" ng-model="week1.replicateStrictTheme"value="" checked>
+	                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	            </label>
+        	</div>
+		</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapse5">Day 5
+        <span class="pull-right glyphicon glyphicon-plus"></span>
+        </a> 
+      </h4>
+    </div>
+    <div id="collapse5" class="panel-collapse collapse">
+      <div class="panel-body">
+      	<p>Fill out your student guide quiz for this week</p>
+      	
+
+      	<div class="row text-center">
+			<div class="checkbox">
+	            <label style="font-size: 2.5em">
+	                <input type="checkbox" ng-model="week1.quiz"value="" checked>
+	                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	            </label>
+        	</div>
+		</div>
+
+      	<p>Codify Academy on Youtube: <a href="https://www.youtube.com/watch?v=1PIeAhRFg7w&list=PLvyX_84L7-lskUZLY9nmNf5Nsa6DRcGqn">Week 2 Prep Youtube Review</a></p>
+      	
+      	<div class="row text-center">
+			<div class="checkbox">
+	            <label style="font-size: 2.5em">
+	                <input type="checkbox" ng-model="week1.video"value="" checked>
+	                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	            </label>
+        	</div>
+		</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapse6">Bonus
+        <span class="pull-right glyphicon glyphicon-plus"></span>
+        </a> 
+      </h4>
+    </div>
+    <div id="collapse6" class="panel-collapse collapse">
+      <div class="panel-body">
+	      <p>Complete the Codecademy HTML & CSS tutorials</p>
+
+			<p>"Codecademy web track" - <a href="http://www.codecademy.com/en/tracks/web"></a>http://www.codecademy.com/en/tracks/web
+Make sure to utilize w3schools for any HTML and CSS you dont know:</p>
+
+    <p>http://www.w3schools.com/html/default.asp</p>
+
+    <p>http://www.w3schools.com/css/default.asp</p>
+
+	<p>They're so in-depth and give you tons of live examples that you can play with.</p>
+
+	<div class="row text-center">
+			<div class="checkbox">
+	            <label style="font-size: 2.5em">
+	                <input type="checkbox" ng-model="week1.bonusHtmlCss"value="" checked>
+	                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	            </label>
+        	</div>
+		</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapse7">Bonus
+        <span class="pull-right glyphicon glyphicon-plus"></span>
+        </a> 
+      </h4>
+    </div>
+    <div id="collapse7" class="panel-collapse collapse">
+      <div class="panel-body">
+      	<p>Read Berkeley’s “Tutorial: HTML 101” and learn about the basics of HTML & CSS</p>
+ 
+		<p>"Tutorial: HTML 101": http://multimedia.journalism.berkeley.edu/tutorials/html/</p>
+ 
+		<p>As You Read keep these in mind:</p>
+			<ul style="text-align: center">
+				<li>Don’t worry about all their Advanced Text Editors, we have our own.</li>
+				<li>Learn how to construct a basic webpage.</li>
+				<li>Learn the basic elements that are used 80% of the time.</li>
+				<li>Learn about important HTML attributes.</li>
+				<li>Learn how to view your own work in a browser.</li>
+				<li>Learn how to incorporate and use these elements in any project.</li>
+			</ul>
+		</p>
+		<div class="row text-center">
+			<div class="checkbox">
+	            <label style="font-size: 2.5em">
+	                <input type="checkbox" ng-model="week1.bonusReading"value="" checked>
+	                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	            </label>
+        	</div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<button ng-click="exit()" class="button is-ruby">Exit</button>
 </section>
-<div class="btn-toolbar">
-		<button ng-click="exit()" class="btn btn-primary exitBtn">
-		Exit
-		</button>
-		<button class="btn btn-success" ng-click="submitWeek()">Submit</button>
-	</div>
 
-</section>

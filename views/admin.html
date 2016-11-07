@@ -5,23 +5,30 @@
 </style>
 
 <section ng-controller="AdminCtrl">
-	<div class="text-left">
-		<h1>Admin Page</h1>
-	</div>
+	<header>
+		<nav>
+			<h1>Admin Page <span><img class="icon icons8-Icons8-Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACTklEQVRoQ+1ZvUvDQBR/pw06OAiCTgoi6GoRrpufIDoIgnRSUP+CtmMnHRTd1MlRnRUtOFgni6DQK9KuCuI/oKCCUmjxycUqacjHxbu2iJfxLu+939eFkBD44xf54/hBE7A7mM/n28vlcgwRRwFgsLJfIIRkQqHQTjgcflbpulIHGGNLALAFAO0uIDn4BKV0XxUJZQQq4PcEgS2rIqGEAI9NqVR68FDezuvZMIxeHqdsNrtICIlb44aI25FI5EBEjEAEGGMxAOAx4dnmcSggIo9DLyFkRWSg5Z5tALCeE3t5wTCMMb8zI0SgovCFRaWAWH99e4FSGvaqFiLAGMs3APw3bs/z4ksgl8vFEZE/WRp1ebrgS6DB6puiUUpdcbpu4NkMNkpyp7lk+tQRqyZQL5e0A/VS2m2OdkA7IKmAjpBdwJu7Ipxcv8F7EWF+vA2G+lurbpHdt89T7kBi9xGeXj/MOT1dzbC21FE1U3a/rgS6O5thfdmdwG/2a06AR+T46itCCxPOEZLZrzkByYdK4HLlZyAwAskCTUBSQOly7YC0hJINtAOSAkqX/z8HnCQbHugzv1Rc3t5XfQxwW/eSXVUv3+9CVhCqhvKeqnoFIpCMTpkObBymq+rc1r0cUNVLE+AqawcsWQsqxv+JUHJuchaamk4Q8GXz8PznJ57buucBVthLyIFkdCoDACMmKISDjaM0/83Es++47vP0UdaLzxEmgICDBEmqpVyMr6Yy5r9eTsBp3Y+Aql7CBKRfZGrYQMiBGs6Xbq0JSEso2eATx4PSQJvDc+MAAAAASUVORK5CYII=" width="48" height="48"></span></h1>
+
+		</nav>
+
+</header>
 	
 	<!-- <pre>
 		{{studentArray | json}}
 	</pre> -->
+	<div class="container-fluid student-table">
+		
+	
+	<div class="form-group filters">
+		
+		<select ng-change="getFilteredStudents()" ng-model="search.mentor" ng-options="mentor for mentor in mentors">
+			<option value="">All</option>
+	  	</select>
 
-	<label>Filter By Mentor</label>
-	<select ng-model="search.mentor" ng-options="mentor for mentor in mentors">
-		<option value="">All</option>
-  	</select>
+	  	<button data-target="#contactModal" data-toggle="modal"class="button is-blue-jeans">Contact <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-envelope"></span></button>
 
-  	<button class="btn btn-primary">Send Email to <span ng-show="!search.mentor">All classes</span> <span ng-show="search.mentor">{{search.mentor}}'s Class</span><span class="glyphicon glyphicon-envelope"></span></button>
-
-  	<button class="btn btn-primary">Send SMS to <span ng-show="!search.mentor">All classes</span> <span ng-show="search.mentor">{{search.mentor}}'s Class</span><span class="glyphicon glyphicon-comment"></span></button>
-
+	  	<!-- <button class="button is-blue-jeans">Send SMS to <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-comment"></span></button> -->
+	</div>
 	<table class="table table-striped table-sm">
 		<thead>
 			<th>Student Name</th>
@@ -43,11 +50,11 @@
 			<th>Week 16</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="s in studentArray | filter: search.mentor.trim()">
+			<tr ng-repeat="s in (filteredStudents = studentArray | filter: search.mentor.trim())">
 				<td  data-target="#myModal" data-toggle="modal"><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
 				<td  data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week1)">{{s.week1CompleteRate | percentage:0}}</td>
-				<td>{{s.week2CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week2)">{{s.week2CompleteRate | percentage:0}}</td>
 				<td>{{s.week3CompleteRate | percentage:0}}</td>
 				<td></td>
 				<td></td>
@@ -67,7 +74,7 @@
 	</table>
 
 	<div class="btn-toolbar">
-		<button ng-click="exit()" class="btn btn-danger">Exit</button>
+		<button ng-click="exit()" class="button is-ruby">Exit</button>
 	</div>
 	
 <!-- MODAL -->
@@ -78,7 +85,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Contact Student</h4>
+        <!-- Speech Bubble icon by Icons8 -->
+<img class="icon icons8-Speech-Bubble" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABfUlEQVRoQ+1ZvU4CQRCeSQzBjkfQNzB2UGljslY8AhUkNFrZKq2VlQlnc74ElHR3ncE3wCfQSqLNmE00UXILzu3AzSVz9ezM97dbzCHU/MOa4wcjULWD5oBaB3pHs1Zjf3mNgF1AOKgEKMGCENIkc6PQ/GCEBu3JHSBeVAJ8ZSgBjJLM3RRhCRLodyavCNjSQAAIFuPcHbIIDDpTUgH+G8Q4c4VihyNkBGT9Mwdk9eR3i3ZgeHvMnxpx4v7q6c9pIxAhpsjRaAdEUEQ0MQJ2iZnxEX+FmPPFy+0OiEvKbBjtQOwlXs00Ez8YAa5i0vXRDkgD4vYzAlzFpOvNAWlFOf2I6CXJzwuXa7XYSpRabGnYC3nlAdGvFgu3ct7FUg74xoR73YfsbM6JwjZqyxB4/nhvnqTz07dtAOL25BJQBZ4bIXXg/02ACB4/l81LLbH5HbONEfLgk9z1uNncVf1aAtrBr41Qvz1NNSv/47D9pdxV1kNzzAFzIFKB2kfoC/id1DEg3r2pAAAAAElFTkSuQmCC" width="48" height="48">
       </div>
       <div class="modal-body">
         
@@ -90,11 +98,11 @@
       <div class="modal-footer">
       	<div class="btn-toolbar">
       		<!-- Text button -->
-      		<button ng-disabled="disableButton"class="btn btn-success" ng-click="sendText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
+      		<button ng-disabled="disableButton"class="button is-blue-jeans" ng-click="sendText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
       		<!-- Email button -->
-      		<button class="btn btn-success" ng-click="sendMail(message)"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
+      		<button class="button is-blue-jeans" ng-click="sendMail(message)"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
       		<!-- Close -->
-      		<button class="btn btn-primary" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      		<button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 
       	</div>
       	
@@ -103,6 +111,42 @@
 
   </div>
 </div>
+
+<!-- MASS CONTACT EMAIL OR SMS -->
+
+<div id="contactModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- Speech Bubble icon by Icons8 -->
+<img class="icon icons8-Speech-Bubble" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABfUlEQVRoQ+1ZvU4CQRCeSQzBjkfQNzB2UGljslY8AhUkNFrZKq2VlQlnc74ElHR3ncE3wCfQSqLNmE00UXILzu3AzSVz9ezM97dbzCHU/MOa4wcjULWD5oBaB3pHs1Zjf3mNgF1AOKgEKMGCENIkc6PQ/GCEBu3JHSBeVAJ8ZSgBjJLM3RRhCRLodyavCNjSQAAIFuPcHbIIDDpTUgH+G8Q4c4VihyNkBGT9Mwdk9eR3i3ZgeHvMnxpx4v7q6c9pIxAhpsjRaAdEUEQ0MQJ2iZnxEX+FmPPFy+0OiEvKbBjtQOwlXs00Ez8YAa5i0vXRDkgD4vYzAlzFpOvNAWlFOf2I6CXJzwuXa7XYSpRabGnYC3nlAdGvFgu3ct7FUg74xoR73YfsbM6JwjZqyxB4/nhvnqTz07dtAOL25BJQBZ4bIXXg/02ACB4/l81LLbH5HbONEfLgk9z1uNncVf1aAtrBr41Qvz1NNSv/47D9pdxV1kNzzAFzIFKB2kfoC/id1DEg3r2pAAAAAElFTkSuQmCC" width="48" height="48">
+      </div>
+      <div class="modal-body">
+        
+      
+	      <textarea ng-model="message" class="form-control">
+	      	
+	      </textarea>
+      </div>
+      <div class="modal-footer">
+      	<div class="btn-toolbar">
+      		<!-- Text button -->
+      		<button ng-disabled="disableButton"class="button is-blue-jeans" ng-click="sendClassText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
+      		<!-- Email button -->
+      		<button class="button is-blue-jeans" ng-click="sendClassEmail(message)"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
+      		<!-- Close -->
+      		<button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+      	</div>
+      	
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <!-- WEEK INFO MODAL -->
 
@@ -116,7 +160,8 @@
       </div>
       <div class="modal-body">
         <div ng-repeat="(key, value) in weekDetails">
-        	<p>{{key | uppercase}} : {{value | convertbool}}</p>
+        <p ng-hide="value.indexOf('https')>=0">{{key | uppercase}} : {{value | convertbool}}</p>
+        	<p ng-show="value.indexOf('https')>=0">{{key | uppercase}} : <a ng-href="{{value | convertbool}}" target="_target">{{value | convertbool}}</a></p>
         </div>
       
 	     
@@ -126,6 +171,6 @@
 
   </div>
 </div>
-
+</div>
 
 </section>

@@ -18,9 +18,7 @@ angular.module('myApp.week2', ['ngRoute'])
 	function getData(){
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
-				console.log('hey')
 				getUser(user);
-
 			}else{
 				console.log('fail')
 			}
@@ -41,20 +39,6 @@ angular.module('myApp.week2', ['ngRoute'])
 		})
 	}
 	
-	var clicks = 0;
-	//show and hide functions for hidden content
-	$(document).on('click','.help', function(){
-		if(clicks == 0){
-			$(this).parent().parent().next().css({'display':'block','transition':'2s'});			
-			clicks++;
-		}else{
-			$(this).parent().parent().next().css({'display':'none'})
-			clicks--;
-		}
-	})
-	$(document).on('click','.closeme', function(){
-		$(this).parent().css({'display':'none'})
-	})
 	//return to homepage
 	$scope.exit = function(){
 		$scope.submitWeek();
@@ -73,19 +57,16 @@ angular.module('myApp.week2', ['ngRoute'])
 		}
 		//set firebase data with user's progress from checkboxes
 		firebase.database().ref('student/' + user.uid + '/week2/').set({
-			sendGoogleCode: getValue($scope.week2.sendGoogleCode),
-			debugPico: getValue($scope.week2.debugPico),
-			simpleReplica: getValue($scope.week2.simpleReplica),
-			reading: getValue($scope.week2.reading),
-			quiz: getValue($scope.week2.quiz)
+			visualArts: getValue($scope.week2.visualArts),
+			myFolio: getValue($scope.week2.myFolio),
+			metroApp: getValue($scope.week2.metroApp),
+			debugMyFolio: getValue($scope.week2.debugMyFolio),
+			video: getValue($scope.week2.video),
+			quiz: getValue($scope.week2.quiz),
+			bonusGitHub: getValue($scope.week2.bonusGitHub),
+			bonusReading: getValue($scope.week2.bonusReading),
+			githubLink: getValue($scope.week2.githubLink)
 		})
 	}
-
-
-
-
-
-
-	/////////////
  
  }]);

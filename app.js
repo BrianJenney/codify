@@ -1,6 +1,7 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
+  'ngAnimate',
   'ui.bootstrap',
   'ngRoute',
   'myApp.home',
