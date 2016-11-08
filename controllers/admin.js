@@ -9,12 +9,6 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 .controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter',function($scope, $filter, $http, $window, filterFilter) {
 
-	// //test to get filtered students to use
-	// //to mass email and sms
-	// $scope.getFilteredStudents = function(){
-	// 	console.log($scope.filteredStudents);
-	// }
-
 	//initialize search object
 	$scope.search = {};
 	//initialize array for dropdown of mentors
@@ -72,6 +66,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		$scope.phoneNbr = parseInt(student.phone);
 		$scope.email = student.email;
 		$scope.studentName = student.name;	
+		$scope.mentorEmail = student.mentorEmail;
 	}
 
 	//send text message to student
@@ -84,16 +79,11 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 	//send email to student
 	$scope.sendMail = function(message){
-		$http.get('http://localhost:3000/sendmail?to=' + $scope.email + '&message=' + message)
+		$http.get('http://localhost:3000/sendmail?to=' + $scope.email + '&message=' + message + '&from=' + $scope.mentorEmail)
 		$("[data-dismiss=modal]").trigger({ type: "click" });
 		$scope.message = "";
 	}
 
-	/////////////////////////
-	//TODO: functions to 
-	//iterate over student 
-	//emails and numbers
-	/////////////////////////
 
 	//send all students in class an email
 	$scope.sendClassEmail = function(message){

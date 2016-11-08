@@ -28,7 +28,7 @@ $( function() {
   });
 
 //initialize array for dropdown of instructors
-$scope.instructors = ['Isaac', 'Brian', 'Chris'];
+$scope.instructors = ['Isaac', 'Brian', 'Chris', 'Phillip'];
 
 
 
@@ -64,12 +64,32 @@ $scope.createUser = function(){
 		$scope.isError = false;
 		var user = firebase.auth().currentUser;
 		//call email service and create branch for instructor/student
-		$http.get("http://localhost:3000/sendmail?to=" + $scope.userEmail)
+		//$http.get("http://localhost:3000/sendmail?to=" + $scope.userEmail)
+
+		//insert instructor email
+		switch($scope.selectedInstructor.trim()){
+			case 'Brian':
+			$scope.mentorEmail = 'bjenney83@gmail.com'
+			break;
+
+			case 'Isaac':
+			$scope.mentorEmail = 'isaac@codfiyacademy.com'
+			break;
+
+			case 'Phillip':
+			$scope.mentorEmail = 'Philipp.schulte@ymail.com'
+			break;
+
+			case 'Chris':
+			$scope.mentorEmail = 'chrisbrody@codfiyacademy.com'
+			break;
+		}
 
 		firebase.database().ref('student/' + user.uid).set({
 			email: $scope.userEmail,
 			name: $scope.userName,
 			mentor: $scope.selectedInstructor.trim(),
+			mentorEmail: $scope.mentorEmail,
 			phone: $scope.phone,
 			date: $scope.date
 		})

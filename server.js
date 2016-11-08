@@ -87,7 +87,7 @@ rootRef.on('value',function(snapshot){
 
                         // setup e-mail data with unicode symbols
                         var mailOptions = {
-                            from: '"Codify" <brianjenney83@gmail.com>', // sender address
+                            from: '"Codify" <' + req.query.mentoremail + '>', // sender address
                             to: '<'+student.email+'>', // list of receivers
                             subject: 'Message from Codify', // Subject line
                             text: '', // plaintext body
@@ -130,7 +130,7 @@ app.get('/sendmail', function(req, res){
 });
     // setup e-mail data with unicode symbols
     var mailOptions = {
-        from: '"Codify" <brianjenney83@gmail.com>', // sender address
+        from: '"Codify" <' + req.query.from + '>', // sender address
         to: '<'+req.query.to+'>', // list of receivers
         subject: 'Message from Codify', // Subject line
         text: '', // plaintext body
