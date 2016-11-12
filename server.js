@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var nodemailer = require('nodemailer');
-var firebase = require('Firebase');
+var firebase = require('firebase');
 
 //twilio account stuff
 var accountSid = 'AC7ba88a6599ee96042b778acc047436fd'; 
