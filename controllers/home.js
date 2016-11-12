@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   //needs timeout to allow page to render first
   $timeout(function(){
   	//if user email is mine then you're the admin
-  if(user.email === 'brianjenney83@gmail.com || mattbrody@codify.com'){
+  if(user.email === 'brianjenney83@gmail.com' || user.email === 'mattbrody@codify.com' || user.email === 'isaac@codfiyacademy.com' || user.email === 'Philipp.schulte@ymail.com'){
   	$scope.isAdmin = true;
   }else{
   	$scope.isAdmin = false;

@@ -5,13 +5,13 @@
 </style>
 
 <section ng-controller="AdminCtrl">
+<div ng-hide="!isAdmin">
 	<header>
 		<nav>
 			<h1>Admin Page <span><img class="icon icons8-Icons8-Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACTklEQVRoQ+1ZvUvDQBR/pw06OAiCTgoi6GoRrpufIDoIgnRSUP+CtmMnHRTd1MlRnRUtOFgni6DQK9KuCuI/oKCCUmjxycUqacjHxbu2iJfxLu+939eFkBD44xf54/hBE7A7mM/n28vlcgwRRwFgsLJfIIRkQqHQTjgcflbpulIHGGNLALAFAO0uIDn4BKV0XxUJZQQq4PcEgS2rIqGEAI9NqVR68FDezuvZMIxeHqdsNrtICIlb44aI25FI5EBEjEAEGGMxAOAx4dnmcSggIo9DLyFkRWSg5Z5tALCeE3t5wTCMMb8zI0SgovCFRaWAWH99e4FSGvaqFiLAGMs3APw3bs/z4ksgl8vFEZE/WRp1ebrgS6DB6puiUUpdcbpu4NkMNkpyp7lk+tQRqyZQL5e0A/VS2m2OdkA7IKmAjpBdwJu7Ipxcv8F7EWF+vA2G+lurbpHdt89T7kBi9xGeXj/MOT1dzbC21FE1U3a/rgS6O5thfdmdwG/2a06AR+T46itCCxPOEZLZrzkByYdK4HLlZyAwAskCTUBSQOly7YC0hJINtAOSAkqX/z8HnCQbHugzv1Rc3t5XfQxwW/eSXVUv3+9CVhCqhvKeqnoFIpCMTpkObBymq+rc1r0cUNVLE+AqawcsWQsqxv+JUHJuchaamk4Q8GXz8PznJ57buucBVthLyIFkdCoDACMmKISDjaM0/83Es++47vP0UdaLzxEmgICDBEmqpVyMr6Yy5r9eTsBp3Y+Aql7CBKRfZGrYQMiBGs6Xbq0JSEso2eATx4PSQJvDc+MAAAAASUVORK5CYII=" width="48" height="48"></span></h1>
 
 		</nav>
-
-</header>
+	</header>
 	
 	<!-- <pre>
 		{{studentArray | json}}
@@ -55,7 +55,7 @@
 				<td>{{s.mentor}}</td>
 				<td  data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week1)">{{s.week1CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week2)">{{s.week2CompleteRate | percentage:0}}</td>
-				<td>{{s.week3CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week3)">{{s.week3CompleteRate | percentage:0}}</td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -172,5 +172,15 @@
   </div>
 </div>
 </div>
+</div>
+<!-- 	IF USER IS NOT AUTHORIZED -->
+<div ng-hide="isAdmin">
+	<header>
+		<nav>
+			<h1>SORRY... You are not authorized to view this page <span><img class="icon icons8-Icons8-Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACTklEQVRoQ+1ZvUvDQBR/pw06OAiCTgoi6GoRrpufIDoIgnRSUP+CtmMnHRTd1MlRnRUtOFgni6DQK9KuCuI/oKCCUmjxycUqacjHxbu2iJfxLu+939eFkBD44xf54/hBE7A7mM/n28vlcgwRRwFgsLJfIIRkQqHQTjgcflbpulIHGGNLALAFAO0uIDn4BKV0XxUJZQQq4PcEgS2rIqGEAI9NqVR68FDezuvZMIxeHqdsNrtICIlb44aI25FI5EBEjEAEGGMxAOAx4dnmcSggIo9DLyFkRWSg5Z5tALCeE3t5wTCMMb8zI0SgovCFRaWAWH99e4FSGvaqFiLAGMs3APw3bs/z4ksgl8vFEZE/WRp1ebrgS6DB6puiUUpdcbpu4NkMNkpyp7lk+tQRqyZQL5e0A/VS2m2OdkA7IKmAjpBdwJu7Ipxcv8F7EWF+vA2G+lurbpHdt89T7kBi9xGeXj/MOT1dzbC21FE1U3a/rgS6O5thfdmdwG/2a06AR+T46itCCxPOEZLZrzkByYdK4HLlZyAwAskCTUBSQOly7YC0hJINtAOSAkqX/z8HnCQbHugzv1Rc3t5XfQxwW/eSXVUv3+9CVhCqhvKeqnoFIpCMTpkObBymq+rc1r0cUNVLE+AqawcsWQsqxv+JUHJuchaamk4Q8GXz8PznJ57buucBVthLyIFkdCoDACMmKISDjaM0/83Es++47vP0UdaLzxEmgICDBEmqpVyMr6Yy5r9eTsBp3Y+Aql7CBKRfZGrYQMiBGs6Xbq0JSEso2eATx4PSQJvDc+MAAAAASUVORK5CYII=" width="48" height="48"></span></h1>
 
+		</nav>
+	</header>
+	<p>If you feel this error is an error itself... contact Brian at brianjenney83@gmail.com. Thanks!</p>
+</div>
 </section>

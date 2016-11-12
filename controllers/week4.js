@@ -10,7 +10,7 @@ angular.module('myApp.week4', ['ngRoute'])
 
 .controller('Week4Ctrl', ['$scope','$http','$timeout','$window', function($scope,$http, $timeout, $window) {
 
-	//initialize week 1 obj
+	//initialize week obj
 	$scope.week4 = {};
 
 	getData();
@@ -41,20 +41,6 @@ angular.module('myApp.week4', ['ngRoute'])
 		})
 	}
 	
-	var clicks = 0;
-	//show and hide functions for hidden content
-	$(document).on('click','.help', function(){
-		if(clicks == 0){
-			$(this).parent().parent().next().css({'display':'block','transition':'2s'});			
-			clicks++;
-		}else{
-			$(this).parent().parent().next().css({'display':'none'})
-			clicks--;
-		}
-	})
-	$(document).on('click','.closeme', function(){
-		$(this).parent().css({'display':'none'})
-	})
 	//return to homepage
 	$scope.exit = function(){
 		$scope.submitWeek();
@@ -71,21 +57,25 @@ angular.module('myApp.week4', ['ngRoute'])
 				return week;
 			}
 		}
+
+		//return empty string instead of false for links/text inputs
+		function getLinkValue(week){
+			if(week == 'undefined' || week == null){
+				return '';
+			}else{
+				return week;
+			}
+		}
 		//set firebase data with user's progress from checkboxes
-		firebase.database().ref('student/' + user.uid + '/week/').set({
-			sendGoogleCode: getValue($scope.week4.sendGoogleCode),
-			debugPico: getValue($scope.week4.debugPico),
-			simpleReplica: getValue($scope.week4.simpleReplica),
-			reading: getValue($scope.week4.reading),
-			quiz: getValue($scope.week4.quiz)
+		firebase.database().ref('student/' + user.uid + '/week4/').set({
+			gitHubGoogleResponsive: getLinkValue($scope.week4.gitHubGoogleResponsive),
+			sendResponsiveGoogleCode: getValue($scope.week4.sendResponsiveGoogleCode),
+			gitHubOrangeResponsive: getLinkValue($scope.week4.gitHubOrangeResponsive),
+			sendResponsiveOrange: getValue($scope.week4.sendResponsiveOrange),
+			quiz: getValue($scope.week4.quiz),
+			videos: getValue($scope.week4.videos)
 		})
 	}
 
-
-
-
-
-
-	/////////////
  
  }]);

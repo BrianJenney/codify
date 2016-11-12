@@ -75,7 +75,7 @@ rootRef.on('value',function(snapshot){
                     if(amtComplete <= .5){
 
                         //create message for student
-                        var message = "Hey, " + student.name + ", it looks like you may a little behind on your work. Make sure to contact your mentor "+ student.mentor + " if you are having any difficulty completing the work. Happy coding!"
+                        var message = "Hey, " + student.name + ", it looks like you may a little behind on your work. Make sure to contact your mentor "+ student.mentor + " if you are having any difficulty completing the assignments. Happy coding!"
 
                         var transporter = nodemailer.createTransport({
                             service: 'Gmail',
@@ -87,7 +87,7 @@ rootRef.on('value',function(snapshot){
 
                         // setup e-mail data with unicode symbols
                         var mailOptions = {
-                            from: '"Codify" <' + req.query.mentoremail + '>', // sender address
+                            from: '"Codify" <' + student.mentoremail + '>', // sender address
                             to: '<'+student.email+'>', // list of receivers
                             subject: 'Message from Codify', // Subject line
                             text: '', // plaintext body

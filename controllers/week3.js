@@ -10,7 +10,7 @@ angular.module('myApp.week3', ['ngRoute'])
 
 .controller('Week3Ctrl', ['$scope','$http','$timeout','$window', function($scope,$http, $timeout, $window) {
 
-	//initialize week 1 obj
+	//initialize week obj
 	$scope.week3 = {};
 
 	getData();
@@ -41,20 +41,7 @@ angular.module('myApp.week3', ['ngRoute'])
 		})
 	}
 	
-	var clicks = 0;
-	//show and hide functions for hidden content
-	$(document).on('click','.help', function(){
-		if(clicks == 0){
-			$(this).parent().parent().next().css({'display':'block','transition':'2s'});			
-			clicks++;
-		}else{
-			$(this).parent().parent().next().css({'display':'none'})
-			clicks--;
-		}
-	})
-	$(document).on('click','.closeme', function(){
-		$(this).parent().css({'display':'none'})
-	})
+
 	//return to homepage
 	$scope.exit = function(){
 		$scope.submitWeek();
@@ -62,7 +49,6 @@ angular.module('myApp.week3', ['ngRoute'])
 	}
 	//submit data to firebase
 	$scope.submitWeek = function(){
-		console.log('working')
 		var user = firebase.auth().currentUser;
 		//if user hasn't marked the box, return false
 		function getValue(week){
@@ -72,21 +58,29 @@ angular.module('myApp.week3', ['ngRoute'])
 				return week;
 			}
 		}
+		
+		//return empty string instead of false for links/text inputs
+		function getLinkValue(week){
+			if(week == 'undefined' || week == null){
+				return '';
+			}else{
+				return week;
+			}
+		}
 		//set firebase data with user's progress from checkboxes
 		firebase.database().ref('student/' + user.uid + '/week3/').set({
-			sendGoogleCode: getValue($scope.week3.sendGoogleCode),
-			debugPico: getValue($scope.week3.debugPico),
-			simpleReplica: getValue($scope.week3.simpleReplica),
-			reading: getValue($scope.week3.reading),
-			quiz: getValue($scope.week3.quiz)
+			githubOJlink: getLinkValue($scope.week3.githubOJlink),
+			replicateOj: getValue($scope.week3.replicateOj),
+			gitHubLiquidGem: getLinkValue($scope.week3.gitHubLiquidGem),
+			replicateLiquidGem: getValue($scope.week3.replicateLiquidGem),
+			gitHubLinkFlat: getLinkValue($scope.week3.gitHubLinkFlat),
+			quiz: getValue($scope.week3.quiz),
+			video: getValue($scope.week3.video),
+			bonusReading: getValue($scope.week3.bonusReading),
+			bonusShayHowe: getValue($scope.week3.bonusShayHowe)
 		})
 	}
 
 
-
-
-
-
-	/////////////
  
  }]);

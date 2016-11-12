@@ -7,7 +7,26 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
   });
 }])
 
-.controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter',function($scope, $filter, $http, $window, filterFilter) {
+.controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter', '$timeout', function($scope, $filter, $http, $window, filterFilter, $timeout) {
+
+	//get current user to determine if admin
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	    console.log(user.email)
+	  } else {
+	    console.log("nope")
+	  }
+	$timeout(function(){
+  	//if user email is mine then you're the admin
+	  if(user.email === 'brianjenney83@gmail.com' || user.email === 'mattbrody@codify.com' || user.email === 'isaac@codfiyacademy.com' || user.email === 'Philipp.schulte@ymail.com'){
+	  		$scope.isAdmin = true;
+	  	}else{
+	  		$scope.isAdmin = false;
+  		}
+  		console.log(user.email)
+	  	console.log($scope.isAdmin);
+	  })
+	})
 
 	//initialize search object
 	$scope.search = {};
@@ -91,7 +110,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		for(x=0; x<$scope.filteredStudents.length; x++){
 			//check if email exists
 			if(typeof $scope.filteredStudents[x].email !== 'undefined'){
-			$http.get('http://localhost:3000/sendmail?to=' + $scope.filteredStudents[x].email + '&message=' + message)
+			$http.get('http://localhost:3000/sendmail?to=' + $scope.filteredStudents[x].email + '&message=' + message + '&from=' + $scope.filteredStudents[x].mentorEmail)
 			$("[data-dismiss=modal]").trigger({ type: "click" });
 			}
 		}

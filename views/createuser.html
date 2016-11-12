@@ -12,17 +12,17 @@
 
   <div class="form-group">
     <label for="userName">Full Name:</label>
-    <input ng-model="userName" placeholder="Example: Bob Barker" type="username" class="form-control" id="name">
+    <input ng-model="userName" placeholder="Example: Bob Barker" type="username" class="form-control create-user" id="name">
   </div>
 
   <div class="form-group">
     <label for="userName">Phone #:</label>
-    <input ng-model="phone" placeholder="Example: 5105559999" type="tel" class="form-control" id="name" maxlength="10" pattern="\d{10}" required="required">
+    <input ng-model="phone" placeholder="Example: 5105559999" type="tel" class="form-control create-user" id="name" maxlength="10" pattern="\d{10}" required="required">
   </div>
 
   <div class="form-group">
     <label for="email">Email address:</label>
-    <input ng-model="userEmail" type="email" class="form-control" id="email">
+    <input ng-model="userEmail" type="email" class="form-control create-user" id="email">
   </div>
   
   <div class="form-group">
@@ -39,7 +39,7 @@
 
   <div class="text-center">
     <br><br>
-    <button ng-disabled="!userPassword || !userEmail || !selectedInstructor || !userName || !phone || creatingUser" ng-click="createUser()" class="button is-blue-jeans"><span ng-show="creatingUser">Processing</span><span ng-show="!creatingUser">Create Account</span></button>
+    <button ng-hide="!userPassword || !userEmail || !selectedInstructor || !userName || !phone || creatingUser" ng-click="createUser()" class="button is-blue-jeans"><span ng-show="creatingUser">Processing</span><span ng-show="!creatingUser">Create Account</span></button>
     <button class="button is-grapefruit">
       <a style="color: white" href="/#/login"> Return to Sign In</a>
     </button>
