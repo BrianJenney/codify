@@ -18,7 +18,6 @@ angular.module('myApp.week5', ['ngRoute'])
 	function getData(){
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
-				console.log('hey')
 				getUser(user);
 
 			}else{
@@ -41,20 +40,6 @@ angular.module('myApp.week5', ['ngRoute'])
 		})
 	}
 	
-	var clicks = 0;
-	//show and hide functions for hidden content
-	$(document).on('click','.help', function(){
-		if(clicks == 0){
-			$(this).parent().parent().next().css({'display':'block','transition':'2s'});			
-			clicks++;
-		}else{
-			$(this).parent().parent().next().css({'display':'none'})
-			clicks--;
-		}
-	})
-	$(document).on('click','.closeme', function(){
-		$(this).parent().css({'display':'none'})
-	})
 	//return to homepage
 	$scope.exit = function(){
 		$scope.submitWeek();
@@ -71,21 +56,27 @@ angular.module('myApp.week5', ['ngRoute'])
 				return week;
 			}
 		}
+
+		//return empty string instead of false for links/text inputs
+		function getLinkValue(week){
+			if(week == 'undefined' || week == null){
+				return '';
+			}else{
+				return week;
+			}
+		}
 		//set firebase data with user's progress from checkboxes
-		firebase.database().ref('student/' + user.uid + '/week/').set({
-			sendGoogleCode: getValue($scope.week5.sendGoogleCode),
-			debugPico: getValue($scope.week5.debugPico),
-			simpleReplica: getValue($scope.week5.simpleReplica),
-			reading: getValue($scope.week5.reading),
-			quiz: getValue($scope.week5.quiz)
+		firebase.database().ref('student/' + user.uid + '/week5/').set({
+			gitHubBootstrapLink: getLinkValue($scope.week5.gitHubBootstrapLink),
+			sendBootstrap: getValue($scope.week5.sendBootstrap),
+			codecademyJquery: getValue($scope.week5.codecademyJquery),
+			videos: getValue($scope.week5.videos),
+			gitHubBonusBootstrap: getLinkValue($scope.week5.gitHubBonusBootstrap),
+			sendBonusBootstrap: getValue($scope.week5.sendBonusBootstrap),
+			bonusJquery: getValue($scope.week5.bonusJquery)
+			
 		})
 	}
 
-
-
-
-
-
-	/////////////
  
  }]);

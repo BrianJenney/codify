@@ -51,7 +51,8 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 				}else{
 					var count = 0;
 					for(var key in week){
-						if(week[key]==true){
+						//don't count bonus projects in the overall percentage 
+						if(week[key]==true && key.toUpperCase().indexOf('BONUS') < 0){
 							count++
 						}
 					}
@@ -68,7 +69,10 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 				$scope.studentArray[x].week2CompleteRate = getCompleteRate($scope.studentArray[x].week2)
 
 				$scope.studentArray[x].week3CompleteRate = getCompleteRate($scope.studentArray[x].week3)
-					
+				
+				$scope.studentArray[x].week4CompleteRate = getCompleteRate($scope.studentArray[x].week4)
+
+				$scope.studentArray[x].week5CompleteRate = getCompleteRate($scope.studentArray[x].week5)	
 				}
 			})
 		})
@@ -110,15 +114,27 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		for(x=0; x<$scope.filteredStudents.length; x++){
 			//check if email exists
 			if(typeof $scope.filteredStudents[x].email !== 'undefined'){
-			$http.get('http://localhost:3000/sendmail?to=' + $scope.filteredStudents[x].email + '&message=' + message + '&from=' + $scope.filteredStudents[x].mentorEmail)
-			$("[data-dismiss=modal]").trigger({ type: "click" });
+				$http.get('http://localhost:3000/sendmail?to=' + $scope.filteredStudents[x].email + '&message=' + message + '&from=' + $scope.filteredStudents[x].mentorEmail)
+				$("[data-dismiss=modal]").trigger({ type: "click" });
 			}
 		}
+		//set message back to null
 		$scope.message = "";
 	}
 
 	//send all students in class a twilio text message
 	$scope.sendClassSMS = function(message){
+
+		for(x=0; x<$scope.filteredStudents.length; x++){
+			//check if email exists
+			if(typeof $scope.filteredStudents[x].phone !== 'undefined'){
+				$http.get('http://localhost:3000/sendtext?to=' + $scope.filteredStudents[x].phone + '&message=' + message)
+				 $("[data-dismiss=modal]").trigger({ type: "click" });
+				 $scope.message = "";
+			}
+		}
+		//set message back to null
+		$scope.message = "";
 
 	}
 
