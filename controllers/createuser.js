@@ -37,6 +37,12 @@ $scope.createUser = function(){
 	//initialize bool for catching user create error
 	var isError = false;
 	$scope.isError = false;
+
+	//throw error if date not chosen
+	if(typeof $scope.date == 'undefined' || $scope.date == ''){
+		$scope.errorMessage = "Pick a Date";
+		return;
+	}
 		
 	$scope.creatingUser = true;
 
