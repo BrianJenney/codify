@@ -101,7 +101,7 @@ $scope.createUser = function(){
 		})
 
 		//redirect to login
-		$window.location.href="/#/login"
+		$window.location.href="/#/video"
 		}
 		
 	});

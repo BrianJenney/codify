@@ -2,7 +2,9 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngAnimate',
+  'youtube-embed',
   'ui.bootstrap',
+  'ngYoutubeEmbed',
   'ngRoute',
   'myApp.home',
   'myApp.admin',
@@ -19,7 +21,8 @@ angular.module('myApp', [
   'myApp.week9',
   'myApp.week10',
   'myApp.week11',
-  'myApp.week12'
+  'myApp.week12',
+  'myApp.video'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/login'});
