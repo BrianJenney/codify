@@ -23,7 +23,7 @@ angular.module('myApp.video', ['ngRoute','ui.bootstrap'])
 	//re-direct user to first assigment
 	$scope.$on('youtube.player.ended', function ($event, player) {
 	    
-	    $window.location.href="/#/home";
+	    $window.location.href="/#/chapter1";
 	})
 	
  

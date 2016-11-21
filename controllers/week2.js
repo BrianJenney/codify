@@ -1,8 +1,8 @@
 angular.module('myApp.week2', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/week2', {
-    templateUrl: 'views/week2.html',
+  $routeProvider.when('/chapter2', {
+    templateUrl: 'views/chapter2/chapter2.html',
     controller: 'WeekTwoCtrl'
   });
 }])
@@ -19,12 +19,27 @@ angular.module('myApp.week2', ['ngRoute'])
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
 				getUser(user);
+				getCompleteRate(user);
 			}else{
 				console.log('fail')
 			}
 		})
 	}
 
+	//must always grab progress bar value
+	function getCompleteRate(user){
+	return firebase.database().ref('student/' + user.uid).once('value').then(function(snapshot){
+			$scope.$apply(function(){
+				console.log(snapshot.val());
+
+				$scope.completeRate = snapshot.val().progress;
+				})
+			})
+		}
+	
+
+	//get complete rate on every page
+	//may want to refactor into service
 	function getUser(user){
 	return firebase.database().ref('student/' + user.uid + '/week2/').once('value').then(function(snapshot){
 			$scope.$apply(function(){

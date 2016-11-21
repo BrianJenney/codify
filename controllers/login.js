@@ -26,6 +26,7 @@ $scope.loginUser = function(){
 
 }).then(function(){
 	if(!$scope.isError){
+		console.log("logged in");
 		$window.location.href = "/#/home";
 	}
 });

@@ -9,6 +9,25 @@ html {
   box-sizing: inherit;
   }
 
+.one, .two, .three{
+  position:absolute;
+  margin-top:-10px;
+  z-index:1;
+  height:40px;
+  width:40px;
+  border-radius:25px;
+  
+}
+.one{
+  left:25%;
+}
+.two{
+  left:50%;
+}
+.three{
+  left:75%;
+}
+
   .form-control{
     width: 50% !important;
     margin: auto;
