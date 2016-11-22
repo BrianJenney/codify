@@ -927,7 +927,6 @@ button:active {
 body {
    /* font-family: "Lato", sans-serif; */
     transition: background-color .5s;
-    transition: margin-left .5s;
 }
 
 .sidenav {
