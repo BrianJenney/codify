@@ -31,7 +31,6 @@ angular.module('myApp.week2', ['ngRoute'])
 	return firebase.database().ref('student/' + user.uid).once('value').then(function(snapshot){
 			$scope.$apply(function(){
 				console.log(snapshot.val());
-
 				$scope.completeRate = snapshot.val().progress;
 				})
 			})
