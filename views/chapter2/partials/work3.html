@@ -1,0 +1,16 @@
+<section ng-controller="WeekTwoCtrl">
+	<ng-include src="'views/shared/progressbar.html'"></ng-include>
+	<h1>Replicate Advanced Project from this link and send the compressed file to your mentor.</h1>
+
+	<div class="row text-center">
+		<div class="checkbox">
+	        <label style="font-size: 2.5em">
+	            <input type="checkbox" ng-model="chapter2.advancedProject"value="" ng-change="adjustProgress(5, chapter2.advancedProject)" checked>
+	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+	        </label>
+		</div>
+	</div>
+
+	<button class="button is-ruby text-center"ng-show="chapter2.advancedProject"><a ng-click="proceed('chapter3.1')">You're DONE!</button><br>
+	<button ng-click="exit()" class="button is-ruby">Exit</button>
+</section>

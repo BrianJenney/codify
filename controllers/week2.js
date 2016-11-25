@@ -1,17 +1,29 @@
 angular.module('myApp.week2', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/chapter2', {
-    templateUrl: 'views/chapter2/chapter2.html',
+  $routeProvider
+
+  .when('/chapter2.1', {
+    templateUrl: 'views/chapter2/partials/work1.html',
     controller: 'WeekTwoCtrl'
-  });
+  })
+
+  .when('/chapter2.2', {
+    templateUrl: 'views/chapter2/partials/work2.html',
+    controller: 'WeekTwoCtrl'
+  })
+
+  .when('/chapter2.3', {
+    templateUrl: 'views/chapter2/partials/work3.html',
+    controller: 'WeekTwoCtrl'
+  })
 }])
 
 
-.controller('WeekTwoCtrl', ['$scope','$http','$timeout','$window', function($scope,$http, $timeout, $window) {
-
+.controller('WeekTwoCtrl', ['$scope','$http','$timeout','$window','chapterService', function($scope,$http, $timeout, $window, chapterService) {
+	
 	//initialize week 1 obj
-	$scope.week2 = {};
+	$scope.chapter2 = {};
 
 	getData();
 	//get user data	
@@ -30,57 +42,82 @@ angular.module('myApp.week2', ['ngRoute'])
 	function getCompleteRate(user){
 	return firebase.database().ref('student/' + user.uid).once('value').then(function(snapshot){
 			$scope.$apply(function(){
-				console.log(snapshot.val());
 				$scope.completeRate = snapshot.val().progress;
 				})
 			})
 		}
-	
 
+	//adjust progress bar on front end
+	$scope.adjustProgress = function(num, isChecked){
+		//if checked, increase, if not, decrease
+		if(isChecked){
+			$scope.completeRate += num;	
+		}else{
+			$scope.completeRate -= num;
+		}
+		
+	}
+	
 	//get complete rate on every page
 	//may want to refactor into service
 	function getUser(user){
 	return firebase.database().ref('student/' + user.uid + '/week2/').once('value').then(function(snapshot){
 			$scope.$apply(function(){
-				$scope.week2 = snapshot.val();
-				console.log($scope.week1);
-				//reinitialize object if null
-				//will be null when first called
-				if($scope.week2 == null){
-					$scope.week2 = {};
-				}
+				//timeout to give page time to finish
+				//digest cycle and reload the object for the 
+				//page
+				$timeout(function(){
+					$scope.chapter2 = snapshot.val();
+					//reinitialize object if null
+					//will be null when first called
+					if($scope.chapter2 == null){
+						$scope.chapter2 = {};
+					}
+				},500)
+				
 			})
 		})
 	}
 	
+	$scope.proceed = function(page){
+		$scope.submitWeek();
+		$window.location.href = "/#/" + page; 
+	}
+
+	//TODO: remove this function and use proceed instead
 	//return to homepage
 	$scope.exit = function(){
 		$scope.submitWeek();
 		$window.location.href = "/#/home"
 	}
+
+	//if user hasn't marked the box, return false
+	//pass in bool 'isLink' to return an empty string 
+	//instead of false value for an empty link
+	function getValue(week, isLink){
+		if(typeof week == 'undefined' && !isLink || week == null && !isLink){
+			return false;
+		}else if(week == 'undefined' && isLink || week == null && isLink){
+			return '';
+		}else{
+			return week;
+		}
+	}
+
 	//submit data to firebase
 	$scope.submitWeek = function(){
 		var user = firebase.auth().currentUser;
-		//if user hasn't marked the box, return false
-		function getValue(week){
-			if(week == 'undefined' || week == null){
-				return false;
-			}else{
-				return week;
-			}
-		}
 		//set firebase data with user's progress from checkboxes
 		firebase.database().ref('student/' + user.uid + '/week2/').set({
-			visualArts: getValue($scope.week2.visualArts),
-			myFolio: getValue($scope.week2.myFolio),
-			metroApp: getValue($scope.week2.metroApp),
-			debugMyFolio: getValue($scope.week2.debugMyFolio),
-			video: getValue($scope.week2.video),
-			quiz: getValue($scope.week2.quiz),
-			bonusGitHub: getValue($scope.week2.bonusGitHub),
-			bonusReading: getValue($scope.week2.bonusReading),
-			githubLink: getValue($scope.week2.githubLink)
-		})
+			beginnerProject: getValue($scope.chapter2.beginnerProject, false),
+			intermediateProject: getValue($scope.chapter2.intermediateProject, false),
+			advancedProject: getValue($scope.chapter2.advancedProject, false)
+		});
+
+		//update complete rate
+		firebase.database().ref('student/' + user.uid).update({
+			progress: $scope.completeRate
+		});
 	}
  
  }]);

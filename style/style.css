@@ -9,6 +9,9 @@ html {
   box-sizing: inherit;
   }
 
+a{
+  color: white !important;
+}
 .one, .two, .three{
   position:absolute;
   margin-top:-10px;

@@ -83,15 +83,19 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 	// 	})
 	// }
 
+
+
 	//return to homepage
 	$scope.exit = function(){
-		$scope.submitWeek();
+		//$scope.submitWeek();
 		$window.location.href = "/#/home"
 	}
 
  
  }])
 
+//quiz directive 
+//TODO: get real questions
 .directive('quiz', function(quizFactory, $window) {
 	return {
 		restrict: 'AE',
@@ -135,7 +139,7 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 							quiz: true 
 						})
 
-						$window.location.href="/#/chapter2";
+						$window.location.href="/#/chapter2.1";
 					}else{
 						scope.quizOver = true;	
 					}

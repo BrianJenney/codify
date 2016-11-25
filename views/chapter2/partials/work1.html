@@ -1,10 +1,19 @@
-<h1>Replicate Google Homepage from this link</h1>
+<section ng-controller="WeekTwoCtrl">
+<ng-include src="'views/shared/progressbar.html'"></ng-include>
+	<h1>Replicate Google Homepage from this link and send a compressed version to your mentor.</h1>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter2.googleReplica"value="" checked>
+	            <input type="checkbox" ng-model="chapter2.beginnerProject"value="" ng-change="adjustProgress(5, chapter2.beginnerProject)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
+	<div class="btn-toolbar">
+		<button ng-click="proceed('chapter2.2')" class="button is-ruby pull-right"ng-show="chapter2.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+	</div>
+	
+	<button ng-click="exit()" class="button is-ruby">Exit</button>
+</section>
+
