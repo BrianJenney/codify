@@ -21,7 +21,7 @@ angular.module('myApp.week2', ['ngRoute'])
 
 
 .controller('WeekTwoCtrl', ['$scope','$http','$timeout','$window','chapterService', function($scope,$http, $timeout, $window, chapterService) {
-	
+
 	//initialize week 1 obj
 	$scope.chapter2 = {};
 
@@ -106,6 +106,7 @@ angular.module('myApp.week2', ['ngRoute'])
 
 	//submit data to firebase
 	$scope.submitWeek = function(){
+		console.log($scope.completeRate)
 		var user = firebase.auth().currentUser;
 		//set firebase data with user's progress from checkboxes
 		firebase.database().ref('student/' + user.uid + '/week2/').set({
