@@ -22,7 +22,7 @@ angular.module('myApp.week2', ['ngRoute'])
 
 .controller('WeekTwoCtrl', ['$scope','$http','$timeout','$window','chapterService', function($scope,$http, $timeout, $window, chapterService) {
 
-	//initialize week 1 obj
+	//initialize chapter2 obj
 	$scope.chapter2 = {};
 
 	getData();
@@ -37,10 +37,11 @@ angular.module('myApp.week2', ['ngRoute'])
 			}
 		})
 	}
+	
 
 	//must always grab progress bar value
 	function getCompleteRate(user){
-	return firebase.database().ref('student/' + user.uid).once('value').then(function(snapshot){
+	firebase.database().ref('student/' + user.uid).once('value').then(function(snapshot){
 			$scope.$apply(function(){
 				$scope.completeRate = snapshot.val().progress;
 				})
@@ -54,14 +55,12 @@ angular.module('myApp.week2', ['ngRoute'])
 			$scope.completeRate += num;	
 		}else{
 			$scope.completeRate -= num;
-		}
-		
+		}	
 	}
 	
-	//get complete rate on every page
-	//may want to refactor into service
+	//get chapter object to populate page
 	function getUser(user){
-	return firebase.database().ref('student/' + user.uid + '/week2/').once('value').then(function(snapshot){
+	firebase.database().ref('student/' + user.uid + '/chapter2/').once('value').then(function(snapshot){
 			$scope.$apply(function(){
 				//timeout to give page time to finish
 				//digest cycle and reload the object for the 
@@ -78,7 +77,7 @@ angular.module('myApp.week2', ['ngRoute'])
 			})
 		})
 	}
-	
+
 	//function to go to next page
 	//dynamic instead of using hardcoded hrefs everywhere
 	$scope.proceed = function(page){
@@ -91,102 +90,80 @@ angular.module('myApp.week2', ['ngRoute'])
 	$scope.modalMe = function(newChapter){
 		$scope.nextChapter = newChapter;
 		//js for animation of badge
-  var badge = $('#badge'),
-    light = $('#light');
+		  var badge = $('#badge'),
+		    light = $('#light');
 
-    badge.hover(
-      function() {
-        if(!badge.data().active) {
-          badge.animate(
-          {
-            d: 180
-          }, 
-          {
-            duration: 300,
-            step: function( now ) {
-              badge.css ({
-                transform: "rotate(" + now + "deg)"
-              });
-            }
-          });
-        }
-      },
-      function() {
-        if(!badge.data().active) {
-          badge.animate(
-          {
-            d: 0
-          }, 
-          {
-            duration: 300,
-            step: function( now ) {
-              badge.css ({
-                transform: "rotate(" + now + "deg)"
-             });
-            }
-          });
-        }
-       }
-    );
+		    badge.hover(
+		      function() {
+		        if(!badge.data().active) {
+		          badge.animate(
+		          {
+		            d: 180
+		          }, 
+		          {
+		            duration: 300,
+		            step: function( now ) {
+		              badge.css ({
+		                transform: "rotate(" + now + "deg)"
+		              });
+		            }
+		          });
+		        }
+		      },
+		      function() {
+		        if(!badge.data().active) {
+		          badge.animate(
+		          {
+		            d: 0
+		          }, 
+		          {
+		            duration: 300,
+		            step: function( now ) {
+		              badge.css ({
+		                transform: "rotate(" + now + "deg)"
+		             });
+		            }
+		          });
+		        }
+		       }
+		    );
 
-    badge.click(function() {
-      if(!badge.data().active) {
-        badge.animate(
-        {
-          d: 360
-        }, 
-        {
-          duration: 300,
-          step: function( now ) {
-            badge.css ({
-              transform: "rotate(" + now + "deg)"
-            });
-          }
-        });
-        light.css({
-          fill: '#05E0B1'
-        });
-        badge.data('active', true);
-      }
-      else {
-        light.css({
-              fill: "#4A4A4A"
-            });
-        badge.data('active', false);
-      }
-    })
-		
-	}
-
-	//TODO: remove this function and use proceed instead
-	//return to homepage
-	$scope.exit = function(){
-		$scope.submitWeek();
-		$window.location.href = "/#/home"
-	}
-
-	//if user hasn't marked the box, return false
-	//pass in bool 'isLink' to return an empty string 
-	//instead of false value for an empty link
-	function getValue(week, isLink){
-		if(typeof week == 'undefined' && !isLink || week == null && !isLink){
-			return false;
-		}else if(week == 'undefined' && isLink || week == null && isLink){
-			return '';
-		}else{
-			return week;
+		    badge.click(function() {
+		      if(!badge.data().active) {
+		        badge.animate(
+		        {
+		          d: 360
+		        }, 
+		        {
+		          duration: 300,
+		          step: function( now ) {
+		            badge.css ({
+		              transform: "rotate(" + now + "deg)"
+		            });
+		          }
+		        });
+		        light.css({
+		          fill: '#05E0B1'
+		        });
+		        badge.data('active', true);
+		      }
+		      else {
+		        light.css({
+		              fill: "#4A4A4A"
+		            });
+		        badge.data('active', false);
+		      }
+	    	})
 		}
-	}
 
 	//submit data to firebase
 	$scope.submitWeek = function(){
-		console.log($scope.completeRate)
 		var user = firebase.auth().currentUser;
 		//set firebase data with user's progress from checkboxes
-		firebase.database().ref('student/' + user.uid + '/week2/').set({
-			beginnerProject: getValue($scope.chapter2.beginnerProject, false),
-			intermediateProject: getValue($scope.chapter2.intermediateProject, false),
-			advancedProject: getValue($scope.chapter2.advancedProject, false)
+		firebase.database().ref('student/' + user.uid + '/chapter2/').set({
+			beginnerProject: chapterService.getValue($scope.chapter2.beginnerProject, false),
+			intermediateProject: chapterService.getValue($scope.chapter2.intermediateProject, false),
+			advancedProject: chapterService.getValue($scope.chapter2.advancedProject, false)
 		});
 
 		//update complete rate

@@ -30,6 +30,19 @@ config(['$routeProvider', function($routeProvider) {
 
 .service('chapterService', function(){
 
+  //if user hasn't marked the box, return false
+  //pass in bool 'isLink' to return an empty string 
+  //instead of false value for an empty link
+  this.getValue = function(week, isLink){
+    if(typeof week == 'undefined' && !isLink || week == null && !isLink){
+      return false;
+    }else if(week == 'undefined' && isLink || week == null && isLink){
+      return '';
+    }else{
+      return week;
+    }
+  }
+
 })
 
 
