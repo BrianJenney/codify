@@ -1,8 +1,15 @@
 <section ng-controller="WeekOneCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
   <div class="container">
-      <h1 class="title">Go to Codecademy.com and complete the HTML & CSS Tutorial!</h1>
+  <div ng-show="!chapter1.quiz">
+  	<h1 class="title">Go to Codecademy.com and complete the HTML & CSS Tutorial!</h1>
       <quiz/>
+  </div>
+  <div ng-show="chapter1.quiz">
+  	<h1>You've completed this section!</h1>
+  	
+  </div>
+      
   </div>
 <button ng-click="exit()" class="button is-ruby">Exit</button>
 </section>

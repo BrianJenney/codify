@@ -19,7 +19,6 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 	function getData(){
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
-				console.log('hey')
 				getUser(user);
 				getCompleteRate(user);
 			}else{
@@ -38,8 +37,6 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 			})
 		}
 
-
-
 	//get user firebase data
 	function getUser(user){
 	return firebase.database().ref('student/' + user.uid + '/chapter1/').once('value').then(function(snapshot){
@@ -53,37 +50,6 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 			})
 		})
 	}
-	
-	// //submit data to firebase
-	// $scope.submitWeek = function(){
-	// 	var user = firebase.auth().currentUser;
-	// 	//if user hasn't marked the box, return false
-	// 	function getValue(week){
-	// 		if(week == 'undefined' || week == null){
-	// 			return false;
-	// 		}else{
-	// 			return week;
-	// 		}
-	// 	}
-	// 	//
-	// 	//OBJECT KEYS AND VALUES MUST BE NAMED THE SAME
-	// 	//TO BIND EASILY TO OBJECT IN FRONT END
-	// 	//
-
-	// 	//set firebase data with user's progress from checkboxes
-	// 	firebase.database().ref('student/' + user.uid + '/week1/').set({
-	// 		sendGoogleCode: getValue($scope.week1.sendGoogleCode),
-	// 		debugPico: getValue($scope.week1.debugPico),
-	// 		simpleReplica: getValue($scope.week1.simpleReplica),
-	// 		reading: getValue($scope.week1.reading),
-	// 		strictTheme : getValue($scope.week1.replicateStrictTheme),
-	// 		quiz: getValue($scope.week1.quiz),
-	// 		video: getValue($scope.week1.video),
-	// 		bonusHtml: getValue($scope.week1.bonusHtmlCss)
-	// 	})
-	// }
-
-
 
 	//return to homepage
 	$scope.exit = function(){
@@ -122,7 +88,6 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 					scope.answer = q.answer;
 					scope.answerMode = true;
 				} else {
-					console.log("working");
 					console.log(scope.score)
 					console.log(quizFactory.getLength())
 

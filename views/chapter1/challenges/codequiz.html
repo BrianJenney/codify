@@ -27,7 +27,7 @@
 		<h2>Score: {{score}}</h2>
 	</div>
 </div>
-
+{{completeRate}}
 <div class="intro" ng-show="!inProgress">
-	<button class="button is-blue-jeans" id="startQuiz" ng-click="start()">Start the Quiz</button>
+	<button class="button is-blue-jeans" id="startQuiz" ng-click="start()"><span ng-show="chapter1.quiz">Completed</span><span ng-show="!chapter1.quiz">Start the Quiz</span></button>
 </div>

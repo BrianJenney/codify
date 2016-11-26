@@ -119,6 +119,7 @@ app.get('/sendtext', function(req, res){
     });
 })
 
+//TODO: need to remove, unless Matt wants to use...
 //web service to send email to students on sign up
 app.get('/sendmail', function(req, res){
 	var transporter = nodemailer.createTransport({
@@ -126,8 +127,8 @@ app.get('/sendmail', function(req, res){
     auth:{
         user: 'brianjenney83@gmail.com',
         pass: 'freestyl1'
-    }
-});
+        }
+    });
     // setup e-mail data with unicode symbols
     var mailOptions = {
         from: '"Codify" <' + req.query.from + '>', // sender address

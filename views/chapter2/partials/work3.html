@@ -11,6 +11,28 @@
 		</div>
 	</div>
 
-	<button class="button is-ruby text-center"ng-show="chapter2.advancedProject"><a ng-click="proceed('chapter3.1')">You're DONE!</button><br>
+	<button ng-click="modalMe('Chapter 3')" class="button is-ruby text-center"ng-show="chapter2.advancedProject" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
 	<button ng-click="exit()" class="button is-ruby">Exit</button>
+
+	<!-- Modal -->
+<div id="successModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        <ng-include src="'views/shared/success.html'"></ng-include>
+        
+
+      <div class="modal-footer">
+      	<button ng-click="proceed('chapter3.1')" class="button is-blue-jeans pull-right" data-dismiss="modal">Continue</button>
+        <button class="button is-ruby pull-left" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </section>

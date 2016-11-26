@@ -79,9 +79,83 @@ angular.module('myApp.week2', ['ngRoute'])
 		})
 	}
 	
+	//function to go to next page
+	//dynamic instead of using hardcoded hrefs everywhere
 	$scope.proceed = function(page){
 		$scope.submitWeek();
 		$window.location.href = "/#/" + page; 
+	}
+
+	//dynamically set the name of the next chapter in success
+	//modal
+	$scope.modalMe = function(newChapter){
+		$scope.nextChapter = newChapter;
+		//js for animation of badge
+  var badge = $('#badge'),
+    light = $('#light');
+
+    badge.hover(
+      function() {
+        if(!badge.data().active) {
+          badge.animate(
+          {
+            d: 180
+          }, 
+          {
+            duration: 300,
+            step: function( now ) {
+              badge.css ({
+                transform: "rotate(" + now + "deg)"
+              });
+            }
+          });
+        }
+      },
+      function() {
+        if(!badge.data().active) {
+          badge.animate(
+          {
+            d: 0
+          }, 
+          {
+            duration: 300,
+            step: function( now ) {
+              badge.css ({
+                transform: "rotate(" + now + "deg)"
+             });
+            }
+          });
+        }
+       }
+    );
+
+    badge.click(function() {
+      if(!badge.data().active) {
+        badge.animate(
+        {
+          d: 360
+        }, 
+        {
+          duration: 300,
+          step: function( now ) {
+            badge.css ({
+              transform: "rotate(" + now + "deg)"
+            });
+          }
+        });
+        light.css({
+          fill: '#05E0B1'
+        });
+        badge.data('active', true);
+      }
+      else {
+        light.css({
+              fill: "#4A4A4A"
+            });
+        badge.data('active', false);
+      }
+    })
+		
 	}
 
 	//TODO: remove this function and use proceed instead
