@@ -43,6 +43,17 @@ config(['$routeProvider', function($routeProvider) {
     }
   }
 
+  //get chapter object to populate page
+  this.getUser = function(user, chapter){
+    return firebase.database().ref('student/' + user.uid + '/' + chapter +'/').once('value')
+  }
+
+
+  //must always grab progress bar value
+  this.getCompleteRate = function(user){
+    return firebase.database().ref('student/' + user.uid).once('value');
+  }
+
 })
 
 

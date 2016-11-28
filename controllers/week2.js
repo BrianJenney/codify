@@ -25,28 +25,36 @@ angular.module('myApp.week2', ['ngRoute'])
 	//initialize chapter2 obj
 	$scope.chapter2 = {};
 
-	getData();
-	//get user data	
+	//timeout function to give time
+	//for each page to run digest cycle
+	$timeout(function(){
+		getData();	
+	},250)
+	
+	//get user data	and call functions from 
+	//factory services to return 
+	//complete rate for the bar and the object for the current page
 	function getData(){
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
-				getUser(user);
-				getCompleteRate(user);
+				$scope.user = user;
+				chapterService.getUser($scope.user, 'chapter2').then(function(snapshot){
+					$scope.$apply(function(){
+						$scope.chapter2 = snapshot.val();
+					})
+				}).then(function(){
+					chapterService.getCompleteRate($scope.user).then(function(snapshot){
+						$scope.$apply(function(){
+							$scope.completeRate = snapshot.val().progress;
+						})
+					})
+				})	
 			}else{
 				console.log('fail')
 			}
 		})
 	}
 	
-
-	//must always grab progress bar value
-	function getCompleteRate(user){
-	firebase.database().ref('student/' + user.uid).once('value').then(function(snapshot){
-			$scope.$apply(function(){
-				$scope.completeRate = snapshot.val().progress;
-				})
-			})
-		}
 
 	//adjust progress bar on front end
 	$scope.adjustProgress = function(num, isChecked){
@@ -58,25 +66,6 @@ angular.module('myApp.week2', ['ngRoute'])
 		}	
 	}
 	
-	//get chapter object to populate page
-	function getUser(user){
-	firebase.database().ref('student/' + user.uid + '/chapter2/').once('value').then(function(snapshot){
-			$scope.$apply(function(){
-				//timeout to give page time to finish
-				//digest cycle and reload the object for the 
-				//page
-				$timeout(function(){
-					$scope.chapter2 = snapshot.val();
-					//reinitialize object if null
-					//will be null when first called
-					if($scope.chapter2 == null){
-						$scope.chapter2 = {};
-					}
-				},500)
-				
-			})
-		})
-	}
 
 	//function to go to next page
 	//dynamic instead of using hardcoded hrefs everywhere

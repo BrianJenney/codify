@@ -9,6 +9,13 @@ html {
   box-sizing: inherit;
   }
 
+#sidebar-button {
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 #achievement-container {
   height: 300px;
   width: 500px;
@@ -979,7 +986,7 @@ body {
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    /*color: #f1f1f1;*/
 }
 
 .sidenav .closebtn {
