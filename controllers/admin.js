@@ -64,9 +64,9 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 			for(x=0; x<$scope.studentArray.length; x++){
 
 				//get percentage of week for each student
-				$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].week1)
+				$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].chapter1)
 					
-				$scope.studentArray[x].week2CompleteRate = getCompleteRate($scope.studentArray[x].week2)
+				$scope.studentArray[x].week2CompleteRate = getCompleteRate($scope.studentArray[x].chapter2)
 
 				$scope.studentArray[x].week3CompleteRate = getCompleteRate($scope.studentArray[x].week3)
 				

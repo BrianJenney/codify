@@ -16,6 +16,10 @@ html {
     left: 0;
 }
 
+h2{
+  color: #F97F85;
+}
+
 #achievement-container {
   height: 300px;
   width: 500px;
@@ -564,7 +568,7 @@ body {
 h2 {
     font-size: 3vw;
     text-align: center;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-family: sans-serif
 }
 
@@ -960,7 +964,7 @@ button:active {
 
 body {
    /* font-family: "Lato", sans-serif; */
-    transition: background-color .5s;
+    /*transition: background-color .5s;*/
 }
 
 .sidenav {

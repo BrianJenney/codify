@@ -53,8 +53,8 @@
 			<tr ng-repeat="s in (filteredStudents = studentArray | filter: search.mentor.trim())">
 				<td  data-target="#myModal" data-toggle="modal"><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
-				<td  data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week1)">{{s.week1CompleteRate | percentage:0}}</td>
-				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week2)">{{s.week2CompleteRate | percentage:0}}</td>
+				<td  data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.chapter1)">{{s.week1CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.chapter2)">{{s.week2CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week3)">{{s.week3CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week4)">{{s.week4CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week5)">{{s.week5CompleteRate | percentage:0}}</td>
