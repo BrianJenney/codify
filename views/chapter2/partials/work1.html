@@ -1,19 +1,28 @@
 <section ng-controller="WeekTwoCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Google Homepage from this link and send a compressed version to your mentor.</h2>
-
-	<div class="row text-center">
-		<div class="checkbox">
-	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter2.beginnerProject"value="" ng-change="adjustProgress(5, chapter2.beginnerProject)" checked>
-	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-	        </label>
+<div class="row">
+	<div class="col-md-2">
+		<ng-include src="'views/shared/nav.html'"></ng-include>
+	</div>
+	<div class="col-md-10">
 		</div>
-	</div>
-	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter2.2')" class="button is-ruby pull-right"ng-show="chapter2.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
-	</div>
+			<h2>Replicate Google Homepage from this <a href="">link</a> and send a compressed version to your mentor.</h2>
+
+			<div class="row text-center">
+				<div class="checkbox">
+			        <label style="font-size: 2.5em">
+			            <input type="checkbox" ng-model="chapter2.beginnerProject"value="" ng-change="adjustProgress(5, chapter2.beginnerProject)" checked>
+			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+			        </label>
+				</div>
+			</div>
+			<div class="btn-toolbar">
+				<button ng-click="proceed('chapter2.2')" class="button is-ruby pull-right"ng-show="chapter2.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+			</div>
+			
+			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
+		</div>
 	
-	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
+
 </section>
 

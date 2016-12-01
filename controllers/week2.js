@@ -19,7 +19,6 @@ angular.module('myApp.week2', ['ngRoute'])
   })
 }])
 
-
 .controller('WeekTwoCtrl', ['$scope','$http','$timeout','$window','chapterService', function($scope,$http, $timeout, $window, chapterService) {
 
 	//initialize chapter2 obj
@@ -55,7 +54,6 @@ angular.module('myApp.week2', ['ngRoute'])
 		})
 	}
 	
-
 	//adjust progress bar on front end
 	$scope.adjustProgress = function(num, isChecked){
 		//if checked, increase, if not, decrease
@@ -66,7 +64,6 @@ angular.module('myApp.week2', ['ngRoute'])
 		}	
 	}
 	
-
 	//function to go to next page
 	//dynamic instead of using hardcoded hrefs everywhere
 	$scope.proceed = function(page){
