@@ -28,8 +28,8 @@ $scope.loginUser = function(){
 	if(!$scope.isError){
 		console.log("logged in");
 		$window.location.href = "/#/home";
-	}
-});
+		}
+	});
 
 }
 
