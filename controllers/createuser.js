@@ -98,7 +98,8 @@ $scope.createUser = function(){
 			mentorEmail: $scope.mentorEmail,
 			phone: $scope.phone,
 			date: $scope.date,
-			progress: 0
+			progress: 0,
+			currentweek: 0
 		})
 
 		//redirect to login

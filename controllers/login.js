@@ -7,7 +7,7 @@ angular.module('myApp.login', ['ngRoute'])
   });
 }])
 
-.controller('LoginCtrl',['$scope','$window','$timeout',function($scope,$window,$timeout) {
+.controller('LoginCtrl',['$scope','$window','$timeout','chapterService',function($scope,$window,$timeout, chapterService) {
  
 
 $scope.isError = false;
@@ -26,8 +26,19 @@ $scope.loginUser = function(){
 
 }).then(function(){
 	if(!$scope.isError){
-		console.log("logged in");
-		$window.location.href = "/#/home";
+		firebase.auth().onAuthStateChanged(function(user){
+			if(user){
+				//take user to the last chapter they completed
+				chapterService.getCompleteRate(user).then(function(snapshot){
+					var student = snapshot.val();
+					if(typeof student.currentweek !== 'undefined' && student.currentweek > 0){
+						$window.location.href = "/#/chapter" + student.currentweek;
+					}else{
+						$window.location.href = "/#/home";
+					}
+				})
+			}
+		})
 		}
 	});
 

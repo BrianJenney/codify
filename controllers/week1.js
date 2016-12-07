@@ -95,7 +95,8 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 					if((scope.score/quizFactory.getLength())>.7){
 						var user = firebase.auth().currentUser;
 						firebase.database().ref('student/' + user.uid).update({
-						progress: 10
+						progress: 10,
+						currentweek: 2.1
 						});
 
 						// //set firebase data with user's progress from checkboxes
@@ -179,17 +180,3 @@ angular.module('myApp.week1', ['ngRoute','ui.bootstrap'])
 		}
 	};
 });
-
-
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-  //  document.getElementById("main").style.marginLeft = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  //  document.getElementById("main").style.marginLeft= "0";
-    document.body.style.backgroundColor = "white";
-}
