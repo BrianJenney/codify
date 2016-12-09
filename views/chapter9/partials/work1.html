@@ -1,0 +1,28 @@
+<section ng-controller="WeekThreeCtrl">
+<ng-include src="'views/shared/progressbar.html'"></ng-include>
+<div class="row">
+	<div class="col-md-2">
+		<ng-include src="'views/shared/nav.html'"></ng-include>
+	</div>
+	<div class="col-md-10">
+		</div>
+			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+
+			<div class="row text-center">
+				<div class="checkbox">
+			        <label style="font-size: 2.5em">
+			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+			        </label>
+				</div>
+			</div>
+			<div class="btn-toolbar">
+				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+			</div>
+			
+			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
+		</div>
+	
+
+</section>
+

@@ -155,7 +155,7 @@ angular.module('myApp.week3', ['ngRoute'])
 		//update complete rate
 		firebase.database().ref('student/' + user.uid).update({
 			progress: $scope.completeRate,
-			currentweek: 3.1
+			currentweek: 4.1
 		});
 	}
  
