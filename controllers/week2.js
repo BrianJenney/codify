@@ -44,6 +44,8 @@ angular.module('myApp.week2', ['ngRoute'])
 				}).then(function(){
 					chapterService.getCompleteRate($scope.user).then(function(snapshot){
 						$scope.$apply(function(){
+							$scope.userInfo = snapshot.val();
+							console.log($scope.userInfo);
 							$scope.completeRate = snapshot.val().progress;
 						})
 					})
@@ -154,9 +156,27 @@ angular.module('myApp.week2', ['ngRoute'])
 
 		//update complete rate
 		firebase.database().ref('student/' + user.uid).update({
-			progress: $scope.completeRate,
-			currentweek: 3.1
+			progress: $scope.completeRate
 		});
+	}
+
+	$scope.finishChapter = function(nextChapter){
+		var user = firebase.auth().currentUser;
+
+		//make sure not to set them back to a previous chapter
+		//by using the highest last chapter they completed
+		//as their current week
+		nextChapter = Number(nextChapter);
+
+		var nextWeek = nextChapter > $scope.userInfo.currentweek ? nextChapter: $scope.userInfo.currentweek;
+		//update complete rate and set next chapter as 
+		//starting point when they login
+
+		firebase.database().ref('student/' + user.uid).update({	
+			currentweek: nextWeek
+		});
+
+		$window.location.href = "/#/chapter3.1";
 	}
  
  }]);
