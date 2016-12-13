@@ -5,17 +5,17 @@ angular.module('myApp.week4', ['ngRoute'])
 
   .when('/chapter4.1', {
     templateUrl: 'views/chapter4/partials/work1.html',
-    controller: 'WeekThreeCtrl'
+    controller: 'WeekFourCtrl'
   })
 
   .when('/chapter4.2', {
     templateUrl: 'views/chapter4/partials/work2.html',
-    controller: 'WeekThreeCtrl'
+    controller: 'WeekFourCtrl'
   })
 
   .when('/chapter4.3', {
     templateUrl: 'views/chapter4/partials/work3.html',
-    controller: 'WeekThreeCtrl'
+    controller: 'WeekFourCtrl'
   })
 }])
 
@@ -147,9 +147,9 @@ angular.module('myApp.week4', ['ngRoute'])
 		var user = firebase.auth().currentUser;
 		//set firebase data with user's progress from checkboxes
 		firebase.database().ref('student/' + user.uid + '/chapter4/').set({
-			beginnerProject: chapterService.getValue($scope.chapter3.beginnerProject, false),
-			intermediateProject: chapterService.getValue($scope.chapter3.intermediateProject, false),
-			advancedProject: chapterService.getValue($scope.chapter3.advancedProject, false)
+			beginnerProject: chapterService.getValue($scope.chapter4.beginnerProject, false),
+			intermediateProject: chapterService.getValue($scope.chapter4.intermediateProject, false),
+			advancedProject: chapterService.getValue($scope.chapter4.advancedProject, false)
 		});
 
 		//update complete rate
@@ -176,7 +176,7 @@ angular.module('myApp.week4', ['ngRoute'])
 			currentweek: nextWeek
 		});
 
-		$window.location.href = "/#/chapter4.1"; 
+		$window.location.href = "/#/chapter5.1"; 
 	}
  
  }]);

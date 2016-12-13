@@ -45,7 +45,6 @@ angular.module('myApp.week3', ['ngRoute'])
 					chapterService.getCompleteRate($scope.user).then(function(snapshot){
 						$scope.$apply(function(){
 							$scope.userInfo = snapshot.val();
-							console.log($scope.userInfo);
 							$scope.completeRate = snapshot.val().progress;
 						})
 					})

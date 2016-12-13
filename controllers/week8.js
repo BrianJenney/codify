@@ -1,91 +1,182 @@
 angular.module('myApp.week8', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/week8', {
-    templateUrl: 'views/week8.html',
-    controller: 'Week8Ctrl'
-  });
+  $routeProvider
+
+  .when('/chapter8.1', {
+    templateUrl: 'views/chapter8/partials/work1.html',
+    controller: 'WeekEightCtrl'
+  })
+
+  .when('/chapter8.2', {
+    templateUrl: 'views/chapter8/partials/work2.html',
+    controller: 'WeekEightCtrl'
+  })
+
+  .when('/chapter8.3', {
+    templateUrl: 'views/chapter8/partials/work3.html',
+    controller: 'WeekEightCtrl'
+  })
 }])
 
+.controller('WeekEightCtrl', ['$scope','$http','$timeout','$window','chapterService', function($scope,$http, $timeout, $window, chapterService) {
 
-.controller('Week8Ctrl', ['$scope','$http','$timeout','$window', function($scope,$http, $timeout, $window) {
+	//initialize chapter2 obj
+	$scope.chapter8 = {};
 
-	//initialize week 1 obj
-	$scope.week8 = {};
-
-	getData();
-	//get user data	
+	//timeout function to give time
+	//for each page to run digest cycle
+	$timeout(function(){
+		getData();	
+	},250)
+	
+	//get user data	and call functions from 
+	//factory services to return 
+	//complete rate for the bar and the object for the current page
 	function getData(){
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
-				console.log('hey')
-				getUser(user);
-
+				$scope.user = user;
+				chapterService.getUser($scope.user, 'chapter8').then(function(snapshot){
+					$scope.$apply(function(){
+						$scope.chapter8 = snapshot.val();
+					})
+				}).then(function(){
+					chapterService.getCompleteRate($scope.user).then(function(snapshot){
+						$scope.$apply(function(){
+							$scope.completeRate = snapshot.val().progress;
+						})
+					})
+				})	
 			}else{
 				console.log('fail')
 			}
 		})
 	}
-
-	function getUser(user){
-	return firebase.database().ref('student/' + user.uid + '/week8/').once('value').then(function(snapshot){
-			$scope.$apply(function(){
-				$scope.week8 = snapshot.val();
-				console.log($scope.week8);
-				//reinitialize object if null
-				//will be null when first called
-				if($scope.week8 == null){
-					$scope.week8 = {};
-				}
-			})
-		})
+	
+	//adjust progress bar on front end
+	$scope.adjustProgress = function(num, isChecked){
+		//if checked, increase, if not, decrease
+		if(isChecked){
+			$scope.completeRate += num;	
+		}else{
+			$scope.completeRate -= num;
+		}	
 	}
 	
-	var clicks = 0;
-	//show and hide functions for hidden content
-	$(document).on('click','.help', function(){
-		if(clicks == 0){
-			$(this).parent().parent().next().css({'display':'block','transition':'2s'});			
-			clicks++;
-		}else{
-			$(this).parent().parent().next().css({'display':'none'})
-			clicks--;
-		}
-	})
-	$(document).on('click','.closeme', function(){
-		$(this).parent().css({'display':'none'})
-	})
-	//return to homepage
-	$scope.exit = function(){
+	//function to go to next page
+	//dynamic instead of using hardcoded hrefs everywhere
+	$scope.proceed = function(page){
 		$scope.submitWeek();
-		$window.location.href = "/#/home"
+		$window.location.href = "/#/" + page; 
 	}
+
+	//dynamically set the name of the next chapter in success
+	//modal
+	$scope.modalMe = function(newChapter){
+		$scope.nextChapter = newChapter;
+		//js for animation of badge
+		  var badge = $('#badge'),
+		    light = $('#light');
+
+		    badge.hover(
+		      function() {
+		        if(!badge.data().active) {
+		          badge.animate(
+		          {
+		            d: 180
+		          }, 
+		          {
+		            duration: 300,
+		            step: function( now ) {
+		              badge.css ({
+		                transform: "rotate(" + now + "deg)"
+		              });
+		            }
+		          });
+		        }
+		      },
+		      function() {
+		        if(!badge.data().active) {
+		          badge.animate(
+		          {
+		            d: 0
+		          }, 
+		          {
+		            duration: 300,
+		            step: function( now ) {
+		              badge.css ({
+		                transform: "rotate(" + now + "deg)"
+		             });
+		            }
+		          });
+		        }
+		       }
+		    );
+
+		    badge.click(function() {
+		      if(!badge.data().active) {
+		        badge.animate(
+		        {
+		          d: 360
+		        }, 
+		        {
+		          duration: 300,
+		          step: function( now ) {
+		            badge.css ({
+		              transform: "rotate(" + now + "deg)"
+		            });
+		          }
+		        });
+		        light.css({
+		          fill: '#05E0B1'
+		        });
+		        badge.data('active', true);
+		      }
+		      else {
+		        light.css({
+		              fill: "#4A4A4A"
+		            });
+		        badge.data('active', false);
+		      }
+	    	})
+		}
+
 	//submit data to firebase
 	$scope.submitWeek = function(){
 		var user = firebase.auth().currentUser;
-		//if user hasn't marked the box, return false
-		function getValue(week){
-			if(week == 'undefined' || week == null){
-				return false;
-			}else{
-				return week;
-			}
-		}
 		//set firebase data with user's progress from checkboxes
-		firebase.database().ref('student/' + user.uid + '/week/').set({
-			sendGoogleCode: getValue($scope.week8.sendGoogleCode),
-			debugPico: getValue($scope.week8.debugPico),
-			simpleReplica: getValue($scope.week8.simpleReplica),
-			reading: getValue($scope.week8.reading),
-			quiz: getValue($scope.week8.quiz)
-		})
+		firebase.database().ref('student/' + user.uid + '/chapter8/').set({
+			beginnerProject: chapterService.getValue($scope.chapter8.beginnerProject, false),
+			intermediateProject: chapterService.getValue($scope.chapter8.intermediateProject, false),
+			advancedProject: chapterService.getValue($scope.chapter8.advancedProject, false)
+		});
+
+		//update complete rate
+		firebase.database().ref('student/' + user.uid).update({
+			progress: $scope.completeRate
+		});
 	}
 
+	$scope.finishChapter = function(nextChapter){
+		var user = firebase.auth().currentUser;
 
+		//make sure not to set them back to a previous chapter
+		//by using the highest last chapter they completed
+		//as their current week
+		nextChapter = Number(nextChapter);
 
+		var nextWeek = nextChapter > $scope.userInfo.currentweek ? nextChapter: $scope.userInfo.currentweek;
+		
+		console.log(nextWeek)
 
+		//update complete rate and set next chapter as 
+		//starting point when they login
+		firebase.database().ref('student/' + user.uid).update({	
+			currentweek: nextWeek
+		});
 
-
-	/////////////
+		$window.location.href = "/#/chapter9.1"; 
+	}
  
  }]);

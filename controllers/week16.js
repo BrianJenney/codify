@@ -1,28 +1,28 @@
-angular.module('myApp.week10', ['ngRoute'])
+angular.module('myApp.week16', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
 
-  .when('/chapter10.1', {
-    templateUrl: 'views/chapter10/partials/work1.html',
-    controller: 'WeekTenCtrl'
+  .when('/chapter16.1', {
+    templateUrl: 'views/chapter16/partials/work1.html',
+    controller: 'WeekSixteenCtrl'
   })
 
-  .when('/chapter10.2', {
-    templateUrl: 'views/chapter10/partials/work2.html',
-    controller: 'WeekTenCtrl'
+  .when('/chapter16.2', {
+    templateUrl: 'views/chapter16/partials/work2.html',
+    controller: 'WeekSixteenCtrl'
   })
 
-  .when('/chapter10.3', {
-    templateUrl: 'views/chapter10/partials/work3.html',
-    controller: 'WeekTenCtrl'
+  .when('/chapter16.3', {
+    templateUrl: 'views/chapter16/partials/work3.html',
+    controller: 'WeekSixteenCtrl'
   })
 }])
 
-.controller('WeekTenCtrl', ['$scope','$http','$timeout','$window','chapterService', function($scope,$http, $timeout, $window, chapterService) {
+.controller('WeekSixteenCtrl', ['$scope','$http','$timeout','$window','chapterService', function($scope,$http, $timeout, $window, chapterService) {
 
-	//initialize chapter10 obj
-	$scope.chapter10 = {};
+	//initialize chapter11 obj
+	$scope.chapter16 = {};
 
 	//timeout function to give time
 	//for each page to run digest cycle
@@ -37,9 +37,9 @@ angular.module('myApp.week10', ['ngRoute'])
 		firebase.auth().onAuthStateChanged(function(user){
 			if(user){
 				$scope.user = user;
-				chapterService.getUser($scope.user, 'chapter10').then(function(snapshot){
+				chapterService.getUser($scope.user, 'chapter16').then(function(snapshot){
 					$scope.$apply(function(){
-						$scope.chapter10 = snapshot.val();
+						$scope.chapter16 = snapshot.val();
 					})
 				}).then(function(){
 					chapterService.getCompleteRate($scope.user).then(function(snapshot){
@@ -146,10 +146,10 @@ angular.module('myApp.week10', ['ngRoute'])
 	$scope.submitWeek = function(){
 		var user = firebase.auth().currentUser;
 		//set firebase data with user's progress from checkboxes
-		firebase.database().ref('student/' + user.uid + '/chapter10/').set({
-			beginnerProject: chapterService.getValue($scope.chapter10.beginnerProject, false),
-			intermediateProject: chapterService.getValue($scope.chapter10.intermediateProject, false),
-			advancedProject: chapterService.getValue($scope.chapter10.advancedProject, false)
+		firebase.database().ref('student/' + user.uid + '/chapter16/').set({
+			beginnerProject: chapterService.getValue($scope.chapter16.beginnerProject, false),
+			intermediateProject: chapterService.getValue($scope.chapter16.intermediateProject, false),
+			advancedProject: chapterService.getValue($scope.chapter16.advancedProject, false)
 		});
 
 		//update complete rate
@@ -176,7 +176,7 @@ angular.module('myApp.week10', ['ngRoute'])
 			currentweek: nextWeek
 		});
 
-		$window.location.href = "/#/chapter11.1"; 
+		$window.location.href = "/#/chapter17.1"; 
 	}
  
  }]);

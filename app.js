@@ -22,6 +22,9 @@ angular.module('myApp', [
   'myApp.week10',
   'myApp.week11',
   'myApp.week12',
+  'myApp.week14',
+  'myApp.week15',
+  'myApp.week16',
   'myApp.video'
 ]).
 config(['$routeProvider', function($routeProvider) {
