@@ -38,6 +38,7 @@
 			<th>Week 3</th>
 			<th>Week 4</th>
 			<th>Week 5</th>
+			<th>Week 6</th>
 			<th>Week 7</th>
 			<th>Week 8</th>
 			<th>Week 9</th>
@@ -58,17 +59,18 @@
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week3)">{{s.week3CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week4)">{{s.week4CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week5)">{{s.week5CompleteRate | percentage:0}}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week6)">{{s.week6CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week7)">{{s.week7CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week8)">{{s.week8CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week9)">{{s.week9CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week10)">{{s.week10CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week11)">{{s.week11CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week12)">{{s.week8CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week13)">{{s.week13CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week14)">{{s.week14CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week15)">{{s.week15CompleteRate | percentage:0}}</td>
+				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.week16)">{{s.week16CompleteRate | percentage:0}}</td>
+				<td><button ng-click="hiringInfo(s)" data-target="#hiredModal" data-toggle="modal" class="btn btn-danger btn-xs">HIRED!</button></td>
 			</tr>
 		</tbody>
 	</table>
@@ -77,110 +79,34 @@
 		<button ng-click="exit()" class="button is-ruby">Exit</button>
 	</div>
 	
-<!-- MODAL -->
+<!-- INDIVIDUAL STUDENT CONTACT MODAL -->
 
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <!-- Speech Bubble icon by Icons8 -->
-<img class="icon icons8-Speech-Bubble" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABfUlEQVRoQ+1ZvU4CQRCeSQzBjkfQNzB2UGljslY8AhUkNFrZKq2VlQlnc74ElHR3ncE3wCfQSqLNmE00UXILzu3AzSVz9ezM97dbzCHU/MOa4wcjULWD5oBaB3pHs1Zjf3mNgF1AOKgEKMGCENIkc6PQ/GCEBu3JHSBeVAJ8ZSgBjJLM3RRhCRLodyavCNjSQAAIFuPcHbIIDDpTUgH+G8Q4c4VihyNkBGT9Mwdk9eR3i3ZgeHvMnxpx4v7q6c9pIxAhpsjRaAdEUEQ0MQJ2iZnxEX+FmPPFy+0OiEvKbBjtQOwlXs00Ez8YAa5i0vXRDkgD4vYzAlzFpOvNAWlFOf2I6CXJzwuXa7XYSpRabGnYC3nlAdGvFgu3ct7FUg74xoR73YfsbM6JwjZqyxB4/nhvnqTz07dtAOL25BJQBZ4bIXXg/02ACB4/l81LLbH5HbONEfLgk9z1uNncVf1aAtrBr41Qvz1NNSv/47D9pdxV1kNzzAFzIFKB2kfoC/id1DEg3r2pAAAAAElFTkSuQmCC" width="48" height="48">
-      </div>
-      <div class="modal-body">
-        
-      
-	      <textarea ng-model="message" class="form-control">
-	      	
-	      </textarea>
-      </div>
-      <div class="modal-footer">
-      	<div class="btn-toolbar">
-      		<!-- Text button -->
-      		<button ng-disabled="disableButton"class="button is-blue-jeans" ng-click="sendText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
-      		<!-- Email button -->
-      		<button class="button is-blue-jeans" ng-click="sendMail(message)"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
-      		<!-- Close -->
-      		<button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-
-      	</div>
-      	
-      </div>
-    </div>
-
-  </div>
+  <ng-include src="'views/modals/studentcontact.html'"></ng-include>
 </div>
 
 <!-- MASS CONTACT EMAIL OR SMS -->
 
 <div id="contactModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <!-- Speech Bubble icon by Icons8 -->
-<img class="icon icons8-Speech-Bubble" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABfUlEQVRoQ+1ZvU4CQRCeSQzBjkfQNzB2UGljslY8AhUkNFrZKq2VlQlnc74ElHR3ncE3wCfQSqLNmE00UXILzu3AzSVz9ezM97dbzCHU/MOa4wcjULWD5oBaB3pHs1Zjf3mNgF1AOKgEKMGCENIkc6PQ/GCEBu3JHSBeVAJ8ZSgBjJLM3RRhCRLodyavCNjSQAAIFuPcHbIIDDpTUgH+G8Q4c4VihyNkBGT9Mwdk9eR3i3ZgeHvMnxpx4v7q6c9pIxAhpsjRaAdEUEQ0MQJ2iZnxEX+FmPPFy+0OiEvKbBjtQOwlXs00Ez8YAa5i0vXRDkgD4vYzAlzFpOvNAWlFOf2I6CXJzwuXa7XYSpRabGnYC3nlAdGvFgu3ct7FUg74xoR73YfsbM6JwjZqyxB4/nhvnqTz07dtAOL25BJQBZ4bIXXg/02ACB4/l81LLbH5HbONEfLgk9z1uNncVf1aAtrBr41Qvz1NNSv/47D9pdxV1kNzzAFzIFKB2kfoC/id1DEg3r2pAAAAAElFTkSuQmCC" width="48" height="48">
-      </div>
-      <div class="modal-body">
-        
-      
-	      <textarea ng-model="message" class="form-control">
-	      	
-	      </textarea>
-      </div>
-      <div class="modal-footer">
-      	<div class="btn-toolbar">
-      		<!-- Text button -->
-      		<button ng-disabled="disableButton"class="button is-blue-jeans" ng-click="sendClassText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
-      		<!-- Email button -->
-      		<button class="button is-blue-jeans" ng-click="sendClassEmail(message)"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
-      		<!-- Close -->
-      		<button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-
-      	</div>
-      	
-      </div>
-    </div>
-
-  </div>
+  <ng-include src="'views/modals/classcontact.html'"></ng-include>
 </div>
 
 
 <!-- WEEK INFO MODAL -->
 
 <div id="weekModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Week Info</h4>
-      </div>
-      <div class="modal-body">
-        <div ng-repeat="(key, value) in weekDetails">
-        <p ng-hide="value.indexOf('https')>=0">{{key | uppercase}} : {{value | convertbool}}</p>
-        	<p ng-show="value.indexOf('https')>=0">{{key | uppercase}} : <a ng-href="{{value | convertbool}}" target="_target">{{value | convertbool}}</a></p>
-        </div>
-      
-	     
-      	
-      </div>
-    </div>
+	<ng-include src="'views/modals/weekinfo.html'"></ng-include>
+</div>
 
-  </div>
+<!-- STUDENT HIRED INFO MODAL -->
+
+<div id="hiredModal" class="modal fade" role="dialog">
+	<ng-include src="'views/modals/hired.html'"></ng-include>
 </div>
-</div>
-</div>
+
 <!-- 	IF USER IS NOT AUTHORIZED -->
 <div ng-hide="isAdmin">
-	<header>
-		<nav>
-			<h1>SORRY... You are not authorized to view this page <span><img class="icon icons8-Icons8-Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACTklEQVRoQ+1ZvUvDQBR/pw06OAiCTgoi6GoRrpufIDoIgnRSUP+CtmMnHRTd1MlRnRUtOFgni6DQK9KuCuI/oKCCUmjxycUqacjHxbu2iJfxLu+939eFkBD44xf54/hBE7A7mM/n28vlcgwRRwFgsLJfIIRkQqHQTjgcflbpulIHGGNLALAFAO0uIDn4BKV0XxUJZQQq4PcEgS2rIqGEAI9NqVR68FDezuvZMIxeHqdsNrtICIlb44aI25FI5EBEjEAEGGMxAOAx4dnmcSggIo9DLyFkRWSg5Z5tALCeE3t5wTCMMb8zI0SgovCFRaWAWH99e4FSGvaqFiLAGMs3APw3bs/z4ksgl8vFEZE/WRp1ebrgS6DB6puiUUpdcbpu4NkMNkpyp7lk+tQRqyZQL5e0A/VS2m2OdkA7IKmAjpBdwJu7Ipxcv8F7EWF+vA2G+lurbpHdt89T7kBi9xGeXj/MOT1dzbC21FE1U3a/rgS6O5thfdmdwG/2a06AR+T46itCCxPOEZLZrzkByYdK4HLlZyAwAskCTUBSQOly7YC0hJINtAOSAkqX/z8HnCQbHugzv1Rc3t5XfQxwW/eSXVUv3+9CVhCqhvKeqnoFIpCMTpkObBymq+rc1r0cUNVLE+AqawcsWQsqxv+JUHJuchaamk4Q8GXz8PznJ57buucBVthLyIFkdCoDACMmKISDjaM0/83Es++47vP0UdaLzxEmgICDBEmqpVyMr6Yy5r9eTsBp3Y+Aql7CBKRfZGrYQMiBGs6Xbq0JSEso2eATx4PSQJvDc+MAAAAASUVORK5CYII=" width="48" height="48"></span></h1>
-
-		</nav>
-	</header>
-	<p>If you feel this error is an error itself... contact Brian at brianjenney83@gmail.com. Thanks!</p>
+	<ng-include src="'views/shared/unauthorized.html'"></ng-include>
 </div>
+
 </section>

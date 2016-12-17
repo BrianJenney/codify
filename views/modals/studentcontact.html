@@ -1,0 +1,30 @@
+<div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- Speech Bubble icon by Icons8 -->
+<img class="icon icons8-Speech-Bubble" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABfUlEQVRoQ+1ZvU4CQRCeSQzBjkfQNzB2UGljslY8AhUkNFrZKq2VlQlnc74ElHR3ncE3wCfQSqLNmE00UXILzu3AzSVz9ezM97dbzCHU/MOa4wcjULWD5oBaB3pHs1Zjf3mNgF1AOKgEKMGCENIkc6PQ/GCEBu3JHSBeVAJ8ZSgBjJLM3RRhCRLodyavCNjSQAAIFuPcHbIIDDpTUgH+G8Q4c4VihyNkBGT9Mwdk9eR3i3ZgeHvMnxpx4v7q6c9pIxAhpsjRaAdEUEQ0MQJ2iZnxEX+FmPPFy+0OiEvKbBjtQOwlXs00Ez8YAa5i0vXRDkgD4vYzAlzFpOvNAWlFOf2I6CXJzwuXa7XYSpRabGnYC3nlAdGvFgu3ct7FUg74xoR73YfsbM6JwjZqyxB4/nhvnqTz07dtAOL25BJQBZ4bIXXg/02ACB4/l81LLbH5HbONEfLgk9z1uNncVf1aAtrBr41Qvz1NNSv/47D9pdxV1kNzzAFzIFKB2kfoC/id1DEg3r2pAAAAAElFTkSuQmCC" width="48" height="48">
+      </div>
+      <div class="modal-body">
+        
+      
+	      <textarea ng-model="message" class="form-control">
+	      	
+	      </textarea>
+      </div>
+      <div class="modal-footer">
+      	<div class="btn-toolbar">
+      		<!-- Text button -->
+      		<button ng-disabled="disableButton"class="button is-blue-jeans" ng-click="sendText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
+      		<!-- Email button -->
+      		<button class="button is-blue-jeans" ng-click="sendMail(message)"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
+      		<!-- Close -->
+      		<button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+      	</div>
+      	
+      </div>
+    </div>
+
+  </div>

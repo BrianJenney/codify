@@ -12,7 +12,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	//get current user to determine if admin
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
-	    console.log(user.email)
+	    //console.log(user.email)
 	  } else {
 	    console.log("nope")
 	  }
@@ -23,8 +23,8 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	  	}else{
 	  		$scope.isAdmin = false;
   		}
-  		console.log(user.email)
-	  	console.log($scope.isAdmin);
+  		// console.log(user.email)
+	  	// console.log($scope.isAdmin);
 	  })
 	})
 
@@ -32,12 +32,16 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	$scope.search = {};
 	//initialize array for dropdown of mentors
 	$scope.mentors = ['Isaac','Brian','Chris','Phillip']
+	//initialize array to match student data with their id
+	//the student array does not include id and was made before this feature
+	//we'll need this to get their info to update the hiring modal
+	$scope.studentID = [];
 	//initialize array to store student object
 	$scope.studentArray = [];
 	//retrieve firebase data for students
 	firebase.database().ref('student/').once('value').then(function(snapshot){
-			//console.log(snapshot.val())
 			$scope.students = snapshot.val();
+			//console.log($scope.students)
 			//get object from id key of student
 			angular.forEach($scope.students, function(value, key){
 			$scope.student = value;
@@ -64,28 +68,34 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 			for(x=0; x<$scope.studentArray.length; x++){
 
 				//get percentage of week for each student
-				$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].chapter1)
-					
+				$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].chapter1)	
 				$scope.studentArray[x].week2CompleteRate = getCompleteRate($scope.studentArray[x].chapter2)
-
 				$scope.studentArray[x].week3CompleteRate = getCompleteRate($scope.studentArray[x].week3)
-				
 				$scope.studentArray[x].week4CompleteRate = getCompleteRate($scope.studentArray[x].week4)
-
-				$scope.studentArray[x].week5CompleteRate = getCompleteRate($scope.studentArray[x].week5)	
+				$scope.studentArray[x].week5CompleteRate = getCompleteRate($scope.studentArray[x].week5)
+				$scope.studentArray[x].week6CompleteRate = getCompleteRate($scope.studentArray[x].chapter6)
+				$scope.studentArray[x].week7CompleteRate = getCompleteRate($scope.studentArray[x].chapter7)
+				$scope.studentArray[x].week8CompleteRate = getCompleteRate($scope.studentArray[x].week8)
+				$scope.studentArray[x].week9CompleteRate = getCompleteRate($scope.studentArray[x].week9)
+				$scope.studentArray[x].week10CompleteRate = getCompleteRate($scope.studentArray[x].week10)
+				$scope.studentArray[x].week11CompleteRate = getCompleteRate($scope.studentArray[x].chapter11)	
+				$scope.studentArray[x].week12CompleteRate = getCompleteRate($scope.studentArray[x].chapter12)
+				$scope.studentArray[x].week13CompleteRate = getCompleteRate($scope.studentArray[x].week13)
+				$scope.studentArray[x].week14CompleteRate = getCompleteRate($scope.studentArray[x].week14)
+				$scope.studentArray[x].week15CompleteRate = getCompleteRate($scope.studentArray[x].week15)
+				$scope.studentArray[x].week16CompleteRate = getCompleteRate($scope.studentArray[x].week16)	
 				}
 			})
 		})
 	})
 
 	$scope.showWeek = function(week){
-		console.log(week);
+		//console.log(week);
 		$scope.weekDetails = week;
 	}
 
 	//retrieve student info
 	$scope.getStudentInfo = function(student){
-		console.log(student);
 		$scope.phoneNbr = parseInt(student.phone);
 		$scope.email = student.email;
 		$scope.studentName = student.name;	
@@ -135,7 +145,16 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		}
 		//set message back to null
 		$scope.message = "";
+	}
 
+	//get student id on selecting student
+	$scope.hiringInfo = function(student){
+		var studentID;
+		for(var id in $scope.students){
+			if(student.email == $scope.students[id].email){
+				studentID = id;
+			}
+		}
 	}
 
 	//return to home page
