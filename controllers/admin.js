@@ -70,9 +70,9 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 				//get percentage of week for each student
 				$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].chapter1)	
 				$scope.studentArray[x].week2CompleteRate = getCompleteRate($scope.studentArray[x].chapter2)
-				$scope.studentArray[x].week3CompleteRate = getCompleteRate($scope.studentArray[x].week3)
-				$scope.studentArray[x].week4CompleteRate = getCompleteRate($scope.studentArray[x].week4)
-				$scope.studentArray[x].week5CompleteRate = getCompleteRate($scope.studentArray[x].week5)
+				$scope.studentArray[x].week3CompleteRate = getCompleteRate($scope.studentArray[x].chapter3)
+				$scope.studentArray[x].week4CompleteRate = getCompleteRate($scope.studentArray[x].chapter4)
+				$scope.studentArray[x].week5CompleteRate = getCompleteRate($scope.studentArray[x].chapter5)
 				$scope.studentArray[x].week6CompleteRate = getCompleteRate($scope.studentArray[x].chapter6)
 				$scope.studentArray[x].week7CompleteRate = getCompleteRate($scope.studentArray[x].chapter7)
 				$scope.studentArray[x].week8CompleteRate = getCompleteRate($scope.studentArray[x].week8)
@@ -147,14 +147,31 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		$scope.message = "";
 	}
 
+	//initialize student id var
+	var studentID;
+
 	//get student id on selecting student
 	$scope.hiringInfo = function(student){
-		var studentID;
+		
 		for(var id in $scope.students){
 			if(student.email == $scope.students[id].email){
 				studentID = id;
 			}
 		}
+	}
+
+	//create new section for hiring stuff
+	$scope.updateHiringInfo = function(){
+		console.log(studentID);
+		firebase.database().ref('student/' + studentID + '/hireinfo').set({
+			employer:'',
+			title:'',
+			type:'',
+			languages:'',
+			collegedegree:'',
+			major:''
+
+		})
 	}
 
 	//return to home page
