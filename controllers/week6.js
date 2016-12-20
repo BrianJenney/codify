@@ -4,17 +4,17 @@ angular.module('myApp.week6', ['ngRoute'])
   $routeProvider
 
   .when('/chapter6.1', {
-    templateUrl: 'views/chapter5/partials/work1.html',
+    templateUrl: 'views/chapter6/partials/work1.html',
     controller: 'WeekSixCtrl'
   })
 
   .when('/chapter6.2', {
-    templateUrl: 'views/chapter5/partials/work2.html',
+    templateUrl: 'views/chapter6/partials/work2.html',
     controller: 'WeekSixCtrl'
   })
 
   .when('/chapter6.3', {
-    templateUrl: 'views/chapter5/partials/work3.html',
+    templateUrl: 'views/chapter6/partials/work3.html',
     controller: 'WeekSixCtrl'
   })
 }])
@@ -44,6 +44,7 @@ angular.module('myApp.week6', ['ngRoute'])
 				}).then(function(){
 					chapterService.getCompleteRate($scope.user).then(function(snapshot){
 						$scope.$apply(function(){
+							$scope.userInfo = snapshot.val();
 							$scope.completeRate = snapshot.val().progress;
 						})
 					})
@@ -147,9 +148,9 @@ angular.module('myApp.week6', ['ngRoute'])
 		var user = firebase.auth().currentUser;
 		//set firebase data with user's progress from checkboxes
 		firebase.database().ref('student/' + user.uid + '/chapter6/').set({
-			beginnerProject: chapterService.getValue($scope.chapter6.beginnerProject, false),
-			intermediateProject: chapterService.getValue($scope.chapter6.intermediateProject, false),
-			advancedProject: chapterService.getValue($scope.chapter6.advancedProject, false)
+			portfolio: chapterService.getValue($scope.chapter6.portfolio, false),
+			portfolioURL: chapterService.getValue($scope.chapter6.portfolioURL, true),
+			jquery: chapterService.getValue($scope.chapter6.jquery, false)
 		});
 
 		//update complete rate

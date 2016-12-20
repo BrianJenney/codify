@@ -10,16 +10,16 @@
       <div class="modal-body">
         
       
-	      <textarea ng-model="message" class="form-control">
+	      <textarea ng-model="message" class="form-control" id="studentMessage">
 	      	
 	      </textarea>
       </div>
       <div class="modal-footer">
       	<div class="btn-toolbar">
       		<!-- Text button -->
-      		<button ng-disabled="disableButton"class="button is-blue-jeans" ng-click="sendClassText(message)"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
+      		<button ng-disabled="disableButton"class="button is-blue-jeans" ng-click="sendClassText(message)" data-dismiss="modal"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
       		<!-- Email button -->
-      		<button class="button is-blue-jeans" ng-click="sendClassEmail(message)"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
+      		<button class="button is-blue-jeans" ng-click="sendClassEmail(message)" data-dismiss="modal"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
       		<!-- Close -->
       		<button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 

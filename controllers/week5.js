@@ -44,6 +44,7 @@ angular.module('myApp.week5', ['ngRoute'])
 				}).then(function(){
 					chapterService.getCompleteRate($scope.user).then(function(snapshot){
 						$scope.$apply(function(){
+							$scope.userInfo = snapshot.val();
 							$scope.completeRate = snapshot.val().progress;
 						})
 					})
@@ -149,7 +150,11 @@ angular.module('myApp.week5', ['ngRoute'])
 		firebase.database().ref('student/' + user.uid + '/chapter5/').set({
 			beginnerProject: chapterService.getValue($scope.chapter5.beginnerProject, false),
 			intermediateProject: chapterService.getValue($scope.chapter5.intermediateProject, false),
-			advancedProject: chapterService.getValue($scope.chapter5.advancedProject, false)
+			advancedProject: chapterService.getValue($scope.chapter5.advancedProject, false),
+			beginnerProjectURL: chapterService.getValue($scope.chapter5.beginnerProjectURL, true),
+			intermediateProjectURL: chapterService.getValue($scope.chapter5.intermediateProjectURL, true),
+			advancedProjectURL: chapterService.getValue($scope.chapter5.advancedProjectURL, true)
+
 		});
 
 		//update complete rate

@@ -1,21 +1,44 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekSixCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Mission: Complete the Codecademy jQuery walkthrough <br><br>
+
+Goal: Begin to Understand and use jQuery in any project <br><br>
+
+"Codecademy jQuery" - http://www.codecademy.com/en/tracks/jquery, this is a great starting point when being introduced to jQuery 
+<br><br>
+This is a JavaScript Library that has alot of functions built into it - which allow you to add alot of functionality easily</h2>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter6.jquery" value="" ng-change="adjustProgress(5, chapter6.jquery)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
-	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+	<button ng-click="modalMe('Chapter 7')" class="button is-ruby text-center" ng-show="chapter6.jquery" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
+	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
-	</div>
+	<!-- Modal -->
+<div id="successModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        <ng-include src="'views/shared/success.html'"></ng-include>
+        
+
+      <div class="modal-footer">
+      	<button ng-click="finishChapter('7.1')"class="button is-blue-jeans pull-right" data-dismiss="modal">Continue</button>
+        <button class="button is-ruby pull-left" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </section>

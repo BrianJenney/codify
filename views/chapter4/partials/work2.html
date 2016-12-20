@@ -1,8 +1,18 @@
 <section ng-controller="WeekFourCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Copy and paste this URL into your browser to see our example:  codifyacademy.com/week3/intermediate.jpg
+<br>
+<br>
+Remember, have fun! 
+<br>
+<br>
+Having access to no code is usually alot harder. Reach out to your mentors if needed.
+<br>
+<br>
+When Finished: Load your files up to Github, and send you repo url to your mentor for review.</h2>
 
 	<div class="row text-center">
+	<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter4.intermediateProjectURL" />
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
 	            <input type="checkbox" ng-model="chapter4.intermediateProject"value="" ng-change="adjustProgress(5, chapter4.intermediateProject)" checked>

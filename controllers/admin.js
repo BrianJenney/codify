@@ -104,43 +104,42 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 	//send text message to student
 	$scope.sendText = function(message){
-		$http.get('http://localhost:3000/sendtext?to=' + $scope.phoneNbr + '&message=' + message)
-		 $("[data-dismiss=modal]").trigger({ type: "click" });
-		 $scope.message = "";
-
+		$("#studentMessage").val('');
+		$http.get('http://localhost:3000/sendtext?to=' + $scope.phoneNbr + '&message=' + message);
+		 //$("[data-dismiss=modal]").trigger({ type: "click" });	 
 	}
 
 	//send email to student
 	$scope.sendMail = function(message){
-		$http.get('http://localhost:3000/sendmail?to=' + $scope.email + '&message=' + message + '&from=' + $scope.mentorEmail)
-		$("[data-dismiss=modal]").trigger({ type: "click" });
-		$scope.message = "";
+		$("#studentMessage").val('');
+		$http.get('http://localhost:3000/sendmail?to=' + $scope.email + '&message=' + message + '&from=' + $scope.mentorEmail);
+		//$("[data-dismiss=modal]").trigger({ type: "click" });
+		
 	}
 
 
 	//send all students in class an email
 	$scope.sendClassEmail = function(message){
-		console.log($scope.filteredStudents);
+		//set message back to null
+		$scope.message = "";
 		for(x=0; x<$scope.filteredStudents.length; x++){
 			//check if email exists
 			if(typeof $scope.filteredStudents[x].email !== 'undefined'){
 				$http.get('http://localhost:3000/sendmail?to=' + $scope.filteredStudents[x].email + '&message=' + message + '&from=' + $scope.filteredStudents[x].mentorEmail)
-				$("[data-dismiss=modal]").trigger({ type: "click" });
+				//$("[data-dismiss=modal]").trigger({ type: "click" });
 			}
 		}
-		//set message back to null
-		$scope.message = "";
+		
 	}
 
 	//send all students in class a twilio text message
 	$scope.sendClassSMS = function(message){
-
+		$("#studentMessage").val('');
 		for(x=0; x<$scope.filteredStudents.length; x++){
 			//check if email exists
 			if(typeof $scope.filteredStudents[x].phone !== 'undefined'){
 				$http.get('http://localhost:3000/sendtext?to=' + $scope.filteredStudents[x].phone + '&message=' + message)
-				 $("[data-dismiss=modal]").trigger({ type: "click" });
-				 $scope.message = "";
+				 //$("[data-dismiss=modal]").trigger({ type: "click" });
 			}
 		}
 		//set message back to null
@@ -164,12 +163,12 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	$scope.updateHiringInfo = function(){
 		console.log(studentID);
 		firebase.database().ref('student/' + studentID + '/hireinfo').set({
-			employer:'',
-			title:'',
-			type:'',
-			languages:'',
-			collegedegree:'',
-			major:''
+			employer:'Blue Rocket',
+			title:'software dev',
+			type:'full time',
+			languages:'javascript, angular, ruby',
+			collegedegree:'liberal arts',
+			major:'english'
 
 		})
 	}

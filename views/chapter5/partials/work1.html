@@ -1,4 +1,4 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekFiveCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -6,18 +6,23 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Using Google and at least one other project from week 1, add media queries to make them responsive, make sure you scale your screen size down from left to right, and fix any elements that break (don't look good).<br><br>
+
+If you get stuck on Google, check out our version <a href="http://codifyacademy.com/google-responsive/">Responsive Google</a>, for the others it's up to you to decide how to make it look good!<br><br>
+
+Remember this is just practice, don't worry about making it "perfect"</h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter5.beginnerProjectURL" />
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter5.beginnerProject"value="" ng-change="adjustProgress(5, chapter5.beginnerProject)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter5.2')" class="button is-ruby pull-right" ng-show="chapter5.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

@@ -1,20 +1,23 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekFiveCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Using Orange Juice and at least one other project from week 3, add media queries to make them responsive, make sure you scale your screen size down from left to right, and fix any elements that break (don't look good).<br><br>
+
+Remember this is just practice, don't worry about making it "perfect"</h2>
 
 	<div class="row text-center">
+	<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter5.intermediateProjectURL" />
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter5.intermediateProject"value="" ng-change="adjustProgress(5, chapter5.intermediateProject)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
 	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<button ng-click="proceed('chapter5.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+		<button ng-click="proceed('chapter5.3')" class="button is-ruby pull-right" ng-show="chapter5.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 	</div>
 
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	

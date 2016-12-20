@@ -1,4 +1,4 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekSixCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -6,18 +6,23 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Edit a bootstrap theme for a friend or business (real or imaginary), to see how bootstrap classes work together with HTML & CSS and edit existing code. <br><br>
+
+As always we need to know what we want to create, so put it on paper with as many HTML tags and CSS properties, you can think of to use on the elements, in the end if you cant figure it out google it, look at the themes code or contact your mentor <br><br>
+
+Always paper prototype first, then code</h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter6.portfolioURL" />
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter6.portfolio"value="" ng-change="adjustProgress(5, chapter6.portfolio)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter6.2')" class="button is-ruby pull-right" ng-show="chapter6.portfolio"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

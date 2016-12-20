@@ -4,17 +4,17 @@ angular.module('myApp.week7', ['ngRoute'])
   $routeProvider
 
   .when('/chapter7.1', {
-    templateUrl: 'views/chapter5/partials/work1.html',
+    templateUrl: 'views/chapter7/partials/work1.html',
     controller: 'WeekSevenCtrl'
   })
 
   .when('/chapter7.2', {
-    templateUrl: 'views/chapter5/partials/work2.html',
+    templateUrl: 'views/chapter7/partials/work2.html',
     controller: 'WeekSevenCtrl'
   })
 
   .when('/chapter7.3', {
-    templateUrl: 'views/chapter5/partials/work3.html',
+    templateUrl: 'views/chapter7/partials/work3.html',
     controller: 'WeekSevenCtrl'
   })
 }])
@@ -44,6 +44,7 @@ angular.module('myApp.week7', ['ngRoute'])
 				}).then(function(){
 					chapterService.getCompleteRate($scope.user).then(function(snapshot){
 						$scope.$apply(function(){
+							$scope.userInfo = snapshot.val();
 							$scope.completeRate = snapshot.val().progress;
 						})
 					})

@@ -1,17 +1,18 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekFiveCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Advanced Project from this <a href="http://codifyacademy.com/week1/advanced/">link</a>  and send the compressed file to your mentor.</h2>
+	<h2>Take at least one other project from week 2, add media queries to make them responsive, make sure you scale your screen size down from left to right, and fix any elements that break (don't look good).</h2>
 
 	<div class="row text-center">
+	<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter5.advancedProjectURL" />
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.advancedProject"value="" ng-change="adjustProgress(5, chapter3.advancedProject)" checked>
+	            <input type="checkbox" ng-model="chapter5.advancedProject" value="" ng-change="adjustProgress(5, chapter5.advancedProject)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
-	<button ng-click="modalMe('Chapter 4')" class="button is-ruby text-center"ng-show="chapter2.advancedProject" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
+	<button ng-click="modalMe('Chapter 6')" class="button is-ruby text-center" ng-show="chapter5.advancedProject" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 
 	<!-- Modal -->
@@ -27,7 +28,7 @@
         
 
       <div class="modal-footer">
-      	<button ng-click="proceed('home')" class="button is-blue-jeans pull-right" data-dismiss="modal">Continue</button>
+      	<button ng-click="finishChapter('6.1')"class="button is-blue-jeans pull-right" data-dismiss="modal">Continue</button>
         <button class="button is-ruby pull-left" data-dismiss="modal">Close</button>
       </div>
     </div>
