@@ -1,21 +1,42 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekTwelveCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Goal: Read Jon Duckett's JavaScript Book
+<br><br>
+Chapter 3 - Functions, Methods & Objects: Read and Code - p.132 - 144
+<br><br>
+Chapter 6 - Events: Read and Code - p.243 - 292</h2>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter12.jsreading" value="" ng-change="adjustProgress(5, chapter12.jsreading)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
-	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+	<button ng-click="modalMe('Chapter 13')" class="button is-ruby text-center" ng-show="chapter12.jsreading" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
+	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
-	</div>
+	<!-- Modal -->
+<div id="successModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        <ng-include src="'views/shared/success.html'"></ng-include>
+        
+
+      <div class="modal-footer">
+      	<button ng-click="finishChapter('13.1')" class="button is-blue-jeans pull-right" data-dismiss="modal">Continue</button>
+        <button class="button is-ruby pull-left" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </section>

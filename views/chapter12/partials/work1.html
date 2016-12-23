@@ -1,4 +1,4 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekTwelveCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -6,18 +6,23 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Create a multipage ECommerce clothing store using constructor notation.
+<br><br>
+Start by choosing the type of clothing you want to display for this project, then choose a template and replace the content with what you'd like to display in the gallery. Make sure you use constructor notation to create all of the objects.
+<br><br>
+Check out our working version of a gallery created entirely with JavaScript! http://codifyacademy.com/tshirt/</h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter12.commercesiteURL" />
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter12.commercesite" value="" ng-change="adjustProgress(5, chapter12.commercesite)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter12.2')" class="button is-ruby pull-right" ng-show="chapter12.commercesite"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

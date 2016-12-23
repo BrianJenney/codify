@@ -148,9 +148,9 @@ angular.module('myApp.week12', ['ngRoute'])
 		var user = firebase.auth().currentUser;
 		//set firebase data with user's progress from checkboxes
 		firebase.database().ref('student/' + user.uid + '/chapter12/').set({
-			beginnerProject: chapterService.getValue($scope.chapter12.beginnerProject, false),
-			intermediateProject: chapterService.getValue($scope.chapter12.intermediateProject, false),
-			advancedProject: chapterService.getValue($scope.chapter12.advancedProject, false)
+			commercesite: chapterService.getValue($scope.chapter12.commercesite, false),
+			commercesiteURL: chapterService.getValue($scope.chapter12.commercesiteURL, true),
+			jsreading: chapterService.getValue($scope.chapter12.jsreading, false)
 		});
 
 		//update complete rate
@@ -161,7 +161,7 @@ angular.module('myApp.week12', ['ngRoute'])
 
 	$scope.finishChapter = function(nextChapter){
 		var user = firebase.auth().currentUser;
-
+		$scope.submitWeek();
 		//make sure not to set them back to a previous chapter
 		//by using the highest last chapter they completed
 		//as their current week
