@@ -1,4 +1,4 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekNineCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -6,18 +6,28 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>This can be as simple or complicated as you can make it. 
+<br><br>
+At the very least take a user's zodiac sign and return some info on that sign. Feel free to be as creative as you want, daily horoscopes, info related to a sign, link to external site for more info ect.
+<br><br>
+This will be your first official JavaScript project for your portfolio!
+<br><br>
+Check out our working version <a href="http://codifyacademy.com/zodiac/">http://codifyacademy.com/zodiac/</a>
+<br><br>
+Download working code <a href="http://codifyacademy.com/zodiac.zip">here</a></h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your codepen or github URL here" type="text" name="" class="form-control" ng-model="chapter9.beginnerProjectURL" />
+				<div class="checkbox">
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter9.beginnerProject" value="" ng-change="adjustProgress(5, chapter9.beginnerProject)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter9.2')" class="button is-ruby pull-right" ng-show="chapter9.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

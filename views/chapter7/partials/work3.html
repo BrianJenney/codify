@@ -1,17 +1,25 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekSevenCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Advanced Project from this <a href="http://codifyacademy.com/week1/advanced/">link</a>  and send the compressed file to your mentor.</h2>
+	<h2>Goal: Read Jon Duckett's JavaScript Book
+<br><br>
+Introduction: skim p.1 - p.10
+<br><br>
+Chapter 1 - The ABC of Programming: skim p.11 - p.52
+<br><br>
+Chapter 2 - Basic JavaScript Instructions:  Read and Code p.53 - p.84 - (lots more coding to be done in this chapter)
+<br><br>
+Important Note: We do not expect you to memorize everything you read in this book. We recommend that you come back in the following weeks to reread this sections, so you can pick up anything you missed the first time around.</h2>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.advancedProject"value="" ng-change="adjustProgress(5, chapter3.advancedProject)" checked>
+	            <input type="checkbox" ng-model="chapter7.jsreading" value="" ng-change="adjustProgress(5, chapter7.jsreading)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
-	<button ng-click="modalMe('Chapter 4')" class="button is-ruby text-center"ng-show="chapter2.advancedProject" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
+	<button ng-click="modalMe('Chapter 8')" class="button is-ruby text-center" ng-show="chapter7.jsreading" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 
 	<!-- Modal -->

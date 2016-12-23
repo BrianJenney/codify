@@ -14,15 +14,18 @@
 	      </textarea>
       </div>
       <div class="modal-footer">
-      	<div class="btn-toolbar">
+      	<div class="btn-toolbar text-center">
       		<!-- Text button -->
       		<button ng-disabled="disableButton"class="button is-blue-jeans" ng-click="sendText(message)" data-dismiss="modal"><span ng-show="disableButton">Sending</span><span ng-hide="disableButton">Send Text</span></button>
       		<!-- Email button -->
       		<button class="button is-blue-jeans" ng-click="sendMail(message)" data-dismiss="modal"><span ng-hide="sendingEmail">Send Email</span><span ng-show="sendingEmail">Sending Email</span></button>
-      		<!-- Close -->
-      		<button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      		
 
       	</div>
+        <div class="text-center">
+          <!-- Close -->
+          <button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
       	
       </div>
     </div>

@@ -1,20 +1,37 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekTenCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Create a simple commenting application that takes a username and comment, then posts it to the screen.
+<br><br>
+Make sure you include at least 1 input and 1 textarea tag, the data should display on a click event, just like your todo app.
+<br><br>
+Check out our working version http://codifyacademy.com/comment/
+<br><br>
+Once your simple version is complete, try expanding the program: 
+<br><br>
+<ul>
+	<li>Add a delete button</li>
+	<li>Hide or show on toggle</li>
+	<li>Hide or show on toggle</li>
+	<li>Make the comment change color for even and odds</li>
+	<li>Add a date</li>
+	<li>Add an image</li>
+</ul>
+</h2>
 
 	<div class="row text-center">
+		<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter10.intermediateProjectURL" />
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter10.intermediateProject" value="" ng-change="adjustProgress(5, chapter10.intermediateProject)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
 	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<button ng-click="proceed('chapter10.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+		<button ng-click="proceed('chapter10.3')" class="button is-ruby pull-right" ng-show="chapter10.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 	</div>
 
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	

@@ -92,6 +92,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	$scope.showWeek = function(week){
 		//console.log(week);
 		$scope.weekDetails = week;
+		$scope.noWeek = typeof week == 'undefined' ? true : false;
 	}
 
 	//retrieve student info

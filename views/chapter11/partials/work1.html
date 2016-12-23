@@ -1,4 +1,4 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekElevenCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -6,18 +6,28 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Goal: Create a 7 question quiz app with answers stored in an array of objects
+<br><br>
+The user should be able to answers the questions in the quiz and have the results displayed to them on the screen. 
+<br><br>
+There will be many steps to the project, so take it one step at a time.
+<br><br>
+This will be one of your codepen/portfolio projects, so make sure to add in cool functionality and style it in a unique way. Here are some functionality ideas: try randomizing questions, change the color of the questions based on if they were answered correctly or not, add in a congratulations popup if every answer is right. 
+<br><br>
+Check out two that we built and customized! http://codifyacademy.com/quiz/ & http://codifyacademy.com/sorting/</h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter11.beginnerProjectURL" />
+				<div class="checkbox">
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter11.beginnerProject" value="" ng-change="adjustProgress(5, chapter11.beginnerProject)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter11.2')" class="button is-ruby pull-right" ng-show="chapter11.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

@@ -3,12 +3,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Week Info</h4>
+        <h2 class="modal-title">Week Info</h2>
       </div>
       <div class="modal-body">
-        <div ng-repeat="(key, value) in weekDetails">
-        <p ng-hide="value.indexOf('https')>=0">{{key | uppercase}} : {{value | convertbool}}</p>
-        	<p ng-show="value.indexOf('https')>=0">{{key | uppercase}} : <a ng-href="{{value | convertbool}}" target="_target">{{value | convertbool}}</a></p>
+        <div ng-repeat="(key, value) in weekDetails" ng-show="!noWeek">
+        <p ng-hide="value.indexOf('http')>=0">{{key | uppercase}} : {{value | convertbool}}</p>
+        	<p ng-show="value.indexOf('http')>=0">{{key | uppercase}} : <a ng-href="{{value | convertbool}}" target="_target">{{value | convertbool}}</a></p>
+        </div>
+        <div ng-show="noWeek">
+          <h2>Week Not Yet Started...</h2>
         </div>
       </div>
     </div>

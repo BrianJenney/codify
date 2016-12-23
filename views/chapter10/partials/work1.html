@@ -1,4 +1,4 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekTenCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -6,18 +6,28 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Turn in your personal portfolio this week, so we can begin applying to jobs!
+<br><br>
+Don't worry about your portfolio being perfect, you can keep improving it as we continue the course.
+<br><br>
+Here are a few steps you should take while building your portfolio:
+<br><br>
+Manipulate your theme to fit your layout - cut anything you can't use, and add any html & css to recreate your paper prototype layout <br><br>
+Push your portfolio code to github<br><br>
+Push the code to your Server<br><br>
+Alert your mentor when it's online by sending them the URL</h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter10.studentportfolioURL" />
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter10.studentportfolio"value="" ng-change="adjustProgress(5, chapter10.studentportfolio)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter10.2')" class="button is-ruby pull-right" ng-show="chapter10.studentportfolio"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

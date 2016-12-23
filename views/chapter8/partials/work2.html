@@ -1,20 +1,32 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekEightCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Complete these JavaScript exercises several times, the more you type the more you will begin to understand.
+	<br><br>
+	<ol>
+		<li>1. Print to the console, the screen and an alert</li>
+		<li>2. Save user's data in a variable using a prompt</li>
+		<li>3. Create the 4 different types of variables</li>
+		<li>4. Using concatenation with your variables</li>
+		<li>5. Write if / else statements using variables in the condition and in the block of code that runs</li>
+		<li>6. Create loops that prints array indexes and values</li>
+		<li>7. Create functions that have parameters, and run with arguments</li>
+	</ol>
+
+	</h2>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter8.intermediateProject" value="" ng-change="adjustProgress(5, chapter8.intermediateProject)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
 	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<button ng-click="proceed('chapter8.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+		<button ng-click="proceed('chapter8.3')" class="button is-ruby pull-right" ng-show="chapter8.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 	</div>
 
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	

@@ -1,20 +1,27 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekSevenCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Google free bootstrap portfolio themes or use another blacktie.co theme.
+<br><br>
+Download and edit the existing code and turn it into a portfolio website for another.
+<br><br>
+Make sure to create a paper prototype for the 1 page portfolio.
+<br><br>
+Don't forget to push your code to github and send a link to your mentor.</h2>
 
 	<div class="row text-center">
+	<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter7.bootstrapportfolioURL" />
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter7.bootstrapportfolio"value="" ng-change="adjustProgress(5, chapter7.bootstrapportfolio)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
 	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<button ng-click="proceed('chapter7.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+		<button ng-click="proceed('chapter7.3')" class="button is-ruby pull-right" ng-show="chapter7.bootstrapportfolioURL"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 	</div>
 
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	

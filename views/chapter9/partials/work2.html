@@ -1,20 +1,28 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekNineCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Complete these JavaScript exercises:
+		<ol>
+			<li>1. Create a loop that prints 0 - 100 in increments of 5</li>
+			<li>2. Use .value and a function to save any user input to a variable</li>
+			<li>3. Create 3 house objects, each with 4 or more properties - one being an image</li>
+			<li>4. Create an array from those 3 objects</li>
+			<li>5. Display that info on the page under an image of each house</li>
+		</ol>
+	</h2>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter9.intermediateProject" value="" ng-change="adjustProgress(5, chapter9.intermediateProject)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
 	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<button ng-click="proceed('chapter9.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+		<button ng-click="proceed('chapter9.3')" class="button is-ruby pull-right" ng-show="chapter9.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 	</div>
 
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	
