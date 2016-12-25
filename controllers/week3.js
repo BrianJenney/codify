@@ -161,7 +161,7 @@ angular.module('myApp.week3', ['ngRoute'])
 
 	$scope.finishChapter = function(nextChapter){
 		var user = firebase.auth().currentUser;
-
+		$scope.submitWeek();
 		//make sure not to set them back to a previous chapter
 		//by using the highest last chapter they completed
 		//as their current week

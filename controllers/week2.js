@@ -45,7 +45,6 @@ angular.module('myApp.week2', ['ngRoute'])
 					chapterService.getCompleteRate($scope.user).then(function(snapshot){
 						$scope.$apply(function(){
 							$scope.userInfo = snapshot.val();
-							console.log($scope.userInfo);
 							$scope.completeRate = snapshot.val().progress;
 						})
 					})
@@ -162,7 +161,7 @@ angular.module('myApp.week2', ['ngRoute'])
 
 	$scope.finishChapter = function(nextChapter){
 		var user = firebase.auth().currentUser;
-
+		$scope.submitWeek();
 		//make sure not to set them back to a previous chapter
 		//by using the highest last chapter they completed
 		//as their current week
