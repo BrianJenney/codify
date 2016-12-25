@@ -1,0 +1,37 @@
+<div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+
+
+        <label>Student Email</label>
+        <input type="text" class="form-control" ng-model="editInfo.email" name="">
+        <label>Student Name</label>
+        <input type="text" class="form-control" ng-model="editInfo.name" name="">
+        <label>Student Phone</label>
+        <input type="phone" class="form-control" ng-model="editInfo.phone" name="">
+        <label>Start Date</label>
+        <input type="text" class="form-control" ng-model="editInfo.date" name="">
+        <label>Mentor Email</label>
+        <input type="text" class="form-control" ng-model="editInfo.mentorEmail" name="">
+        <label>Mentor</label>
+        <select ng-model="editInfo.mentor" ng-options="mentor for mentor in mentors"></select>
+
+      </div>
+      <div class="modal-footer">
+      	<div class="btn-toolbar text-center">
+      		<!-- Edit button -->
+      		<button ng-disabled="disableButton" class="button is-blue-jeans" ng-click="changeStudentInfo(editInfo)" data-dismiss="modal">Edit Student Info</button>
+      		
+          <!-- Close -->
+          <button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      	
+      </div>
+    </div>
+
+  </div>

@@ -6,23 +6,45 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Turn your existing Login App into a working app with angularJS!!! 
+<br><br>
+Using the web docs: <a href="https://angularjs.org/">https://angularjs.org/</a> change all data to be updated using Angular.
+<br><br>
+Start with a registration, to save new user's. Continue with a login system to check the users name and password and logs them into another "user only page".
+<br><br>
+Finally add one function to your app, this can be as simple as a to-do list.</h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter16.loginappURL" />
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter16.loginapp" value="" ng-change="adjustProgress(5, chapter16.loginapp)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
-			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
-			</div>
-			
-			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
-		</div>
-	
+			<button ng-click="modalMe('Chapter 17')" class="button is-ruby text-center" ng-show="chapter16.loginapp" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
+	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
+
+	<!-- Modal -->
+<div id="successModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        <ng-include src="'views/shared/success.html'"></ng-include>
+        
+
+      <div class="modal-footer">
+      	<button ng-click="finishChapter('17.1')" class="button is-blue-jeans pull-right" data-dismiss="modal">Continue</button>
+        <button class="button is-ruby pull-left" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 </section>
-

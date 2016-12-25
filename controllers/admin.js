@@ -178,6 +178,28 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		})
 	}
 
+	//grab unique id from student email
+	$scope.editInfo = function(s){
+		for(var id in $scope.students){
+			if(s.email == $scope.students[id].email){
+				studentID = id;
+			}
+		}
+		$scope.editInfo = s;
+	}
+
+	//edit/update student info
+	$scope.changeStudentInfo = function(s){
+		firebase.database().ref('student/' + studentID).set({
+			date: String(s.date),
+			email: s.email,
+			mentorEmail: s.mentorEmail,
+			mentor: s.mentor,
+			name: s.name,
+			phone: s.phone
+		})
+	}
+
 	//return to home page
 	$scope.exit = function(){
 		$window.location.href=("/#/home")

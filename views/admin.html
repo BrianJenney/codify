@@ -29,7 +29,7 @@
 
 	  	<!-- <button class="button is-blue-jeans">Send SMS to <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-comment"></span></button> -->
 	</div>
-	<table class="table table-striped table-sm">
+	<table class="table table-striped table-sm table-responsive">
 		<thead>
 			<th>Student Name</th>
 			<th>Mentor</th>
@@ -71,6 +71,8 @@
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.chapter15)">{{s.week15CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.chapter16)">{{s.week16CompleteRate | percentage:0}}</td>
 				<td><button ng-click="hiringInfo(s)" data-target="#hiredModal" data-toggle="modal" class="btn btn-danger btn-xs">HIRED!</button></td>
+				<td><button ng-click="editInfo(s)" data-target="#editInfoModal" data-toggle="modal" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>
+
 			</tr>
 		</tbody>
 	</table>
@@ -102,6 +104,12 @@
 
 <div id="hiredModal" class="modal fade" role="dialog">
 	<ng-include src="'views/modals/hired.html'"></ng-include>
+</div>
+
+<!-- EDIT STUDENT INFO MODAL -->
+
+<div id="editInfoModal" class="modal fade" role="dialog">
+	<ng-include src="'views/modals/editinfo.html'"></ng-include>
 </div>
 
 <!-- 	IF USER IS NOT AUTHORIZED -->
