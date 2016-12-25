@@ -1,17 +1,25 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekThirteenCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Advanced Project from this <a href="http://codifyacademy.com/week1/advanced/">link</a>  and send the compressed file to your mentor.</h2>
+	<h2>Goal 1: Practice using each of these regular expression examples in your own js file. Change the content, then send the finished code to your mentor to review.
+<br><br>
+<a href="http://www.w3schools.com/js/js_regexp.asp">http://www.w3schools.com/js/js_regexp.asp</a>
+<br><br>
+<a href="http://www.w3schools.com/jsref/jsref_regexp_charset_not.asp">http://www.w3schools.com/jsref/jsref_regexp_charset_not.asp</a>
+<br><br>
+<a href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp">http://www.w3schools.com/jsref/jsref_obj_regexp.asp</a></h2>
 
 	<div class="row text-center">
+	<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter13.jsregexURL" />
+				<div class="checkbox">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.advancedProject"value="" ng-change="adjustProgress(5, chapter3.advancedProject)" checked>
+	            <input type="checkbox" ng-model="chapter13.jsregex"value="" ng-change="adjustProgress(5, chapter13.jsregex)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
-	<button ng-click="modalMe('Chapter 4')" class="button is-ruby text-center"ng-show="chapter2.advancedProject" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
+	<button ng-click="modalMe('Chapter 14')" class="button is-ruby text-center" ng-show="chapter13.jsregex" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 
 	<!-- Modal -->

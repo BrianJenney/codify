@@ -1,20 +1,25 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekFifteenCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Complete the Codecademy Angular JS tutorial
+<br><br>
+Complete the 4 sections on Codecademy Angular JS track - <a href="https://www.codecademy.com/learn/learn-angularjs">https://www.codecademy.com/learn/learn-angularjs</a>
+W3schools Angular reference: <a href="http://www.w3schools.com/angular/angular_ref_directives.asp">http://www.w3schools.com/angular/angular_ref_directives.asp</a>
+<br><br>
+W3schools basic Angular examples: <a href="http://www.w3schools.com/angular/angular_examples.asp">http://www.w3schools.com/angular/angular_examples.asp</a> </h2>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter15.ngtutorial"value="" ng-change="adjustProgress(5, chapter15.ngtutorial)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
 	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<button ng-click="proceed('chapter15.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+		<button ng-click="proceed('chapter15.3')" class="button is-ruby pull-right" ng-show="chapter15.ngtutorial"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 	</div>
 
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	

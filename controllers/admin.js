@@ -55,8 +55,8 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 				}else{
 					var count = 0;
 					for(var key in week){
-						//don't count bonus projects in the overall percentage 
-						if(week[key]==true && key.toUpperCase().indexOf('BONUS') < 0){
+						//count all true fields and url inputs
+						if(week[key]==true || week[key].length > 0){
 							count++
 						}
 					}
@@ -75,15 +75,15 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 				$scope.studentArray[x].week5CompleteRate = getCompleteRate($scope.studentArray[x].chapter5)
 				$scope.studentArray[x].week6CompleteRate = getCompleteRate($scope.studentArray[x].chapter6)
 				$scope.studentArray[x].week7CompleteRate = getCompleteRate($scope.studentArray[x].chapter7)
-				$scope.studentArray[x].week8CompleteRate = getCompleteRate($scope.studentArray[x].week8)
-				$scope.studentArray[x].week9CompleteRate = getCompleteRate($scope.studentArray[x].week9)
-				$scope.studentArray[x].week10CompleteRate = getCompleteRate($scope.studentArray[x].week10)
+				$scope.studentArray[x].week8CompleteRate = getCompleteRate($scope.studentArray[x].chapter8)
+				$scope.studentArray[x].week9CompleteRate = getCompleteRate($scope.studentArray[x].chapter9)
+				$scope.studentArray[x].week10CompleteRate = getCompleteRate($scope.studentArray[x].chapter10)
 				$scope.studentArray[x].week11CompleteRate = getCompleteRate($scope.studentArray[x].chapter11)	
 				$scope.studentArray[x].week12CompleteRate = getCompleteRate($scope.studentArray[x].chapter12)
-				$scope.studentArray[x].week13CompleteRate = getCompleteRate($scope.studentArray[x].week13)
-				$scope.studentArray[x].week14CompleteRate = getCompleteRate($scope.studentArray[x].week14)
-				$scope.studentArray[x].week15CompleteRate = getCompleteRate($scope.studentArray[x].week15)
-				$scope.studentArray[x].week16CompleteRate = getCompleteRate($scope.studentArray[x].week16)	
+				$scope.studentArray[x].week13CompleteRate = getCompleteRate($scope.studentArray[x].chapter13)
+				$scope.studentArray[x].week14CompleteRate = getCompleteRate($scope.studentArray[x].chapter14)
+				$scope.studentArray[x].week15CompleteRate = getCompleteRate($scope.studentArray[x].chapter15)
+				$scope.studentArray[x].week16CompleteRate = getCompleteRate($scope.studentArray[x].chapter16)	
 				}
 			})
 		})
@@ -92,6 +92,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	$scope.showWeek = function(week){
 		//console.log(week);
 		$scope.weekDetails = week;
+		//check if week not yet started
 		$scope.noWeek = typeof week == 'undefined' ? true : false;
 	}
 
@@ -160,9 +161,12 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		}
 	}
 
+	//TODO: REMOVE HARDCODED VALUES
+	//DECIDE INFO TO RECORD FOR HIRED GRADS
+
 	//create new section for hiring stuff
 	$scope.updateHiringInfo = function(){
-		console.log(studentID);
+		//console.log(studentID);
 		firebase.database().ref('student/' + studentID + '/hireinfo').set({
 			employer:'Blue Rocket',
 			title:'software dev',
@@ -202,6 +206,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 })
 
+//directive to convert undefined values in completed weeks to 'not done'
 .filter('convertbool', ['$filter', function ($filter) {
   return function (bool) {
   	if(bool==true){

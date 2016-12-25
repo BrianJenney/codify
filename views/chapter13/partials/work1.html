@@ -6,18 +6,27 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Goal: Create a working digital or analog clock using the Date() object.
+<br><br>
+First, map out all the requirements, like storing the hours, minutes and seconds in variables, checking if the hour is past 12 and if it is, convert it back to non military time, etc.
+<br><br>
+You can then display it using an event handler of your choice.
+<br><br>
+When you're finished push the files to Github, Codepen and to your portfolio.
+<br><br>
+Send the finished work to your mentor.</h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter13.jsclockURL" />
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter13.jsclock" value="" ng-change="adjustProgress(5, chapter13.jsclock)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter13.2')" class="button is-ruby pull-right" ng-show="chapter13.jsclock"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

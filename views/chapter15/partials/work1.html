@@ -1,4 +1,4 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekFifteenCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -6,18 +6,31 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Write an app that searches by hashtag and collects submissions from Instagram and then displays the returned data to the screen with newly created JavaScript elements.
+<br><br>
+Instagram hashtags: <a href="https://www.instagram.com/developer/endpoints/tags/#get_tags">https://www.instagram.com/developer/endpoints/tags/#get_tags</a>
+<br><br>
+You will need an Instagram Access Token, found here: <a href="http://instagram.pixelunion.net/">http://instagram.pixelunion.net/</a> (if you don't have instagram, you will need to sign up real quick)
+<br><br>
+In your JS you can utilize $.ajax() or $http.jsonp() to call the data into your application. 
+<br><br>
+Finally Display it to the screen for the user to see, consider wrapping each post in an a tag, you can link to their instagram account!
+<br><br>
+Add any additional functionality you'd like to see: search by date, pagination for additional pages, fun animations.
+<br><br>
+Check out our basic version: <a href="http://codifyacademy.com/instagramapi/">http://codifyacademy.com/instagramapi/</a></h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter15.instagramappURL" />
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter15.instagramapp" value="" ng-change="adjustProgress(5, chapter15.instagramapp)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter15.2')" class="button is-ruby pull-right" ng-show="chapter15.instagramapp"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

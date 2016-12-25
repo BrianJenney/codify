@@ -1,17 +1,21 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekFifteenCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Advanced Project from this <a href="http://codifyacademy.com/week1/advanced/">link</a>  and send the compressed file to your mentor.</h2>
+	<h2>Review The basics of Angular JS Framework at W3Schools: <a href="http://www.w3schools.com/angular/default.asp">http://www.w3schools.com/angular/default.asp</a>
+<br><br>
+Click next chapter or use the left vertical navigation bar to move through their info.
+<br><br>
+Complete reading and trying it yourself in each section from Home - Services</h2>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.advancedProject"value="" ng-change="adjustProgress(5, chapter3.advancedProject)" checked>
+	            <input type="checkbox" ng-model="chapter15.w3ngtutorial"value="" ng-change="adjustProgress(5, chapter15.w3ngtutorial)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
-	<button ng-click="modalMe('Chapter 4')" class="button is-ruby text-center"ng-show="chapter2.advancedProject" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
+	<button ng-click="modalMe('Chapter 16')" class="button is-ruby text-center" ng-show="chapter15.w3ngtutorial" data-toggle="modal" data-target="#successModal">You're DONE!</button><br>
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 
 	<!-- Modal -->
@@ -27,7 +31,7 @@
         
 
       <div class="modal-footer">
-      	<button ng-click="finishChapter('16.1')"class="button is-blue-jeans pull-right" data-dismiss="modal">Continue</button>
+      	<button ng-click="finishChapter('16.1')" class="button is-blue-jeans pull-right" data-dismiss="modal">Continue</button>
         <button class="button is-ruby pull-left" data-dismiss="modal">Close</button>
       </div>
     </div>

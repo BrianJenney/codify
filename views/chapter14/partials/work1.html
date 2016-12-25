@@ -1,4 +1,4 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekFourteenCtrl">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -6,18 +6,36 @@
 	</div>
 	<div class="col-md-10">
 		</div>
-			<h2>Replicate Google Homepage from this <a href="http://codifyacademy.com/google">link</a> and send a compressed version to your mentor.</h2>
+			<h2>Allow users to create a profile from the info they enter.
+<br><br>
+Hide the profile form once they successfully submit it, then display the info they entered on the page
+<br><br>
+The form should include, but is not limited to:
+<br><br>
+1. First Name<br><br>
+2. Last Name<br><br>
+3. Gender using checkboxes<br><br>
+4. Phone Number<br><br>
+5. Email Address<br><br>
+<br><br>
+ <b>Optional Form Elements:</b><br><br>
+<br><br>
+1. Bio with 140 max characters<br><br>
+2. Secret question using select/option<br><br>
+3. Secret Answer using an input tag<br><br>
+4. Check out out working example - <a href="http://codifyacademy.com/profile/">http://codifyacademy.com/profile/</a></h2>
 
 			<div class="row text-center">
+			<input placeholder="Enter your github URL here" type="text" name="" class="form-control" ng-model="chapter14.jsprofileURL" />
 				<div class="checkbox">
 			        <label style="font-size: 2.5em">
-			            <input type="checkbox" ng-model="chapter3.beginnerProject"value="" ng-change="adjustProgress(5, chapter3.beginnerProject)" checked>
+			            <input type="checkbox" ng-model="chapter14.jsprofile" value="" ng-change="adjustProgress(5, chapter14.jsprofile)" checked>
 			            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 			        </label>
 				</div>
 			</div>
 			<div class="btn-toolbar">
-				<button ng-click="proceed('chapter3.2')" class="button is-ruby pull-right"ng-show="chapter3.beginnerProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+				<button ng-click="proceed('chapter14.2')" class="button is-ruby pull-right" ng-show="chapter14.jsprofile"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 			</div>
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>

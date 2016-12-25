@@ -1,20 +1,24 @@
-<section ng-controller="WeekThreeCtrl">
+<section ng-controller="WeekFourteenCtrl">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
-	<h2>Replicate Intermediate Project from this <a href="http://codifyacademy.com/week1/beginner/">link</a> and send compressed file to your mentor.</h2>
+	<h2>Goal: Read Jon Duckett's JavaScript - Chapter 8 & 9
+<br><br>
+Chapter 8 - AJAX & JSON - p.367 - 408
+<br><br>
+Chapter 9 - APIS - p.409 - 419 & 440 - 448</h2>
 
 	<div class="row text-center">
 		<div class="checkbox">
 	        <label style="font-size: 2.5em">
-	            <input type="checkbox" ng-model="chapter3.intermediateProject"value="" ng-change="adjustProgress(5, chapter3.intermediateProject)" checked>
+	            <input type="checkbox" ng-model="chapter14.jsreading" value="" ng-change="adjustProgress(5, chapter14.jsreading)" checked>
 	            <span class="cr"><i class="cr-icon fa fa-check"></i></span>
 	        </label>
 		</div>
 	</div>
 
 	<div class="btn-toolbar">
-		<button ng-click="proceed('chapter3.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<button ng-click="proceed('chapter14.1')" class="button is-ruby pull-left"><span class="glyphicon glyphicon-chevron-left"></span></button>
 
-		<button ng-click="proceed('chapter3.3')" class="button is-ruby pull-right"ng-show="chapter3.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
+		<button ng-click="proceed('chapter14.3')" class="button is-ruby pull-right" ng-show="chapter14.jsreading"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 	</div>
 
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	
