@@ -27,10 +27,17 @@ $( function() {
     	})
   });
 
-//initialize array for dropdown of instructors
-$scope.instructors = ['Isaac', 'Brian', 'Chris', 'Phillip'];
+//initialize array for dropdown of mentors
+	$scope.mentors = [];
 
-
+	//initialize search object
+	$scope.search = {};
+	
+	firebase.database().ref('mentor/').once('value').then(function(snapshot){
+		for(mentor in snapshot.val()){
+			$scope.mentors.push(mentor);
+		}
+	})
 
  //function to create user
 $scope.createUser = function(){

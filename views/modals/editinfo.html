@@ -18,8 +18,19 @@
         <input type="text" class="form-control" ng-model="editInfo.date" name="">
         <label>Mentor Email</label>
         <input type="text" class="form-control" ng-model="editInfo.mentorEmail" name="">
+
+        <div class="radio">
+          <label><input ng-model="editInfo.amPm" type="radio" name="optradio" value="AM">AM</label>
+        </div>
+        <div class="radio">
+          <label><input ng-model="editInfo.amPm" type="radio" name="optradio" value="PM">PM</label>
+        </div>
+        <div class="clear-fix"></div>
         <label>Mentor</label>
         <select ng-model="editInfo.mentor" ng-options="mentor for mentor in mentors"></select>
+
+        
+        
 
       </div>
       <div class="modal-footer">

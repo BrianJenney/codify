@@ -28,6 +28,9 @@
 	  	<button data-target="#contactModal" data-toggle="modal"class="button is-blue-jeans">Contact <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-envelope"></span></button>
 
 	  	<!-- <button class="button is-blue-jeans">Send SMS to <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-comment"></span></button> -->
+	  	<div class="text-right">
+	  		<a data-target="#mentorModal" data-toggle="modal" href="">Manage Mentors</a>
+	  	</div>
 	</div>
 	<table class="table table-striped table-sm table-responsive">
 		<thead>
@@ -93,7 +96,6 @@
   <ng-include src="'views/modals/classcontact.html'"></ng-include>
 </div>
 
-
 <!-- WEEK INFO MODAL -->
 
 <div id="weekModal" class="modal fade" role="dialog">
@@ -112,9 +114,16 @@
 	<ng-include src="'views/modals/editinfo.html'"></ng-include>
 </div>
 
-<!-- 	IF USER IS NOT AUTHORIZED -->
-<div ng-hide="isAdmin">
-	<ng-include src="'views/shared/unauthorized.html'"></ng-include>
+<!-- MANAGE MENTORS MODAL -->
+
+<div id="mentorModal" class="modal fade" role="dialog">
+	<ng-include src="'views/modals/mentor.html'"></ng-include>
 </div>
 
 </section>
+
+<!-- 	IF USER IS NOT AUTHORIZED -->
+
+<div ng-show="!isAdmin">
+	<ng-include src="'views/shared/unauthorized.html'"></ng-include>
+</div>

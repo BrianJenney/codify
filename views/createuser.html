@@ -31,10 +31,7 @@
   </div>
 
   <label>Select An Instructor: </label>
-  <select ng-model="selectedInstructor">
-    <option ng-repeat="i in instructors">
-      {{i}}
-    </option>
+  <select ng-model="selectedInstructor" ng-options="mentor for mentor in mentors">
   </select>
 
   <div class="text-center">

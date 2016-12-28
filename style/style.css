@@ -86,22 +86,22 @@ h2{
 }
 
   nav{
-  	text-align: center;
+    text-align: center;
   }
   nav li{
-  	text-decoration: none;
-  	display: inline;
-  	font-size: 1.7em;
-  	padding: 15px;
+    text-decoration: none;
+    display: inline;
+    font-size: 1.7em;
+    padding: 15px;
   }
 
   nav a{
-  	color: white;
+    color: white;
   }
 
   nav a:hover{
-  	text-decoration: none !important;
-  	color: lightblue;
+    text-decoration: none !important;
+    color: lightblue;
   }
 
   .jumbotron{
@@ -1015,5 +1015,4 @@ body {
 {
     float: left;
 }
-
 

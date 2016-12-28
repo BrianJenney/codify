@@ -1,0 +1,33 @@
+<div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+
+
+        <label>Mentor Email</label>
+        <input type="text" class="form-control" ng-model="mentor.email" name="">
+        <label>Mentor First Name</label>
+        <input type="text" class="form-control" ng-model="mentor.firstname" name="">
+        <label>Mentor Last Name</label>
+        <input type="text" class="form-control" ng-model="mentor.lastname" name="">
+        <label>Mentor Phone</label>
+        <input type="phone" class="form-control" ng-model="mentor.phone" name="">
+
+      </div>
+      <div class="modal-footer">
+      	<div class="btn-toolbar text-center">
+      		<!-- Edit button -->
+      		<button ng-disabled="disableButton" class="button is-blue-jeans" ng-click="createMentor(mentor)" data-dismiss="modal">Update Mentor</button>
+      		
+          <!-- Close -->
+          <button class="button is-ruby" type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      	
+      </div>
+    </div>
+
+  </div>

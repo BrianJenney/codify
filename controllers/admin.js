@@ -23,15 +23,20 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	  	}else{
 	  		$scope.isAdmin = false;
   		}
-  		// console.log(user.email)
-	  	// console.log($scope.isAdmin);
-	  })
+	  },250)
 	})
+
+	//initialize array for dropdown of mentors
+	$scope.mentors = [];
 
 	//initialize search object
 	$scope.search = {};
-	//initialize array for dropdown of mentors
-	$scope.mentors = ['Isaac','Brian','Chris','Phillip']
+	
+	firebase.database().ref('mentor/').once('value').then(function(snapshot){
+		for(mentor in snapshot.val()){
+			$scope.mentors.push(mentor);
+		}
+	})
 	//initialize array to match student data with their id
 	//the student array does not include id and was made before this feature
 	//we'll need this to get their info to update the hiring modal
@@ -190,14 +195,30 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 	//edit/update student info
 	$scope.changeStudentInfo = function(s){
+
+		console.log(s);
+
 		firebase.database().ref('student/' + studentID).set({
 			date: String(s.date),
 			email: s.email,
 			mentorEmail: s.mentorEmail,
 			mentor: s.mentor,
 			name: s.name,
-			phone: s.phone
+			phone: s.phone,
+			time: s.amPm
 		})
+	}
+
+	$scope.createMentor = function(mentor){
+		firebase.database().ref('mentor/' + mentor.firstname).set({
+			firstname: mentor.firstname,
+			lastname: mentor.lastname,
+			email: mentor.email,
+			phone: mentor.phone
+		})
+		//refresh page with updated mentors
+		$scope.mentor = "";
+		$window.location.href=("/#/admin");
 	}
 
 	//return to home page

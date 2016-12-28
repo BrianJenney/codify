@@ -20,15 +20,15 @@ storageBucket: "codify-afedf.appspot.com",
 };
 firebase.initializeApp(config);
 
-var rootRef = firebase.database().ref();
+var rootRef = firebase.database().ref('/student');
 
 //get student values from firebase
 rootRef.on('value',function(snapshot){
-    snapshot.forEach(function(childSnapshot){
-        var child = childSnapshot.val();
-        for(var x in child){
-            var student = child[x];
+    console.log(snapshot.val());
 
+    students = snapshot.val();
+    for(var x in students){
+            var student = students[x];            
             //format date correctly for when student joined
             //this will be used to determine the current week
             student.date = new Date( student.date.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
@@ -104,7 +104,6 @@ rootRef.on('value',function(snapshot){
                 }
         }
     })
-})
 
 
 //web service to send text
