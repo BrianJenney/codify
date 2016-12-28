@@ -31,7 +31,7 @@
   </div>
 
   <label>Select An Instructor: </label>
-  <select ng-model="selectedInstructor" ng-options="mentor for mentor in mentors">
+  <select ng-model="selectedInstructor" ng-options="mentor.firstname for mentor in mentors">
   </select>
 
   <div class="text-center">

@@ -35,7 +35,8 @@ $( function() {
 	
 	firebase.database().ref('mentor/').once('value').then(function(snapshot){
 		for(mentor in snapshot.val()){
-			$scope.mentors.push(mentor);
+			$scope.mentors.push(snapshot.val()[mentor]);
+			console.log($scope.mentors)
 		}
 	})
 
@@ -79,30 +80,11 @@ $scope.createUser = function(){
 		//call email service and create branch for instructor/student
 		//$http.get("http://localhost:3000/sendmail?to=" + $scope.userEmail)
 
-		//insert instructor email
-		switch($scope.selectedInstructor.trim()){
-			case 'Brian':
-			$scope.mentorEmail = 'bjenney83@gmail.com'
-			break;
-
-			case 'Isaac':
-			$scope.mentorEmail = 'isaac@codfiyacademy.com'
-			break;
-
-			case 'Phillip':
-			$scope.mentorEmail = 'Philipp.schulte@ymail.com'
-			break;
-
-			case 'Chris':
-			$scope.mentorEmail = 'chrisbrody@codfiyacademy.com'
-			break;
-		}
-
 		firebase.database().ref('student/' + user.uid).set({
 			email: $scope.userEmail,
 			name: $scope.userName,
-			mentor: $scope.selectedInstructor.trim(),
-			mentorEmail: $scope.mentorEmail,
+			mentor: $scope.selectedInstructor.firstname,
+			mentorEmail: $scope.selectedInstructor.email,
 			phone: $scope.phone,
 			date: $scope.date,
 			progress: 0,

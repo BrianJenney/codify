@@ -64,7 +64,7 @@ rootRef.on('value',function(snapshot){
             if(typeof thisWeek !== 'undefined' && (diffDays%7==0)){
                 var count = 0;
                     for(var key in thisWeek){
-                        if(thisWeek[key]==true){
+                        if(thisWeek[key]==true || thisWeek[key].length > 0){
                             count++
                         }
                     }
