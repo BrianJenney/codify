@@ -30,9 +30,19 @@
     <input ng-model="userPassword" type="password" class="form-control" id="pwd">
   </div>
 
-  <label>Select An Instructor: </label>
-  <select ng-model="selectedInstructor" ng-options="mentor.firstname for mentor in mentors">
-  </select>
+  <div class="form-group">
+    <label>Select An Instructor: </label>
+    <select ng-model="selectedInstructor" ng-options="mentor.firstname for mentor in mentors">
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Select Your Class Time: </label>
+    <select ng-model="amPm">
+      <option value="AM">Morning</option>
+      <option value="PM">Afternoon</option>
+    </select>
+  </div>
 
   <div class="text-center">
     <br><br>

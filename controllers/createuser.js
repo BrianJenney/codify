@@ -36,7 +36,6 @@ $( function() {
 	firebase.database().ref('mentor/').once('value').then(function(snapshot){
 		for(mentor in snapshot.val()){
 			$scope.mentors.push(snapshot.val()[mentor]);
-			console.log($scope.mentors)
 		}
 	})
 
@@ -88,7 +87,8 @@ $scope.createUser = function(){
 			phone: $scope.phone,
 			date: $scope.date,
 			progress: 0,
-			currentweek: 0
+			currentweek: 0,
+			time: $scope.amPm
 		})
 
 		//redirect to login

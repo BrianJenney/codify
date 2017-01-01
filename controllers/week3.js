@@ -147,11 +147,13 @@ angular.module('myApp.week3', ['ngRoute'])
 	$scope.submitWeek = function(){
 		var user = firebase.auth().currentUser;
 		//set firebase data with user's progress from checkboxes
-		firebase.database().ref('student/' + user.uid + '/chapter3/').set({
-			beginnerProject: chapterService.getValue($scope.chapter3.beginnerProject, false),
-			intermediateProject: chapterService.getValue($scope.chapter3.intermediateProject, false),
-			advancedProject: chapterService.getValue($scope.chapter3.advancedProject, false)
-		});
+		if($scope.chapter3 !== null){
+			firebase.database().ref('student/' + user.uid + '/chapter3/').set({
+				beginnerProject: chapterService.getValue($scope.chapter3.beginnerProject, false),
+				intermediateProject: chapterService.getValue($scope.chapter3.intermediateProject, false),
+				advancedProject: chapterService.getValue($scope.chapter3.advancedProject, false)
+			});
+		}
 
 		//update complete rate
 		firebase.database().ref('student/' + user.uid).update({
