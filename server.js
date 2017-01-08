@@ -24,7 +24,7 @@ var rootRef = firebase.database().ref('/student');
 
 //get student values from firebase
 rootRef.on('value',function(snapshot){
-    console.log(snapshot.val());
+    //console.log(snapshot.val());
 
     students = snapshot.val();
     for(var x in students){

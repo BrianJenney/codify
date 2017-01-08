@@ -9,11 +9,13 @@ html {
   box-sizing: inherit;
   }
 
+
+
 #sidebar-button {
-    float: left;
-    position: absolute;
-    top: 0;
-    left: 0;
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 h2{

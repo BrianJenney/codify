@@ -1,4 +1,12 @@
+
 <section ng-controller="WeekTwoCtrl">
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+
+<ng-include src="'views/shared/nav.html'"></ng-include>
+
+<div id="main">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -22,7 +30,7 @@
 			
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 		</div>
-	
-
+	</div>
 </section>
+
 
