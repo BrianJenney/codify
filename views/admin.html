@@ -57,7 +57,6 @@
 			<th>Week 16</th>
 		</thead>
 		<tbody>
-		<pre>{{search}}</pre>
 			<tr ng-repeat="s in (filteredStudents = studentArray | filter: search)">
 				<td  data-target="#myModal" data-toggle="modal"><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
