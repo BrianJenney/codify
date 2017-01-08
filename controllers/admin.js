@@ -29,12 +29,15 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	//initialize array for dropdown of mentors
 	$scope.mentors = [];
 
+	//array for am pm dropdown
+	$scope.times = ['AM','PM'];
+
 	//initialize search object
 	$scope.search = {};
 	
 	firebase.database().ref('mentor/').once('value').then(function(snapshot){
 		for(mentor in snapshot.val()){
-			$scope.mentors.push(mentor);
+			$scope.mentors.push(mentor.trim());
 		}
 	})
 	//initialize array to match student data with their id
@@ -93,6 +96,21 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 			})
 		})
 	})
+
+	//delete property if null from search to ensure filter works when
+	//all is selected
+	$scope.filterStudents = function(search){
+		if(search.mentor !== 'undefined'){
+			if(search.mentor == null){
+				delete search.mentor;	
+			} 
+		}
+		if(search.time !== 'undefined'){
+			if(search.time == null){
+				delete search.time;
+			}  
+		}
+	}
 
 	$scope.showWeek = function(week){
 		//console.log(week);
@@ -195,8 +213,6 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 	//edit/update student info
 	$scope.changeStudentInfo = function(s){
-
-		console.log(s);
 
 		firebase.database().ref('student/' + studentID).set({
 			date: String(s.date),

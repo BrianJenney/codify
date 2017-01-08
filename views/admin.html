@@ -21,7 +21,10 @@
 	
 	<div class="form-group filters">
 		
-		<select ng-change="getFilteredStudents()" ng-model="search.mentor" ng-options="mentor for mentor in mentors">
+		<select ng-change="filterStudents(search)" ng-model="search.mentor" ng-options="mentor.trim() for mentor in mentors">
+			<option value="">All</option>
+	  	</select>
+	  	<select ng-change="filterStudents(search)" ng-model="search.time" ng-options="time for time in times">
 			<option value="">All</option>
 	  	</select>
 
@@ -54,7 +57,8 @@
 			<th>Week 16</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="s in (filteredStudents = studentArray | filter: search.mentor.trim())">
+		<pre>{{search}}</pre>
+			<tr ng-repeat="s in (filteredStudents = studentArray | filter: search)">
 				<td  data-target="#myModal" data-toggle="modal"><a ng-click="getStudentInfo(s)" href="">{{s.name | uppercase}}</a></td>
 				<td>{{s.mentor}}</td>
 				<td  data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.chapter1)">{{s.week1CompleteRate | percentage:0}}</td>
