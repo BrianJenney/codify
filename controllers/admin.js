@@ -190,13 +190,19 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	//create new section for hiring stuff
 	$scope.updateHiringInfo = function(){
 		//console.log(studentID);
+		var employerhired = $scope.employer;
+		var titlehired = $scope.title;
+		var typehired = $scope.type;
+		var languageshired = $scope.languages;
+		var collegehired = $scope.collegedgree;
+		var majorhired = $scope.major;
 		firebase.database().ref('student/' + studentID + '/hireinfo').set({
-			employer:'Blue Rocket',
-			title:'software dev',
-			type:'full time',
-			languages:'javascript, angular, ruby',
-			collegedegree:'liberal arts',
-			major:'english'
+			employer: employerhired,
+			title: titlehired,
+			type: typehired,
+			languages: languageshired,
+			collegedegree: collegehired,
+			major: majorhired
 
 		})
 	}
