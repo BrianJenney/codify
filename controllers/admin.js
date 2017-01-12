@@ -197,7 +197,6 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 			languages:'javascript, angular, ruby',
 			collegedegree:'liberal arts',
 			major:'english'
-
 		})
 	}
 
