@@ -23,7 +23,7 @@ angular.module('myApp.week7', ['ngRoute'])
 
 	//initialize chapter2 obj
 	$scope.chapter7 = {};
-
+	$scope.nav7= true;
 	//timeout function to give time
 	//for each page to run digest cycle
 	$timeout(function(){

@@ -76,8 +76,10 @@
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.chapter14)">{{s.week14CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.chapter15)">{{s.week15CompleteRate | percentage:0}}</td>
 				<td data-target="#weekModal" data-toggle="modal" ng-click ="showWeek(s.chapter16)">{{s.week16CompleteRate | percentage:0}}</td>
+
 				<td><button ng-click="hiringInfo(s)" data-target="#hiredModal" data-toggle="modal" class="btn btn-danger btn-xs">HIRED!</button></td>
-				<td><button ng-click="editInfo(s)" data-target="#editInfoModal" data-toggle="modal" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>
+
+				<td><button ng-click="editStudentInfo(s)" data-target="#editInfoModal" data-toggle="modal" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></td>
 
 			</tr>
 		</tbody>

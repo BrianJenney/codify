@@ -201,13 +201,14 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	}
 
 	//grab unique id from student email
-	$scope.editInfo = function(s){
+	$scope.editStudentInfo = function(s){
 		for(var id in $scope.students){
 			if(s.email == $scope.students[id].email){
 				studentID = id;
 			}
 		}
 		$scope.editInfo = s;
+
 	}
 
 	//edit/update student info
