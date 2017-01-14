@@ -1,4 +1,12 @@
 <section ng-controller="WeekEightCtrl">
+<!-- menu div -->
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+<!-- shared view -->
+<ng-include src="'views/shared/nav.html'"></ng-include>
+<!-- must include main -->
+<div id="main">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
 	<h2>Complete these JavaScript exercises several times, the more you type the more you will begin to understand.
 	<br><br>
@@ -29,5 +37,5 @@
 		<button ng-click="proceed('chapter8.3')" class="button is-ruby pull-right" ng-show="chapter8.intermediateProject"><span class="glyphicon glyphicon-chevron-right"></span></button>	
 	</div>
 
-	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	
+	<button ng-click="proceed('home')" class="button is-ruby">Exit</button></div>	
 </section>

@@ -1,4 +1,12 @@
 <section ng-controller="WeekFiveCtrl">
+<!-- menu div -->
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+<!-- shared view -->
+<ng-include src="'views/shared/nav.html'"></ng-include>
+<!-- must include main -->
+<div id="main">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
 	<h2>Using Orange Juice and at least one other project from week 3, add media queries to make them responsive, make sure you scale your screen size down from left to right, and fix any elements that break (don't look good).<br><br>
 
@@ -21,4 +29,5 @@ Remember this is just practice, don't worry about making it "perfect"</h2>
 	</div>
 
 	<button ng-click="proceed('home')" class="button is-ruby">Exit</button>	
+	</div>
 </section>

@@ -1,11 +1,15 @@
 <section ng-controller="WeekFourCtrl">
+
+<!-- menu div -->
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+
+<!-- shared view -->
+<ng-include src="'views/shared/nav.html'"></ng-include>
+<!-- must include main -->
+<div id="main">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
-<div class="row">
-	<div class="col-md-2">
-		<ng-include src="'views/shared/nav.html'"></ng-include>
-	</div>
-	<div class="col-md-10">
-		</div>
 			<h2>Copy and paste this URL into your browser to see our example: codifyacademy.com/week3/beginner.jpg<br><br>
 Remember, have fun! 
 <br><br>
@@ -27,6 +31,6 @@ When Finished: Load your files up to Github, and send you repo url to your mento
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 		</div>
 	
-
+</div>
 </section>
 

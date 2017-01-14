@@ -213,7 +213,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 	//edit/update student info
 	$scope.changeStudentInfo = function(s){
-
+		console.log(s);
 		firebase.database().ref('student/' + studentID).set({
 			date: String(s.date),
 			email: s.email,

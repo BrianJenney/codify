@@ -1,4 +1,12 @@
 <section ng-controller="WeekTwoCtrl">
+	<!-- menu div -->
+	<div class="text-left">
+		<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+	</div>
+	<!-- shared view -->
+	<ng-include src="'views/shared/nav.html'"></ng-include>
+	<!-- must include main -->
+	<div id="main">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
 	<h2>Replicate Advanced Project from this <a href="http://codifyacademy.com/week1/advanced/">link</a>  and send the compressed file to your mentor.</h2>
 
@@ -33,6 +41,7 @@
     </div>
 
   </div>
+</div>
 </div>
 
 </section>

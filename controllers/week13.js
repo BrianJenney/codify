@@ -183,5 +183,16 @@ angular.module('myApp.week13', ['ngRoute'])
 
 		$window.location.href = "/#/chapter14.1"; 
 	}
+
+	$scope.openNav = function() {
+	    document.getElementById("mySidenav").style.width = "250px";
+	    document.getElementById("main").style.marginLeft = "250px";
+	}
+
+	/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+	$scope.closeNav = function() {
+	    document.getElementById("mySidenav").style.width = "0";
+	    document.getElementById("main").style.marginLeft = "0";
+	}
  
  }]);

@@ -1,4 +1,12 @@
 <section ng-controller="WeekTwelveCtrl">
+<!-- menu div -->
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+<!-- shared view -->
+<ng-include src="'views/shared/nav.html'"></ng-include>
+<!-- must include main -->
+<div id="main">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -28,6 +36,6 @@ Check out our working version of a gallery created entirely with JavaScript! htt
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 		</div>
 	
-
+</div>
 </section>
 

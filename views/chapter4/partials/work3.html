@@ -1,4 +1,12 @@
 <section ng-controller="WeekFourCtrl">
+<!-- menu div -->
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+<!-- shared view -->
+<ng-include src="'views/shared/nav.html'"></ng-include>
+<!-- must include main -->
+<div id="main">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
 	<h2>Copy and paste this URL into your browser to see our example:  codifyacademy.com/week3/advanced.jpg
 <br><br>
@@ -41,5 +49,5 @@ When Finished: Load your files up to Github, and send you repo url to your mento
 
   </div>
 </div>
-
+</div>
 </section>

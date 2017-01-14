@@ -1,4 +1,12 @@
 <section ng-controller="WeekSixCtrl">
+<!-- menu div -->
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+<!-- shared view -->
+<ng-include src="'views/shared/nav.html'"></ng-include>
+<!-- must include main -->
+<div id="main">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
 	<h2>Mission: Complete the Codecademy jQuery walkthrough <br><br>
 
@@ -40,5 +48,5 @@ This is a JavaScript Library that has alot of functions built into it - which al
 
   </div>
 </div>
-
+</div>
 </section>

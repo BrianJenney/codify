@@ -1,4 +1,12 @@
 <section ng-controller="WeekElevenCtrl">
+<!-- menu div -->
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+<!-- shared view -->
+<ng-include src="'views/shared/nav.html'"></ng-include>
+<!-- must include main -->
+<div id="main">
 <ng-include src="'views/shared/progressbar.html'"></ng-include>
 <div class="row">
 	<div class="col-md-2">
@@ -33,6 +41,6 @@ Check out two that we built and customized! http://codifyacademy.com/quiz/ & htt
 			<button ng-click="proceed('home')" class="button is-ruby">Exit</button>
 		</div>
 	
-
+</div>
 </section>
 

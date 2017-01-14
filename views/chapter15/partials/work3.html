@@ -1,4 +1,12 @@
 <section ng-controller="WeekFifteenCtrl">
+<!-- menu div -->
+<div class="text-left">
+	<button class="btn btn-xs btn-primary text-left" ng-click="openNav()">Menu</button>
+</div>
+<!-- shared view -->
+<ng-include src="'views/shared/nav.html'"></ng-include>
+<!-- must include main -->
+<div id="main">
 	<ng-include src="'views/shared/progressbar.html'"></ng-include>
 	<h2>Review The basics of Angular JS Framework at W3Schools: <a href="http://www.w3schools.com/angular/default.asp">http://www.w3schools.com/angular/default.asp</a>
 <br><br>
@@ -38,5 +46,5 @@ Complete reading and trying it yourself in each section from Home - Services</h2
 
   </div>
 </div>
-
+</div>
 </section>
