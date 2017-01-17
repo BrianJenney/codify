@@ -8,13 +8,16 @@ app.use(express.static(__dirname + '/'));
 app.listen(process.env.PORT || 3000);
 
 // Initialize Firebase
-var config = {
+var configs = {
 apiKey: "AIzaSyCgcDx3o3v_xk7hIHlScBR2FJE5mW0a3Cs",
 authDomain: "codify-afedf.firebaseapp.com",
 databaseURL: "https://codify-afedf.firebaseio.com",
 storageBucket: "codify-afedf.appspot.com",
 };
-firebase.initializeApp(config);
+firebase.initializeApp(configs);
+
+var accountSid = 'AC7ba88a6599ee96042b778acc047436fd';      
+var authToken = '279c4e8615686e31df64fde63897ae10'; 
 
 var rootRef = firebase.database().ref('/student');
 
@@ -72,8 +75,8 @@ rootRef.on('value',function(snapshot){
                         var transporter = nodemailer.createTransport({
                             service: 'Gmail',
                             auth:{
-                                user: 'brianjenney83@gmail.com',
-                                pass: 'freestyl1'
+                                user: 'codifyacademymail@gmail.com',
+                                pass: 'Codifymail535'
                             }
                         });
 
@@ -116,8 +119,8 @@ app.get('/sendmail', function(req, res){
 	var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth:{
-        user: 'brianjenney83@gmail.com',
-        pass: 'freestyl1'
+        user: 'codifyacademymail@gmail.com',
+        pass: 'Codifymail535'
         }
     });
     // setup e-mail data with unicode symbols

@@ -50,6 +50,7 @@
 "></script>
 
   <script src="app.js"></script>
+  <script src="config.js"></script>
   <script src="controllers/week1.js"></script>
   <script src="controllers/week2.js"></script>
   <script src="controllers/week3.js"></script>
@@ -76,13 +77,13 @@
   <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
 <script>
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCgcDx3o3v_xk7hIHlScBR2FJE5mW0a3Cs",
+  var configs = {
+    apiKey: myKey.firebaseKey,
     authDomain: "codify-afedf.firebaseapp.com",
     databaseURL: "https://codify-afedf.firebaseio.com",
     storageBucket: "codify-afedf.appspot.com",
   };
-  firebase.initializeApp(config);
+  firebase.initializeApp(configs);
 
 </script>	
 
