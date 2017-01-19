@@ -28,7 +28,9 @@
 			<option value="">All</option>
 	  	</select>
 
-	  	<button data-target="#contactModal" data-toggle="modal"class="button is-blue-jeans">Contact <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-envelope"></span></button>
+	  	<button data-target="#contactModal" data-toggle="modal" class= "button is-blue-jeans">Contact <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-envelope"></span></button>
+
+	  	<button class="button is-ruby" ng-click="graduateClass()">Graduate Class!</button>
 
 	  	<!-- <button class="button is-blue-jeans">Send SMS to <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-comment"></span></button> -->
 	  	<div class="text-right">

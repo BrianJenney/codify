@@ -31,11 +31,16 @@ $scope.loginUser = function(){
 				//take user to the last chapter they completed
 				chapterService.getCompleteRate(user).then(function(snapshot){
 					var student = snapshot.val();
-					if(typeof student.currentweek !== 'undefined' && student.currentweek > 0){
-						$window.location.href = "/#/chapter" + student.currentweek;
+					if(student !== null){
+						if(typeof student.currentweek !== 'undefined' && student.currentweek > 0){
+							$window.location.href = "/#/chapter" + student.currentweek;
+						}else{
+							$window.location.href = "/#/home";
+						}
 					}else{
-						$window.location.href = "/#/home";
+						$window.location.href="/#/video";
 					}
+					
 				})
 			}
 		})

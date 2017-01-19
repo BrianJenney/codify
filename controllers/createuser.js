@@ -91,7 +91,7 @@ $scope.createUser = function(){
 			time: $scope.amPm
 		})
 
-		//redirect to login
+		//redirect to video
 		$window.location.href="/#/video"
 		}
 		

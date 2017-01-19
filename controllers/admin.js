@@ -49,7 +49,6 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	//retrieve firebase data for students
 	firebase.database().ref('student/').once('value').then(function(snapshot){
 			$scope.students = snapshot.val();
-			//console.log($scope.students)
 			//get object from id key of student
 			angular.forEach($scope.students, function(value, key){
 			$scope.student = value;
@@ -73,7 +72,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 			}
 
 			//get week assignment info
-			for(x=0; x<$scope.studentArray.length; x++){
+			for(var x=0; x<$scope.studentArray.length; x++){
 
 				//get percentage of week for each student
 				$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].chapter1)	
@@ -147,7 +146,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	$scope.sendClassEmail = function(message){
 		//set message back to null
 		$scope.message = "";
-		for(x=0; x<$scope.filteredStudents.length; x++){
+		for(var x=0; x<$scope.filteredStudents.length; x++){
 			//check if email exists
 			if(typeof $scope.filteredStudents[x].email !== 'undefined'){
 				$http.get('http://localhost:3000/sendmail?to=' + $scope.filteredStudents[x].email + '&message=' + message + '&from=' + $scope.filteredStudents[x].mentorEmail)
@@ -160,7 +159,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	//send all students in class a twilio text message
 	$scope.sendClassSMS = function(message){
 		$("#studentMessage").val('');
-		for(x=0; x<$scope.filteredStudents.length; x++){
+		for(var x=0; x<$scope.filteredStudents.length; x++){
 			//check if email exists
 			if(typeof $scope.filteredStudents[x].phone !== 'undefined'){
 				$http.get('http://localhost:3000/sendtext?to=' + $scope.filteredStudents[x].phone + '&message=' + message)
@@ -169,6 +168,20 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		}
 		//set message back to null
 		$scope.message = "";
+	}
+
+	$scope.graduateClass = function(){
+		for(var x= 0; x<$scope.filteredStudents.length; x++){
+			var s = $scope.filteredStudents[x];
+			for(var id in $scope.students){
+				if(s.email == $scope.students[id].email){
+					firebase.database().ref('student/' + id).update({
+						graduated: true
+					})
+				}
+			}
+
+		}
 	}
 
 	//initialize student id var
@@ -221,7 +234,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 			mentor: s.mentor,
 			name: s.name,
 			phone: s.phone,
-			time: s.amPm
+			time: s.time
 		})
 	}
 
