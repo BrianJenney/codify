@@ -30,7 +30,7 @@
 
 	  	<button data-target="#contactModal" data-toggle="modal" class= "button is-blue-jeans">Contact <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-envelope"></span></button>
 
-	  	<button class="button is-ruby" ng-click="graduateClass()">Graduate Class!</button>
+	  	<button class="button is-ruby" data-target="#graduateModal" data-toggle="modal">Graduate Class!</button>
 
 	  	<!-- <button class="button is-blue-jeans">Send SMS to <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-comment"></span></button> -->
 	  	<div class="text-right">
@@ -125,6 +125,12 @@
 
 <div id="mentorModal" class="modal fade" role="dialog">
 	<ng-include src="'views/modals/mentor.html'"></ng-include>
+</div>
+
+<!-- GRADUATE MODAL -->
+
+<div id="graduateModal" class="modal fade" role="dialog">
+	<ng-include src="'views/modals/graduate.html'"></ng-include>
 </div>
 
 </section>

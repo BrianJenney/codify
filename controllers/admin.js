@@ -170,6 +170,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 		$scope.message = "";
 	}
 
+	//add graduated property to graduated students
 	$scope.graduateClass = function(){
 		for(var x= 0; x<$scope.filteredStudents.length; x++){
 			var s = $scope.filteredStudents[x];
