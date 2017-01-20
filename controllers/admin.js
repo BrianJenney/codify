@@ -47,8 +47,8 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	//initialize array to store student object
 	$scope.studentArray = [];
 	//retrieve firebase data for students
-	firebase.database().ref('student/').once('value').then(function(snapshot){
-			$scope.students = snapshot.val();
+	firebase.database().ref('student/').orderByChild('graduated').equalTo(false).once('value').then(function(snapshot){
+			$scope.students = snapshot.val()
 			//get object from id key of student
 			angular.forEach($scope.students, function(value, key){
 			$scope.student = value;

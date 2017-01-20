@@ -88,7 +88,8 @@ $scope.createUser = function(){
 			date: $scope.date,
 			progress: 0,
 			currentweek: 0,
-			time: $scope.amPm
+			time: $scope.amPm,
+			graduated: false
 		})
 
 		//redirect to video
