@@ -9,23 +9,6 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 .controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter', '$timeout', function($scope, $filter, $http, $window, filterFilter, $timeout) {
 
-	//get current user to determine if admin
-	firebase.auth().onAuthStateChanged(function(user) {
-	  if (user) {
-	    //console.log(user.email)
-	  } else {
-	    console.log("nope")
-	  }
-	$timeout(function(){
-  	//if user email is mine then you're the admin
-	  if(user.email === 'brianjenney83@gmail.com' || user.email === 'mattbrody@codify.com' || user.email === 'isaac@codfiyacademy.com' || user.email === 'Philipp.schulte@ymail.com'){
-	  		$scope.isAdmin = true;
-	  	}else{
-	  		$scope.isAdmin = false;
-  		}
-	  },250)
-	})
-
 	//initialize array for dropdown of mentors
 	$scope.mentors = [];
 
@@ -34,67 +17,103 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 	//initialize search object
 	$scope.search = {};
-	
-	firebase.database().ref('mentor/').once('value').then(function(snapshot){
-		for(mentor in snapshot.val()){
-			$scope.mentors.push(mentor.trim());
-		}
-	})
+
+	//boolean to switch views from graduate to 
+	$scope.alumni = false
 	//initialize array to match student data with their id
 	//the student array does not include id and was made before this feature
 	//we'll need this to get their info to update the hiring modal
 	$scope.studentID = [];
 	//initialize array to store student object
 	$scope.studentArray = [];
-	//retrieve firebase data for students
-	firebase.database().ref('student/').orderByChild('graduated').equalTo(false).once('value').then(function(snapshot){
-			$scope.students = snapshot.val()
-			//get object from id key of student
-			angular.forEach($scope.students, function(value, key){
-			$scope.student = value;
-			$scope.$apply(function(){
-			$scope.studentArray.push(value);
 
-			//function to get week completion rate
-			function getCompleteRate(week){
-				if(week == null || week == 'undefined'){
-					return 0
-				}else{
-					var count = 0;
-					for(var key in week){
-						//count all true fields and url inputs
-						if(week[key]==true || week[key].length > 0){
-							count++
-						}
-					}
-					return count/Object.keys(week).length
-				}
+	//get current user to determine if admin
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	    firebase.database().ref('mentor/').once('value').then(function(snapshot){
+		for(mentor in snapshot.val()){
+			console.log()
+			//get dropdown for mentor names
+			$scope.mentors.push(snapshot.val()[mentor]);
 			}
+		}).then(function(){
 
-			//get week assignment info
-			for(var x=0; x<$scope.studentArray.length; x++){
+		})
+	  } else {
+	    console.log("nope")
+	  }
+	$timeout(function(){
+		console.log($scope.mentors)
+  	//if user email is one of the tutors then you're the admin
+	  if(user.email === 'brianjenney83@gmail.com' || user.email === 'mattbrody@codify.com' || user.email === 'isaac@codfiyacademy.com' || user.email === 'Philipp.schulte@ymail.com'){
+	  		$scope.isAdmin = true;
+	  		$scope.getCurrentStudents(false);
+	  	}else{
+	  		$scope.isAdmin = false;
+  		}
+	  },250)
+	})
 
-				//get percentage of week for each student
-				$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].chapter1)	
-				$scope.studentArray[x].week2CompleteRate = getCompleteRate($scope.studentArray[x].chapter2)
-				$scope.studentArray[x].week3CompleteRate = getCompleteRate($scope.studentArray[x].chapter3)
-				$scope.studentArray[x].week4CompleteRate = getCompleteRate($scope.studentArray[x].chapter4)
-				$scope.studentArray[x].week5CompleteRate = getCompleteRate($scope.studentArray[x].chapter5)
-				$scope.studentArray[x].week6CompleteRate = getCompleteRate($scope.studentArray[x].chapter6)
-				$scope.studentArray[x].week7CompleteRate = getCompleteRate($scope.studentArray[x].chapter7)
-				$scope.studentArray[x].week8CompleteRate = getCompleteRate($scope.studentArray[x].chapter8)
-				$scope.studentArray[x].week9CompleteRate = getCompleteRate($scope.studentArray[x].chapter9)
-				$scope.studentArray[x].week10CompleteRate = getCompleteRate($scope.studentArray[x].chapter10)
-				$scope.studentArray[x].week11CompleteRate = getCompleteRate($scope.studentArray[x].chapter11)	
-				$scope.studentArray[x].week12CompleteRate = getCompleteRate($scope.studentArray[x].chapter12)
-				$scope.studentArray[x].week13CompleteRate = getCompleteRate($scope.studentArray[x].chapter13)
-				$scope.studentArray[x].week14CompleteRate = getCompleteRate($scope.studentArray[x].chapter14)
-				$scope.studentArray[x].week15CompleteRate = getCompleteRate($scope.studentArray[x].chapter15)
-				$scope.studentArray[x].week16CompleteRate = getCompleteRate($scope.studentArray[x].chapter16)	
+
+	//retrieve firebase data for students
+	$scope.getCurrentStudents = function(bool){
+		//if student array exists, erase and make new one 
+		//so you don't append exiting values
+		$scope.studentArray = $scope.studentArray.length > 0 ? $scope.studentArray = [] : $scope.studentArray;
+
+		//switch view
+		$scope.isAlumni = bool == false ? false: true;
+
+		//get data based on if alumni view or current view
+		firebase.database().ref('student/').orderByChild('graduated').equalTo(bool).once('value').then(function(snapshot){
+				$scope.students = snapshot.val()
+				//get object from id key of student
+				angular.forEach($scope.students, function(value, key){
+				$scope.student = value;
+				$scope.$apply(function(){
+				$scope.studentArray.push(value);
+
+				//function to get week completion rate
+				function getCompleteRate(week){
+					if(week == null || week == 'undefined'){
+						return 0
+					}else{
+						var count = 0;
+						for(var key in week){
+							//count all true fields and url inputs
+							if(week[key]==true || week[key].length > 0){
+								count++
+							}
+						}
+						return count/Object.keys(week).length
+					}
 				}
+
+				//get week assignment info
+				for(var x=0; x<$scope.studentArray.length; x++){
+
+					//get percentage of week for each student
+					$scope.studentArray[x].week1CompleteRate = getCompleteRate($scope.studentArray[x].chapter1)	
+					$scope.studentArray[x].week2CompleteRate = getCompleteRate($scope.studentArray[x].chapter2)
+					$scope.studentArray[x].week3CompleteRate = getCompleteRate($scope.studentArray[x].chapter3)
+					$scope.studentArray[x].week4CompleteRate = getCompleteRate($scope.studentArray[x].chapter4)
+					$scope.studentArray[x].week5CompleteRate = getCompleteRate($scope.studentArray[x].chapter5)
+					$scope.studentArray[x].week6CompleteRate = getCompleteRate($scope.studentArray[x].chapter6)
+					$scope.studentArray[x].week7CompleteRate = getCompleteRate($scope.studentArray[x].chapter7)
+					$scope.studentArray[x].week8CompleteRate = getCompleteRate($scope.studentArray[x].chapter8)
+					$scope.studentArray[x].week9CompleteRate = getCompleteRate($scope.studentArray[x].chapter9)
+					$scope.studentArray[x].week10CompleteRate = getCompleteRate($scope.studentArray[x].chapter10)
+					$scope.studentArray[x].week11CompleteRate = getCompleteRate($scope.studentArray[x].chapter11)	
+					$scope.studentArray[x].week12CompleteRate = getCompleteRate($scope.studentArray[x].chapter12)
+					$scope.studentArray[x].week13CompleteRate = getCompleteRate($scope.studentArray[x].chapter13)
+					$scope.studentArray[x].week14CompleteRate = getCompleteRate($scope.studentArray[x].chapter14)
+					$scope.studentArray[x].week15CompleteRate = getCompleteRate($scope.studentArray[x].chapter15)
+					$scope.studentArray[x].week16CompleteRate = getCompleteRate($scope.studentArray[x].chapter16)	
+					}
+				})
 			})
 		})
-	})
+	}
 
 	//delete property if null from search to ensure filter works when
 	//all is selected
