@@ -5,6 +5,12 @@
 </style>
 
 <section ng-controller="AdminCtrl">
+
+	<div class="form-group">
+	    <span class="glyphicon glyphicon-calendar"></span><input style="width: 10% !important" ng-model="search.date" type="text" id="datePicker">
+	</div>
+	<button class="btn btn-primary btn-xs" ng-click="filterStudents(search)">Filter By Start Date</button>
+
 <div ng-if="isAdmin">
 	<a href="" ><span ng-click="getCurrentStudents(true)" ng-show="!isAlumni">Graduate View</span><span ng-click="getCurrentStudents(false)" ng-show="isAlumni">Current Student View</span></a>
 
@@ -15,11 +21,8 @@
 		</nav>
 	</header>
 	
-	<!-- <pre>
-		{{studentArray | json}}
-	</pre> -->
+
 	<div class="container-fluid student-table">
-		
 	
 	<div class="form-group filters">
 		
@@ -30,6 +33,7 @@
 			<option value="">All</option>
 	  	</select>
 
+	  	
 	  	<button data-target="#contactModal" data-toggle="modal"class="button is-blue-jeans">Contact <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-envelope"></span></button>
 
 	  	<button data-target="#graduateModal" data-toggle="modal" class="button is-ruby">Graduate Class</button>

@@ -9,6 +9,23 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 .controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter', '$timeout', function($scope, $filter, $http, $window, filterFilter, $timeout) {
 
+	$( function() {
+    $( "#datePicker").datepicker(
+    	{ beforeShowDay: function(day) {
+            var day = day.getDay();
+            if (day == 1 || day == 2 || day == 3 || day == 4 || day == 5) {
+                return [false, "somecssclass"]
+            } else {
+                return [true, "someothercssclass"]
+            }
+        },
+        onSelect: function(dateText, inst) { 
+		     	var dateAsString = dateText;
+		     	$scope.date = dateAsString;
+		   }
+    	})
+  });
+
 	//initialize array for dropdown of mentors
 	$scope.mentors = [];
 
@@ -32,26 +49,40 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	  if (user) {
 	    firebase.database().ref('mentor/').once('value').then(function(snapshot){
 		for(mentor in snapshot.val()){
-			console.log()
 			//get dropdown for mentor names
-			$scope.mentors.push(snapshot.val()[mentor]);
+				$scope.$apply(function(){
+					$scope.mentors.push(snapshot.val()[mentor]);	
+				})
 			}
 		}).then(function(){
-
+			console.log(user.email)
+			for(var m=0; m<$scope.mentors.length; m++){
+				if($scope.mentors[m].email === user.email){
+					$scope.$apply(function(){
+						$scope.isAdmin = true;	
+						$scope.getCurrentStudents(false);
+					})		
+					break;
+				}else{
+					$scope.$apply(function(){
+						$scope.isAdmin = false;
+					})	
+				}
+			}
 		})
 	  } else {
 	    console.log("nope")
 	  }
-	$timeout(function(){
-		console.log($scope.mentors)
-  	//if user email is one of the tutors then you're the admin
-	  if(user.email === 'brianjenney83@gmail.com' || user.email === 'mattbrody@codify.com' || user.email === 'isaac@codfiyacademy.com' || user.email === 'Philipp.schulte@ymail.com'){
-	  		$scope.isAdmin = true;
-	  		$scope.getCurrentStudents(false);
-	  	}else{
-	  		$scope.isAdmin = false;
-  		}
-	  },250)
+	// $timeout(function(){
+	// 	console.log($scope.mentors)
+ //  	//if user email is one of the tutors then you're the admin
+	//   if(user.email === 'brianjenney83@gmail.com' || user.email === 'mattbrody@codify.com' || user.email === 'isaac@codfiyacademy.com' || user.email === 'Philipp.schulte@ymail.com'){
+	//   		$scope.isAdmin = true;
+	//   		$scope.getCurrentStudents(false);
+	//   	}else{
+	//   		$scope.isAdmin = false;
+ //  		}
+	//   },250)
 	})
 
 
@@ -118,6 +149,9 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	//delete property if null from search to ensure filter works when
 	//all is selected
 	$scope.filterStudents = function(search){
+
+		search.date = $scope.date;
+
 		if(search.mentor !== 'undefined'){
 			if(search.mentor == null){
 				delete search.mentor;	
