@@ -103,7 +103,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 				$scope.student = value;
 				$scope.$apply(function(){
 				$scope.studentArray.push(value);
-
+				$scope.filteredStudents = $scope.studentArray;
 				//function to get week completion rate
 				function getCompleteRate(week){
 					if(week == null || week == 'undefined'){
@@ -140,6 +140,12 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 					$scope.studentArray[x].week14CompleteRate = getCompleteRate($scope.studentArray[x].chapter14)
 					$scope.studentArray[x].week15CompleteRate = getCompleteRate($scope.studentArray[x].chapter15)
 					$scope.studentArray[x].week16CompleteRate = getCompleteRate($scope.studentArray[x].chapter16)	
+					
+						//use their original start date in search instead of 
+						//padded date due to breaks
+						if(typeof $scope.studentArray[x].originaldate !== 'undefined'){
+							$scope.studentArray[x].date = $scope.studentArray[x].originaldate;
+						}
 					}
 				})
 			})
@@ -162,6 +168,8 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 				delete search.time;
 			}  
 		}
+
+		$scope.filteredStudents = $filter('filter')($scope.studentArray, search);
 	}
 
 	$scope.showWeek = function(week){
@@ -237,6 +245,53 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 		}
 	}
+
+
+	//add byweeks (adds weeks onto start date in case
+	//there's a week or two off like during a break)
+	$scope.addBreak = function(weeks){
+		console.log(weeks);
+		for(var x= 0; x<$scope.filteredStudents.length; x++){
+			var s = $scope.filteredStudents[x];
+			for(var id in $scope.students){
+				if(s.email == $scope.students[id].email){
+
+					startDate = $scope.students[id].date;
+					startDate = new Date( startDate.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
+					startDate = (startDate.setDate(startDate.getDate() + (weeks*7));
+
+					newStart = new Date(startDate);
+
+					var dd = newStart.getDate();
+					var mm = newStart.getMonth()+1; //January is 0!
+					var yyyy = newStart.getFullYear();
+
+					if(dd<10) {
+					    dd='0'+dd
+					} 
+
+					if(mm<10) {
+					    mm='0'+mm
+					} 
+
+					newStart = mm+'/'+dd+'/'+yyyy;
+
+					console.log(newStart);
+
+					firebase.database().ref('student/' + id).update({
+						date: newStart,
+						originaldate: $scope.students[id].date
+
+					})
+				}
+			}
+
+		}
+	}
+
+	// $scope.clearWeeks = function(){
+	// 	$scope.breaktime.$setPristine();
+	// }
 
 	//initialize student id var
 	var studentID;

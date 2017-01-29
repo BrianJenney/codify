@@ -24,6 +24,12 @@
 
 	<div class="container-fluid student-table">
 	
+		<div class="btn-toolbar">
+	  		<button class="btn btn-xs btn-primary" data-target="#mentorModal" data-toggle="modal" href="">Manage Mentors</button>
+
+	  		<button class="btn btn-xs btn-primary" data-target="#addBreakModal" data-toggle="modal">Add break</button>
+	  	</div>
+
 	<div class="form-group filters">
 		
 		<select ng-change="filterStudents(search)" ng-model="search.mentor" ng-options="mentor.firstname as mentor.firstname for mentor in mentors">
@@ -39,9 +45,7 @@
 	  	<button data-target="#graduateModal" data-toggle="modal" class="button is-ruby">Graduate Class</button>
 
 	  	<!-- <button class="button is-blue-jeans">Send SMS to <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-comment"></span></button> -->
-	  	<div class="text-right">
-	  		<a data-target="#mentorModal" data-toggle="modal" href="">Manage Mentors</a>
-	  	</div>
+  	
 	</div>
 	<table class="table table-striped table-sm table-responsive">
 		<thead>
@@ -137,6 +141,12 @@
 
 <div id="graduateModal" class="modal fade" role="dialog">
 	<ng-include src="'views/modals/graduate.html'"></ng-include>
+</div>
+
+<!-- ADD BREAK MODAL -->
+
+<div id="addBreakModal" class="modal fade" role="dialog">
+	<ng-include src="'views/modals/addbreak.html'"></ng-include>
 </div>
 
 </section>
