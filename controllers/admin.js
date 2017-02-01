@@ -250,7 +250,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 	//add byweeks (adds weeks onto start date in case
 	//there's a week or two off like during a break)
 	$scope.addBreak = function(weeks){
-		console.log(weeks);
+		// console.log(weeks);
 		for(var x= 0; x<$scope.filteredStudents.length; x++){
 			var s = $scope.filteredStudents[x];
 			for(var id in $scope.students){
@@ -258,7 +258,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 					startDate = $scope.students[id].date;
 					startDate = new Date( startDate.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3") );
-					startDate = (startDate.setDate(startDate.getDate() + (weeks*7));
+					startDate = (startDate.setDate(startDate.getDate() + (weeks*7)));
 
 					newStart = new Date(startDate);
 
