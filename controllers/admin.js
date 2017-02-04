@@ -9,6 +9,8 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 .controller('AdminCtrl', ['$scope','$filter', '$http', '$window','filterFilter', '$timeout', function($scope, $filter, $http, $window, filterFilter, $timeout) {
 
+
+	//date picker stuff
 	$( function() {
     $( "#datePicker").datepicker(
     	{ beforeShowDay: function(day) {

@@ -29,7 +29,7 @@
 
         <div class="clear-fix"></div>
         <label>Mentor</label>
-        <select ng-model="editInfo.mentor" ng-options="mentor for mentor in mentors"></select>
+        <select ng-model="editInfo.mentor" ng-options="mentor.firstname as mentor.firstname for mentor in mentors"></select>
 
         
         
