@@ -170,7 +170,6 @@ angular.module('myApp.week16', ['ngRoute'])
 
 		var nextWeek = nextChapter > $scope.userInfo.currentweek ? nextChapter: $scope.userInfo.currentweek;
 		
-		console.log(nextWeek)
 
 		//update complete rate and set next chapter as 
 		//starting point when they login

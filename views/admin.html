@@ -6,10 +6,10 @@
 
 <section ng-controller="AdminCtrl">
 
-	<div class="form-group">
+	<div ng-if="isAdmin" class="form-group">
 	    <span class="glyphicon glyphicon-calendar"></span><input style="width: 10% !important" ng-model="search.date" type="text" id="datePicker">
 	</div>
-	<button class="btn btn-primary btn-xs" ng-click="filterStudents(search)">Filter By Start Date</button>
+	<button ng-if="isAdmin" class="btn btn-primary btn-xs" ng-click="filterStudents(search)">Filter By Start Date</button>
 
 <div ng-if="isAdmin">
 	<a href="" ><span ng-click="getCurrentStudents(true)" ng-show="!isAlumni">Graduate View</span><span ng-click="getCurrentStudents(false)" ng-show="isAlumni">Current Student View</span></a>
