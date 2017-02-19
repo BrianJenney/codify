@@ -22,8 +22,9 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
             }
         },
         onSelect: function(dateText, inst) { 
-		     	var dateAsString = dateText;
-		     	$scope.date = dateAsString;
+		      var dateAsString = dateText;
+		    
+		      $scope.date = dateAsString;
 		   }
     	})
   });
@@ -278,7 +279,7 @@ angular.module('myApp.admin', ['ngRoute','ui.bootstrap'])
 
 					newStart = mm+'/'+dd+'/'+yyyy;
 
-					console.log(newStart);
+					// console.log(newStart);
 
 					firebase.database().ref('student/' + id).update({
 						date: newStart,

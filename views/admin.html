@@ -6,7 +6,7 @@
 
 <section ng-controller="AdminCtrl">
 
-	<div ng-if="isAdmin" class="form-group">
+	<div ng-hide="!isAdmin" class="form-group">
 	    <span class="glyphicon glyphicon-calendar"></span><input style="width: 10% !important" ng-model="search.date" type="text" id="datePicker">
 	</div>
 	<button ng-if="isAdmin" class="btn btn-primary btn-xs" ng-click="filterStudents(search)">Filter By Start Date</button>
@@ -35,6 +35,7 @@
 		<select ng-change="filterStudents(search)" ng-model="search.mentor" ng-options="mentor.firstname as mentor.firstname for mentor in mentors">
 			<option value="">All</option>
 	  	</select>
+
 	  	<select ng-change="filterStudents(search)" ng-model="search.time" ng-options="time for time in times">
 			<option value="">All</option>
 	  	</select>
@@ -42,7 +43,7 @@
 	  	
 	  	<button data-target="#contactModal" data-toggle="modal"class="button is-blue-jeans">Contact <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-envelope"></span></button>
 
-	  	<button data-target="#graduateModal" data-toggle="modal" class="button is-ruby">Graduate Class</button>
+	  	<button data-target="#graduateModal" data-toggle="modal" class="button is-ruby">Graduate Class <span class="glyphicon glyphicon-education"></span></button>
 
 	  	<!-- <button class="button is-blue-jeans">Send SMS to <span ng-show="!search.mentor">All classes </span> <span ng-show="search.mentor">{{search.mentor}}'s Class </span><span class="glyphicon glyphicon-comment"></span></button> -->
   	
