@@ -9,17 +9,8 @@ html {
   box-sizing: inherit;
   }
 
-
-
-#sidebar-button {
-  float: left;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-h2{
-  color: #F97F85;
+#content {
+   /* ahahahahahahaa deleted your button homie */
 }
 
 #achievement-container {
@@ -46,7 +37,7 @@ h2{
   margin: auto;
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;
-  fill: #4A4A4A; 
+  fill: #4A4A4A;
 }
 
 .one, .two, .three{
@@ -56,7 +47,7 @@ h2{
   height:40px;
   width:40px;
   border-radius:25px;
-  
+
 }
 .one{
   left:25%;
@@ -457,7 +448,7 @@ p {
     width: 120px !important;
     height: 50px !important;
     margin: 20px 30px !important;
-    position: relative !important; 
+    position: relative !important;
 }
 .flatCheckbox div
 {
@@ -494,7 +485,7 @@ body {
 
 @media screen and (min-width: 80em) {
     .button {
-        
+
         padding: 2.3em 2em 1em 2em;
     }
 }
@@ -882,7 +873,7 @@ button:active {
     background: #243342;
 }
 
-.checkbox label:after, 
+.checkbox label:after,
 .radio label:after {
     content: '';
     display: table;
@@ -1017,4 +1008,3 @@ body {
 {
     float: left;
 }
-
